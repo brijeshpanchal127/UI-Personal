@@ -1,0 +1,11 @@
+.shoppingCart__main {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.shoppingCart__main--inventory {
+  width: 70%;
+}
+.shoppingCart__main--detail {
+  width: 30%;
+}

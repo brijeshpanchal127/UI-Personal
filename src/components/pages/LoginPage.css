@@ -1,0 +1,54 @@
+body {
+  background-color: #EEEEEE;
+}
+#loginPanel {
+  background-color: #EEEEEE;
+  width: 100%;
+  overflow-y: scroll;
+}
+.panelInputs {
+  margin-top: 15%;
+  align-self: center;
+  justify-content: center;
+  padding-left: 20%;
+  padding-right: 20%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.inputFields {
+  display:flex;
+  align-self: center;
+  align-items: baseline;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 1%;
+  margin-bottom: 1%; 
+  
+}
+p {
+  text-align: center;
+  display: inline;
+  margin-right: 5px;
+  color: MediumSeaGreen;
+  font-weight: bold;
+}
+#loginButton {
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 1.5rem;
+  margin-right: 10%;
+  background-color: "#72BB53";
+  border: none;
+  padding: 4px;
+  text-align: center;
+  width: 100%;
+}
+
+#loginButton > Button {
+  width: 50%;
+  padding: 5px;
+  max-width: 40%;
+  color: whitesmoke;
+}

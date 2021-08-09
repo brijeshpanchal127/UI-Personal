@@ -1,0 +1,10 @@
+.inventory{
+  overflow-y: scroll;
+  height: 100%;
+  background-color: #F7F6F6;
+}
+
+.inventory__card--label{
+  color: grey;
+  margin-right: 10px;
+}
