@@ -4,6 +4,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import DescriptionIcon from "@material-ui/icons/Description";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
+import Popover from "@material-ui/core/Popover";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
 import PaymentOption from "../../../../retailit/reusableTerminal/PaymentOption";
 
 const useStyles = makeStyles((theme) => ({
@@ -41,11 +44,22 @@ const useStyles = makeStyles((theme) => ({
 
 const Detail = () => {
   const classes = useStyles();
+  const [anchorEl, setAnchorEl] = React.useState(null);
   const [terminalbox, setTerminalbox] = useState(false);
   const terminalboxHandler = () => {
     setTerminalbox({ terminalbox: true });
   };
 
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
   return (
     <div className="detail">
       <div className={classes.iconsContainer}>
@@ -61,10 +75,27 @@ const Detail = () => {
         <div className={classes.list}>HST</div>
       </div>
       <div className={classes.balance}>BALANCE</div>
-      <button className={classes.button} onClick={terminalboxHandler}>
+      <button className={classes.button} onClick={handleClick}>
         CHECKOUT
       </button>
-      {terminalbox ? <PaymentOption /> : ""}
+      <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "left",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "right",
+        }}
+      >
+        <Typography className={classes.typography}>
+          <PaymentOption />
+        </Typography>
+      </Popover>
     </div>
   );
 };

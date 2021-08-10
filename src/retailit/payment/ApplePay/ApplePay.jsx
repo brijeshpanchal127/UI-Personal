@@ -1,9 +1,10 @@
 import React from "react";
+import Terminal from "../../reusableTerminal/Terminal";
 
 const ApplePay = () => {
   return (
     <div>
-      <h1>Apple Pay</h1>
+      <Terminal />
     </div>
   );
 };

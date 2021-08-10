@@ -1,133 +1,118 @@
 import React, { useState } from "react";
 import "./PaymentOption.css";
 import { makeStyles } from "@material-ui/core/styles";
-import Popover from "@material-ui/core/Popover";
+import Accordion from "@material-ui/core/Accordion";
+import AccordionSummary from "@material-ui/core/AccordionSummary";
+import AccordionDetails from "@material-ui/core/AccordionDetails";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import Terminal from "./Terminal";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import CreditCard from "../payment/CreditCard/CreditCard";
+import DebitCard from "../payment/DebitCard/DebitCard";
+import ApplePay from "../payment/ApplePay/ApplePay";
+import GiftCard from "../payment/GiftCard/GiftCard";
 
 const useStyles = makeStyles((theme) => ({
-  button: {
-    backgroundColor: "#72bb53",
-    color: "white",
-    marginTop: "1.5rem",
-    fontSize: "15px",
-    border: "none",
-    height: "40px",
-    padding: "10px 10px",
-    "&:hover": {
-      cursor: "pointer",
-      backgroundColor: "#4c7a34",
-    },
-    width: "100%",
-  },
-  button_paymentbox: {
-    marginTop: "20px",
-  },
-  button_payment: {
-    backgroundColor: "#E9EDE5",
-    color: "gray ",
-    padding: "8px",
-    marginTop: "8px",
-    fontSize: "20px",
-
-    "&:hover": {
-      cursor: "pointer",
-      backgroundColor: "#4c7a34",
-      color: "gray",
-      textDecoration: "none",
-    },
+  heading: {
+    fontSize: theme.typography.pxToRem(15),
+    fontWeight: theme.typography.fontWeightRegular,
   },
 }));
 
 const PaymentOption = (props) => {
+  const [expand, setExpand] = React.useState(true);
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [modalName, setModalName] = useState(null);
-  // const preventDefault = (event) => event.preventDefault();
 
-  const handleClick = (event, name) => {
-    setAnchorEl(event.currentTarget);
-    setModalName(name);
+  const handleClick = () => {
+    setExpand(!expand);
   };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
 
   return (
-    <div className="paymentoption">
-      <Popover
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "right",
-        }}
-      >
-        <Typography className={classes.typography}>
-          <Terminal name={modalName} />
-        </Typography>
-      </Popover>
-      <div className={classes.button_paymentbox}>
-        <div
-          className={classes.button_payment}
-          onClick={(e) => handleClick(e, "creditCard")}
+    <div className={classes.root}>
+      <Accordion expanded={expand}>
+        <AccordionSummary
+          onClick={handleClick}
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
         >
-          <Button aria-describedby={id}>CREDIT CARD</Button>
-        </div>
-        <div
-          className={classes.button_payment}
-          onClick={(e) => handleClick(e, "debitCard")}
+          <Typography className={classes.heading}>Credit Card</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            <CreditCard />
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel2a-content"
+          id="panel2a-header"
         >
-          <Button aria-describedby={id}>DEBIT CARD</Button>
-        </div>
-
-        <div
-          className={classes.button_payment}
-          onClick={(e) => handleClick(e, "GiftCard")}
+          <Typography className={classes.heading}>Debit Card</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            <DebitCard />
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
         >
-          <Button aria-describedby={id}>GIFT CARD</Button>
-        </div>
-
-        <div
-          className={classes.button_payment}
-          onClick={(e) => handleClick(e, "Apple Pay")}
+          <Typography className={classes.heading}>Apple Pay</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            <ApplePay />
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel2a-content"
+          id="panel2a-header"
         >
-          <Button aria-describedby={id}>APPLE PAY</Button>
-        </div>
-        <div
-          className={classes.button_payment}
-          onClick={(e) => handleClick(e, "cash")}
+          <Typography className={classes.heading}>Gift Card</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            <GiftCard />
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
         >
-          <Button aria-describedby={id}>CASH</Button>
-        </div>
-
-        <div
-          className={classes.button_payment}
-          onClick={(e) => handleClick(e, "us cash")}
+          <Typography className={classes.heading}>Cash</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            <ApplePay />
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel2a-content"
+          id="panel2a-header"
         >
-          <Button aria-describedby={id}>US CASH</Button>
-        </div>
-
-        <div
-          className={classes.button_payment}
-          onClick={(e) => handleClick(e, "Receipt option")}
-        >
-          <Button aria-describedby={id}>RECEIPT OPTIONS</Button>
-        </div>
-
-        <button className={classes.button}>FINISH</button>
-      </div>
+          <Typography className={classes.heading}>Receipt Option</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            <GiftCard />
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
     </div>
   );
 };

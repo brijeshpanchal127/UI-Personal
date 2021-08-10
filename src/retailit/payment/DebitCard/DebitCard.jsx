@@ -1,9 +1,10 @@
 import React from "react";
+import Terminal from "../../reusableTerminal/Terminal";
 
 const DebitCard = () => {
   return (
     <div>
-      <h1> debit</h1>
+      <Terminal />
     </div>
   );
 };

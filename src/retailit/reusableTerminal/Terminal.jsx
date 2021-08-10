@@ -4,8 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Radio from "@material-ui/core/Radio";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormLabel from "@material-ui/core/FormLabel";
-import PaymentOption from "./PaymentOption";
-import CloseIcon from "@material-ui/icons/Close";
+import Input from "@material-ui/core/Input";
 import RadioGroup from "@material-ui/core/RadioGroup";
 
 const useStyles = makeStyles((theme) => ({
@@ -63,7 +62,6 @@ const Terminal = (props) => {
   const classes = useStyles();
   const [paymentOptions, setPaymentOptions] = useState(false);
   const [value, setValue] = useState("1");
-  const { name } = props;
 
   const paymentOptionHandler = () => {
     setPaymentOptions({ paymentOptions: true });
@@ -77,7 +75,7 @@ const Terminal = (props) => {
       <div className={classes.terminalbox}>
         <div>
           <FormLabel className={classes.list}>
-            <h5>Terminal for {name}</h5>
+            <h5>Terminal</h5>
           </FormLabel>
         </div>
         <RadioGroup value={value} onChange={handleChange}>
@@ -98,7 +96,7 @@ const Terminal = (props) => {
         </RadioGroup>
         <div className={classes.list}>Amount</div>
         <div className={classes.amount_box}>
-          <input className={classes.amount} type="text" />
+          <Input className={classes.amount} type="text" />
         </div>
         <button className={classes.button} onClick={paymentOptionHandler}>
           SUBMIT

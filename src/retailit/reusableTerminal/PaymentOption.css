@@ -1,6 +1,13 @@
 .paymentoption {
+  width: "50%";
     background-color: #F7F6F6;
     height: 100%;
     padding: 1rem;
+  }
+  .MuiTypography-root{
+    color: black;
+  }
+  .MuiAccordionSummary-root.Mui-expanded {
+ background-color: darkgray;
   }
  

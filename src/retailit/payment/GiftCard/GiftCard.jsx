@@ -1,13 +1,12 @@
-import React from 'react'
+import React from "react";
+import Terminal from "../../reusableTerminal/Terminal";
 
 const GiftCard = () => {
-    return (
-        <div>
-            <h1> giftcard </h1>
-        </div>
-    )
-}
+  return (
+    <div>
+      <Terminal />
+    </div>
+  );
+};
 
-export default GiftCard
-
-
+export default GiftCard;

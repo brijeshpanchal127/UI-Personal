@@ -1,9 +1,10 @@
 import React from "react";
+import Terminal from "../../reusableTerminal/Terminal";
 
 const CreditCard = () => {
   return (
     <div>
-      <h1> credit</h1>
+      <Terminal />
     </div>
   );
 };
