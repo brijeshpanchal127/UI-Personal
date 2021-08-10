@@ -1,6 +1,19 @@
+.MuiCollapse-container {
+  background-color: #F7F6F6;
+}
 .terminal {
-    background-color: #F7F6F6;
-    height: 100%;
-    padding: 1rem;
-  }
- 
+  text-align: start;
+}
+ .MuiAccordionDetails-root {
+    display: flex;
+    padding: 2px 4px 3px !important;
+ }
+ .MuiFormControlLabel-root {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  margin-left: -45px !important;
+  margin-right: 16px;
+  vertical-align: middle;
+  -webkit-tap-highlight-color: transparent;
+}

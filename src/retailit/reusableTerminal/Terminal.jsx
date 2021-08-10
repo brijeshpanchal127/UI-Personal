@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "25%",
   },
   terminalbox: {
-    marginTop: "15px",
+    marginTop: "px2",
   },
   button: {
     backgroundColor: "#72bb53",

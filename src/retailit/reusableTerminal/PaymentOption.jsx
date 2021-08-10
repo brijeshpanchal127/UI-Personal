@@ -10,6 +10,7 @@ import CreditCard from "../payment/CreditCard/CreditCard";
 import DebitCard from "../payment/DebitCard/DebitCard";
 import ApplePay from "../payment/ApplePay/ApplePay";
 import GiftCard from "../payment/GiftCard/GiftCard";
+import { traverse } from "@babel/core";
 
 const useStyles = makeStyles((theme) => ({
   heading: {
@@ -21,16 +22,51 @@ const useStyles = makeStyles((theme) => ({
 const PaymentOption = (props) => {
   const [expand, setExpand] = React.useState(true);
   const classes = useStyles();
+  const tabs = [
+    { id: 1, label: "CREDIT CARD", description: <CreditCard />, expand: true },
+    { id: 2, label: "DEBIT CARD", description: <DebitCard />, expand: false },
+    { id: 3, label: "APPLE PAY", description: <ApplePay />, expand: false },
+    { id: 4, label: "GIFT CARD", description: <GiftCard />, expand: false },
+    { id: 5, label: "CASH", description: "cash", expand: false },
+    { id: 6, label: "US CASH", description: "us cash", expand: false },
+    {
+      id: 7,
+      label: "RECEIPT OPTIONS",
+      description: "receipt option",
+      expand: false,
+    },
+  ];
 
-  const handleClick = () => {
-    setExpand(!expand);
+  const handleClick = (event, key) => {
+    setExpand(key);
   };
 
   return (
     <div className={classes.root}>
-      <Accordion expanded={expand}>
+      {tabs.map((tab) => (
+        <div>
+          <Accordion
+            onClick={(e) => handleClick(e, tab.id)}
+            expanded={expand === tab.id}
+            defaultExpanded={true}
+          >
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+              <Typography className={classes.heading}>{tab.label}</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography>{tab.description}</Typography>
+            </AccordionDetails>
+          </Accordion>
+        </div>
+      ))}
+
+      {/* <Accordion>
         <AccordionSummary
-          onClick={handleClick}
+          onClick={(e) => handleClick(e, "panel1a-header")}
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
@@ -43,8 +79,9 @@ const PaymentOption = (props) => {
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion>
+      <Accordion expand>
         <AccordionSummary
+          onClick={(e) => handleClick(e, "panel2a-header")}
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel2a-content"
           id="panel2a-header"
@@ -61,7 +98,7 @@ const PaymentOption = (props) => {
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
-          id="panel1a-header"
+          id="panel3a-header"
         >
           <Typography className={classes.heading}>Apple Pay</Typography>
         </AccordionSummary>
@@ -75,7 +112,7 @@ const PaymentOption = (props) => {
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel2a-content"
-          id="panel2a-header"
+          id="panel4a-header"
         >
           <Typography className={classes.heading}>Gift Card</Typography>
         </AccordionSummary>
@@ -89,7 +126,7 @@ const PaymentOption = (props) => {
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
-          id="panel1a-header"
+          id="panel5a-header"
         >
           <Typography className={classes.heading}>Cash</Typography>
         </AccordionSummary>
@@ -103,7 +140,7 @@ const PaymentOption = (props) => {
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel2a-content"
-          id="panel2a-header"
+          id="panel6a-header"
         >
           <Typography className={classes.heading}>Receipt Option</Typography>
         </AccordionSummary>
@@ -112,7 +149,7 @@ const PaymentOption = (props) => {
             <GiftCard />
           </Typography>
         </AccordionDetails>
-      </Accordion>
+      </Accordion> */}
     </div>
   );
 };
