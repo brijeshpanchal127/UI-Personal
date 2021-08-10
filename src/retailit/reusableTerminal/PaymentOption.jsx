@@ -10,7 +10,6 @@ import CreditCard from "../payment/CreditCard/CreditCard";
 import DebitCard from "../payment/DebitCard/DebitCard";
 import ApplePay from "../payment/ApplePay/ApplePay";
 import GiftCard from "../payment/GiftCard/GiftCard";
-import { traverse } from "@babel/core";
 
 const useStyles = makeStyles((theme) => ({
   heading: {
@@ -20,7 +19,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const PaymentOption = (props) => {
-  const [expand, setExpand] = React.useState(true);
+  const [creditCardexpand, setCreditCardExpand] = React.useState(true);
+  const [debitCradexpand, setdebitCardExpand] = React.useState(false);
+  const [GiftCardexpand, setgiftCardExpand] = React.useState(false);
+  const [applePayexpand, setApplePayExpand] = React.useState(false);
+  const [cashexpand, setCashExpand] = React.useState(false);
+  const [usCashdexpand, setUsCashExpand] = React.useState(false);
+  const [receiptOptionexpand, setReceiptOptionExpand] = React.useState(false);
+
   const classes = useStyles();
   const tabs = [
     { id: 1, label: "CREDIT CARD", description: <CreditCard />, expand: true },
@@ -38,33 +44,86 @@ const PaymentOption = (props) => {
   ];
 
   const handleClick = (event, key) => {
-    setExpand(key);
+    debugger;
+    switch (key) {
+      case "panel1a-header":
+        setdebitCardExpand(false);
+        setReceiptOptionExpand(false);
+        setgiftCardExpand(false);
+        setApplePayExpand(false);
+        setCashExpand(false);
+        setUsCashExpand(false);
+        setCreditCardExpand(!creditCardexpand);
+        break;
+      case "panel2a-header":
+        setdebitCardExpand(!debitCradexpand);
+        setReceiptOptionExpand(false);
+        setgiftCardExpand(false);
+        setApplePayExpand(false);
+        setCashExpand(false);
+        setUsCashExpand(false);
+        setCreditCardExpand(false);
+        break;
+      case "panel3a-header":
+        setApplePayExpand(!applePayexpand);
+        setdebitCardExpand(false);
+        setReceiptOptionExpand(false);
+        setgiftCardExpand(false);
+        setCashExpand(false);
+        setUsCashExpand(false);
+        setCreditCardExpand(false);
+        break;
+      case "panel4a-header":
+        setApplePayExpand(false);
+        setdebitCardExpand(false);
+        setReceiptOptionExpand(false);
+        setgiftCardExpand(!GiftCardexpand);
+        setCashExpand(false);
+        setUsCashExpand(false);
+        setCreditCardExpand(false);
+        break;
+      case "panel5a-header":
+        setApplePayExpand(false);
+        setdebitCardExpand(false);
+        setReceiptOptionExpand(false);
+        setgiftCardExpand(false);
+        setCashExpand(!cashexpand);
+        setUsCashExpand(false);
+        setCreditCardExpand(false);
+        break;
+      case "panel6a-header":
+        setApplePayExpand(false);
+        setdebitCardExpand(false);
+        setReceiptOptionExpand(false);
+        setgiftCardExpand(false);
+        setCashExpand(false);
+        setUsCashExpand(!usCashdexpand);
+        setCreditCardExpand(false);
+        break;
+      case "panel7a-header":
+        setApplePayExpand(false);
+        setdebitCardExpand(false);
+        setReceiptOptionExpand(!receiptOptionexpand);
+        setgiftCardExpand(false);
+        setCashExpand(false);
+        setUsCashExpand(false);
+        setCreditCardExpand(false);
+        break;
+      default:
+        setApplePayExpand(false);
+        setdebitCardExpand(false);
+        setReceiptOptionExpand(false);
+        setgiftCardExpand(false);
+        setCashExpand(false);
+        setUsCashExpand(false);
+        setCreditCardExpand(false);
+        break;
+    }
   };
 
   return (
     <div className={classes.root}>
-      {tabs.map((tab) => (
-        <div>
-          <Accordion
-            onClick={(e) => handleClick(e, tab.id)}
-            expanded={expand === tab.id}
-            defaultExpanded={true}
-          >
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1a-content"
-              id="panel1a-header"
-            >
-              <Typography className={classes.heading}>{tab.label}</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography>{tab.description}</Typography>
-            </AccordionDetails>
-          </Accordion>
-        </div>
-      ))}
-
-      {/* <Accordion>
+      <Accordion expanded={creditCardexpand}>
         <AccordionSummary
           onClick={(e) => handleClick(e, "panel1a-header")}
           expandIcon={<ExpandMoreIcon />}
@@ -79,7 +138,7 @@ const PaymentOption = (props) => {
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion expand>
+      <Accordion expanded={debitCradexpand}>
         <AccordionSummary
           onClick={(e) => handleClick(e, "panel2a-header")}
           expandIcon={<ExpandMoreIcon />}
@@ -94,10 +153,11 @@ const PaymentOption = (props) => {
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion>
+      <Accordion expanded={applePayexpand}>
         <AccordionSummary
+          onClick={(e) => handleClick(e, "panel3a-header")}
           expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
+          aria-controls="panel3a-content"
           id="panel3a-header"
         >
           <Typography className={classes.heading}>Apple Pay</Typography>
@@ -108,10 +168,11 @@ const PaymentOption = (props) => {
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion>
+      <Accordion expanded={GiftCardexpand}>
         <AccordionSummary
+          onClick={(e) => handleClick(e, "panel4a-header")}
           expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel2a-content"
+          aria-controls="panel4a-content"
           id="panel4a-header"
         >
           <Typography className={classes.heading}>Gift Card</Typography>
@@ -122,34 +183,45 @@ const PaymentOption = (props) => {
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion>
+      <Accordion expanded={cashexpand}>
         <AccordionSummary
+          onClick={(e) => handleClick(e, "panel5a-header")}
           expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
+          aria-controls="panel5a-content"
           id="panel5a-header"
         >
           <Typography className={classes.heading}>Cash</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            <ApplePay />
-          </Typography>
+          <Typography>cash</Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion>
+      <Accordion expanded={usCashdexpand}>
         <AccordionSummary
+          onClick={(e) => handleClick(e, "panel6a-header")}
           expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel2a-content"
+          aria-controls="panel6a-content"
           id="panel6a-header"
         >
-          <Typography className={classes.heading}>Receipt Option</Typography>
+          <Typography className={classes.heading}>Us Cash</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            <GiftCard />
-          </Typography>
+          <Typography>us Cash</Typography>
         </AccordionDetails>
-      </Accordion> */}
+      </Accordion>
+      <Accordion expanded={receiptOptionexpand}>
+        <AccordionSummary
+          onClick={(e) => handleClick(e, "panel7a-header")}
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel7a-content"
+          id="panel7a-header"
+        >
+          <Typography className={classes.heading}>Receipt option </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>receipt option </Typography>
+        </AccordionDetails>
+      </Accordion>
     </div>
   );
 };

@@ -84,8 +84,8 @@ const Detail = () => {
         anchorEl={anchorEl}
         onClose={handleClose}
         anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
+          vertical: "top",
+          horizontal: "top",
         }}
         transformOrigin={{
           vertical: "top",

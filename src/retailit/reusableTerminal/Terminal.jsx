@@ -101,7 +101,6 @@ const Terminal = (props) => {
         <button className={classes.button} onClick={paymentOptionHandler}>
           SUBMIT
         </button>
-        {/* {paymentOptions ? <PaymentOption /> : ""} */}
       </div>
     </div>
   );
