@@ -6,7 +6,6 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormLabel from "@material-ui/core/FormLabel";
 import Input from "@material-ui/core/Input";
 import RadioGroup from "@material-ui/core/RadioGroup";
-import randomNumberGenerator from "button_creditcard_123";
 
 const useStyles = makeStyles((theme) => ({
   list: {
@@ -66,7 +65,6 @@ const Terminal = (props) => {
 
   const paymentOptionHandler = () => {
     setPaymentOptions({ paymentOptions: true });
-    alert(randomNumberGenerator(5, 10));
   };
   const handleChange = (event) => {
     setValue(event.target.value);
