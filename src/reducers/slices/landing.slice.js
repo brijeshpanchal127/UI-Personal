@@ -1,4 +1,4 @@
-import { SELECT_STORE, CACHE_STORES_DATA, SELECT_CURRENT_FUNCTION } from "../actions/types";
+import { SELECT_STORE, CACHE_STORES_DATA, SELECT_CURRENT_FUNCTION,DISPLAY_MESSAGE } from "../actions/types";
 
 export default function landingReducer(state = { 
   //storeSelected: false, 
@@ -9,6 +9,7 @@ export default function landingReducer(state = {
     },
     storeLocations: []
   },
+  messages:null,
   currentStoreFunction: null 
 }, action
   ) {
@@ -30,6 +31,11 @@ export default function landingReducer(state = {
         return {
           ...state,
           currentStoreFunction: action.payload,
+        };
+      case DISPLAY_MESSAGE:     
+        return {
+          ...state,
+          messages: action.payload.messages,
         };
       default:
         return state;

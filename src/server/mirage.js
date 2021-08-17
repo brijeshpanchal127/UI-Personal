@@ -177,6 +177,13 @@ export function createServer({ environment = "development" } = {}) {
           },
         };
       });
+
+      //get message
+      this.get("/landing/message", () => {
+        return {
+          messages: ["Logged in Markville Mall", "Logged in  as k.Iam"],
+        };
+      });
       //       this.get('https://www.techiediaries.com/api/data.json', (schema, request) => {
       //         console.log("get data from https://www.techiediaries.com/api/data.json");
       //         return schema.db.jargons;

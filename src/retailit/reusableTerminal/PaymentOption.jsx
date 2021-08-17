@@ -44,7 +44,6 @@ const PaymentOption = (props) => {
   ];
 
   const handleClick = (event, key) => {
-    debugger;
     switch (key) {
       case "panel1a-header":
         setdebitCardExpand(false);

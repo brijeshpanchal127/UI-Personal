@@ -1,4 +1,4 @@
-import { SELECT_STORE, CACHE_STORES_DATA, SELECT_CURRENT_FUNCTION } from "./types";
+import { SELECT_STORE, CACHE_STORES_DATA, SELECT_CURRENT_FUNCTION,DISPLAY_MESSAGE } from "./types";
 
 export const selectStore = (storeLocation) => {
   return {
@@ -15,6 +15,12 @@ export const selectCurrentFunction = (currentFunction) => {
 export const cacheStoresData = (payload) => {
   return {
     type: CACHE_STORES_DATA,
+    payload: payload,
+  };
+}
+export const MessageData = (payload) => {
+  return {
+    type: DISPLAY_MESSAGE,
     payload: payload,
   };
 }
