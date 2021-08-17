@@ -11,6 +11,11 @@ import DebitCard from "../payment/DebitCard/DebitCard";
 import ApplePay from "../payment/ApplePay/ApplePay";
 import GiftCard from "../payment/GiftCard/GiftCard";
 
+import { traverse } from "@babel/core";
+import CashPay from "../payment/Cash/CashPay";
+import UsCash from "../payment/UsCash/UsCash";
+import ReceiptOptions from "../payment/ReceiptOptions/ReceiptOptions";
+
 const useStyles = makeStyles((theme) => ({
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -33,12 +38,12 @@ const PaymentOption = (props) => {
     { id: 2, label: "DEBIT CARD", description: <DebitCard />, expand: false },
     { id: 3, label: "APPLE PAY", description: <ApplePay />, expand: false },
     { id: 4, label: "GIFT CARD", description: <GiftCard />, expand: false },
-    { id: 5, label: "CASH", description: "cash", expand: false },
-    { id: 6, label: "US CASH", description: "us cash", expand: false },
+    { id: 5, label: "CASH", description: <CashPay />, expand: false },
+    { id: 6, label: "US CASH", description: <UsCash />, expand: false },
     {
       id: 7,
       label: "RECEIPT OPTIONS",
-      description: "receipt option",
+      description: <ReceiptOptions />,
       expand: false,
     },
   ];
