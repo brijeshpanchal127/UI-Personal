@@ -14,6 +14,7 @@ import {
   MessageData,
 } from "../../../../reducers/actions/landing.action";
 import { selectDisplayStorePos } from "../../../../reducers/actions/display.action";
+import messageService from "../../../../services/message.service";
 import StoreSelection from "./StoreSelection";
 const useStyles = makeStyles((theme) => ({
   search: {
@@ -73,6 +74,7 @@ export default function MainPanel() {
     e.preventDefault();
     dispatch(selectCurrentFunction(functionality.name));
     dispatch(selectDisplayStorePos(functionality.displayProfle));
+    dispatch(messageService.getMessages(auth.accessToken));
     dispatch(MessageData("DISPLAY_MESSAGE"));
     history.push(functionality.url);
   };

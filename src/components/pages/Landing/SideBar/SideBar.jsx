@@ -42,10 +42,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SideBar() {
   const classes = useStyles();
-  const [openShortcuts, setOpenShortcuts] = React.useState(false);
-  const [openPromos, setOpenPromos] = React.useState(false);
-  const [openMessages, setOpenMessages] = React.useState(false);
-  const [openSettings, setOpenSettings] = React.useState(false);
+  const [openShortcuts, setOpenShortcuts] = React.useState(true);
+  const [openPromos, setOpenPromos] = React.useState(true);
+  const [openMessages, setOpenMessages] = React.useState(true);
+  const [openSettings, setOpenSettings] = React.useState(true);
 
   const selectedStore = useSelector((state) => state.landing.selectedStore);
   const displayProfileName = useSelector(
@@ -75,6 +75,7 @@ export default function SideBar() {
     setOpenPromos(!openPromos);
   };
   const handleMessagesClick = () => {
+    debugger;
     setOpenMessages(!openMessages);
   };
   const handleClick = () => {
