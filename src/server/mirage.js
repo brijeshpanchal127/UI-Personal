@@ -159,24 +159,6 @@ export function createServer({ environment = "development" } = {}) {
         return {
           storeLocations: ["Scarborough Town Center", "Markville Mall"],
           sidebar: [
-
-            {
-              key: 0,
-              type: "SHORTCUTS",
-              icon: "ExitToAppIcon",
-              text: "SHORTCUTS",
-              url: null,
-              sublist: [],
-            },
-            {
-              key: 1,
-              type: "PROMOS",
-              icon: "CardGiftcardIcon",
-              text: "PROMOS",
-              url: null,
-              sublist: [],
-            },
-
             // {
             //   type: "SHORTCUTS",
             //   icon: "ExitToAppIcon",
@@ -200,7 +182,6 @@ export function createServer({ environment = "development" } = {}) {
               url: null,
               sublist: [
                 {
-
                   type: "Logged in as K.lam",
                   icon: "",
                   text: "Logged in as K.lam",
@@ -210,23 +191,12 @@ export function createServer({ environment = "development" } = {}) {
                   type: "Logged in as K.lam",
                   icon: "",
                   text: "Logged in as K.lam",
-
-                  type: "message",
-                  icon: "",
-                  text: "Logged in to Markville Mall",
-                  url: null,
-                },
-                {
-                  type: "message",
-                  icon: "",
-                  text: "Logged in as k.iam",
-
                   url: null,
                 },
               ],
             },
             {
-              key: 3,
+              key: 1,
               type: "SETTINGS",
               icon: "SettingsIcon",
               text: "SETTINGS",
@@ -244,7 +214,6 @@ export function createServer({ environment = "development" } = {}) {
                 //   text: "STARRED",
                 //   url: null,
                 // },
-               
                 {
                   type: "LOGOUT",
                   icon: "",
