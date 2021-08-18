@@ -43,65 +43,29 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SideBar() {
   const classes = useStyles();
-  const [openShortcuts, setOpenShortcuts] = React.useState(true);
-  const [openPromos, setOpenPromos] = React.useState(true);
-  const [openMessages, setOpenMessages] = React.useState(true);
-  const [openSettings, setOpenSettings] = React.useState(true);
+  const [openCollapse, setCollapse] = React.useState(false);
+  const [key, setKey] = React.useState(null);
 
   const selectedStore = useSelector((state) => state.landing.selectedStore);
   const displayProfileName = useSelector(
     (state) => state.display.displayProfile
-  );
-
-  var currentDisplayProfile = data.DISPLAY_PROFILE.find(
-    (o) => o.name === displayProfileName
   );
   const storeLocations = useSelector(
     (state) => state.landing.storesData.storeLocations
   );
   const sidebar =
     useSelector((state) => state.landing.storesData.sidebar) || [];
-  console.log("storeLocations.....................", storeLocations);
-  console.log("sidebar.....................", sidebar);
-  const message = useSelector((state) => state.landing.messages);
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.login.auth);
-  const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
   const history = useHistory();
 
   useEffect(() => {
     dispatch(messageService.getMessages(auth.accessToken));
   }, []);
 
-  const handleShortcutsClick = () => {
-    setOpenShortcuts(!openShortcuts);
-  };
-  const handlePromosClick = () => {
-    setOpenPromos(!openPromos);
-  };
-  const handleMessagesClick = () => {
-    debugger;
-    setOpenMessages(!openMessages);
-  };
-  const handleClick = (e, type) => {
-    debugger;
-    switch (type) {
-      case "SHORTCUTS":
-        setOpenShortcuts(!openShortcuts);
-        break;
-      case "PROMOS":
-        setOpenPromos(!openPromos);
-        break;
-      case "MESSAGES":
-        setOpenMessages(!openMessages);
-        break;
-      case "MESSAGES":
-        setOpenSettings(!openSettings);
-        break;
-      default:
-        break;
-    }
-    setOpenSettings(!openSettings);
+  const handleClick = (e, type, key) => {
+    setKey(key);
+    type.key === key && setCollapse(!openCollapse);
   };
   const switchStore = (e) => {
     dispatch(selectStore(null));
@@ -137,7 +101,7 @@ export default function SideBar() {
       ))} */}
 
       {/* Shortcuts */}
-      <div
+      {/* <div
         className={
           currentDisplayProfile.sideBarFunctionalities.includes("SHORTCUTS")
             ? ""
@@ -155,10 +119,10 @@ export default function SideBar() {
         <Collapse in={openShortcuts} timeout="auto" unmountOnExit>
           <List component="div" disablePadding></List>
         </Collapse>
-      </div>
+      </div> */}
 
       {/* Promos */}
-      <div
+      {/* <div
         className={
           currentDisplayProfile.sideBarFunctionalities.includes("PROMOS")
             ? ""
@@ -176,22 +140,47 @@ export default function SideBar() {
         <Collapse in={openPromos} timeout="auto" unmountOnExit>
           <List component="div" disablePadding></List>
         </Collapse>
-      </div>
+      </div> */}
 
       {sidebar.map(function (sidebarItems, idx) {
+        let sidebarIcon;
+        switch (sidebarItems.icon) {
+          case "ExitToAppIcon":
+            sidebarIcon = <ExitToAppIcon />;
+            break;
+          case "CardGiftcardIcon":
+            sidebarIcon = <CardGiftcardIcon />;
+            break;
+          case "MessageIcon":
+            sidebarIcon = <MessageIcon />;
+            break;
+          case "SettingsIcon":
+            sidebarIcon = <SettingsIcon />;
+            break;
+          default:
+            break;
+        }
+
         return (
           <div>
-            <ListItem button onClick={(e) => handleClick(e, sidebarItems.type)}>
+            <ListItem button onClick={(e) => handleClick(e, sidebarItems, idx)}>
+              <ListItemIcon>{sidebarIcon}</ListItemIcon>
               <ListItemText primary={sidebarItems.text} key={idx} />
-              {openShortcuts ? <ExpandLess /> : <ExpandMore />}
+              {sidebarItems.type === "MESSAGES" && <MoreVertIcon />}
+              {openCollapse && key === idx ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
-            <Collapse in={openSettings}>
+            <Collapse
+              in={openCollapse && key === idx}
+              timeout="auto"
+              unmountOnExit
+            >
               <List component="div">
                 {sidebarItems.sublist &&
                   sidebarItems.sublist.map((item, index) => {
                     return (
                       <ListItem button className={classes.nested}>
-                        <ListItemText primary={item.text} />
+                        <ListItemText primary={item.text} />{" "}
+                        {sidebarItems.type === "MESSAGES" && <MoreVertIcon />}
                       </ListItem>
                     );
                   })}
