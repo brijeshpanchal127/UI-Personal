@@ -160,6 +160,7 @@ export function createServer({ environment = "development" } = {}) {
           storeLocations: ["Scarborough Town Center", "Markville Mall", "test"],
           sidebar: [
             {
+              key: 0,
               type: "SHORTCUTS",
               icon: "ExitToAppIcon",
               text: "SHORTCUTS",
@@ -167,6 +168,7 @@ export function createServer({ environment = "development" } = {}) {
               sublist: [],
             },
             {
+              key: 1,
               type: "PROMOS",
               icon: "CardGiftcardIcon",
               text: "PROMOS",
@@ -174,20 +176,28 @@ export function createServer({ environment = "development" } = {}) {
               sublist: [],
             },
             {
+              key: 2,
               type: "MESSAGES",
               icon: "MessageIcon",
               text: "MESSAGES",
               url: null,
               sublist: [
                 {
-                  type: "test",
+                  type: "Logged in as K.lam",
                   icon: "",
-                  text: "test",
+                  text: "Logged in as K.lam",
+                  url: null,
+                },
+                {
+                  type: "Logged in as K.lam",
+                  icon: "",
+                  text: "Logged in as K.lam",
                   url: null,
                 },
               ],
             },
             {
+              key: 3,
               type: "SETTINGS",
               icon: "SettingsIcon",
               text: "SETTINGS",
