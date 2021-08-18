@@ -16,6 +16,7 @@ import MessageIcon from "@material-ui/icons/Message";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
+import moment from "moment";
 import StarBorder from "@material-ui/icons/StarBorder";
 
 import data from "../../../../data/data";
@@ -166,7 +167,11 @@ export default function SideBar() {
             <ListItem button onClick={(e) => handleClick(e, sidebarItems, idx)}>
               <ListItemIcon>{sidebarIcon}</ListItemIcon>
               <ListItemText primary={sidebarItems.text} key={idx} />
-              {sidebarItems.type === "MESSAGES" && <MoreVertIcon />}
+              {sidebarItems.type === "MESSAGES" && (
+                <div>
+                  {moment().format("hh:mm a")} <MoreVertIcon />
+                </div>
+              )}
               {openCollapse && key === idx ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
             <Collapse
@@ -177,11 +182,26 @@ export default function SideBar() {
               <List component="div">
                 {sidebarItems.sublist &&
                   sidebarItems.sublist.map((item, index) => {
-                    return (
+                    return selectedStore !== null ? (
                       <ListItem button className={classes.nested}>
-                        <ListItemText primary={item.text} />{" "}
-                        {sidebarItems.type === "MESSAGES" && <MoreVertIcon />}
+                        <ListItemText primary={item.text} />
+                        {sidebarItems.type === "MESSAGES" && (
+                          <div>
+                            {moment().format("hh:mm a")} <MoreVertIcon />
+                          </div>
+                        )}
                       </ListItem>
+                    ) : (
+                      item.type !== "SWITCH STORE" && (
+                        <ListItem button className={classes.nested}>
+                          <ListItemText primary={item.text} />
+                          {sidebarItems.type === "MESSAGES" && (
+                            <div>
+                              {moment().format("hh:mm a")} <MoreVertIcon />
+                            </div>
+                          )}
+                        </ListItem>
+                      )
                     );
                   })}
               </List>
