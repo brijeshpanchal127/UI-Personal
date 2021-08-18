@@ -26,6 +26,7 @@ import {
 } from "../../../../reducers/actions/landing.action";
 import messageService from "../../../../services/message.service";
 import { Redirect, useHistory } from "react-router-dom";
+import { CompassCalibrationOutlined } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -58,6 +59,10 @@ export default function SideBar() {
   const storeLocations = useSelector(
     (state) => state.landing.storesData.storeLocations
   );
+  const sidebar =
+    useSelector((state) => state.landing.storesData.sidebar) || [];
+  console.log("storeLocations.....................", storeLocations);
+  console.log("sidebar.....................", sidebar);
   const message = useSelector((state) => state.landing.messages);
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.login.auth);
@@ -78,7 +83,24 @@ export default function SideBar() {
     debugger;
     setOpenMessages(!openMessages);
   };
-  const handleClick = () => {
+  const handleClick = (e, type) => {
+    debugger;
+    switch (type) {
+      case "SHORTCUTS":
+        setOpenShortcuts(!openShortcuts);
+        break;
+      case "PROMOS":
+        setOpenPromos(!openPromos);
+        break;
+      case "MESSAGES":
+        setOpenMessages(!openMessages);
+        break;
+      case "MESSAGES":
+        setOpenSettings(!openSettings);
+        break;
+      default:
+        break;
+    }
     setOpenSettings(!openSettings);
   };
   const switchStore = (e) => {
@@ -156,8 +178,31 @@ export default function SideBar() {
         </Collapse>
       </div>
 
+      {sidebar.map(function (sidebarItems, idx) {
+        return (
+          <div>
+            <ListItem button onClick={(e) => handleClick(e, sidebarItems.type)}>
+              <ListItemText primary={sidebarItems.text} key={idx} />
+              {openShortcuts ? <ExpandLess /> : <ExpandMore />}
+            </ListItem>
+            <Collapse in={openSettings}>
+              <List component="div">
+                {sidebarItems.sublist &&
+                  sidebarItems.sublist.map((item, index) => {
+                    return (
+                      <ListItem button className={classes.nested}>
+                        <ListItemText primary={item.text} />
+                      </ListItem>
+                    );
+                  })}
+              </List>
+            </Collapse>
+          </div>
+        );
+      })}
+
       {/* Messages */}
-      <ListItem button onClick={handleMessagesClick}>
+      {/* <ListItem button onClick={handleMessagesClick}>
         <ListItemIcon>
           <MessageIcon />
         </ListItemIcon>
@@ -170,7 +215,6 @@ export default function SideBar() {
           message.map((item) => {
             return (
               <ListItem button className={classes.nested}>
-                <ListItemIcon>{/* <MoreVertIcon /> */}</ListItemIcon>
                 <ListItemText primary={item} />
                 <ListItemIcon>
                   <MoreVertIcon />
@@ -178,10 +222,10 @@ export default function SideBar() {
               </ListItem>
             );
           })}
-      </Collapse>
+      </Collapse> */}
 
       {/* Settings */}
-      <ListItem button onClick={handleClick}>
+      {/* <ListItem button onClick={handleClick}>
         <ListItemIcon>
           <SettingsIcon />
         </ListItemIcon>
@@ -206,7 +250,7 @@ export default function SideBar() {
             <ListItemText primary="Starred" />
           </ListItem>
         </List>
-      </Collapse>
+      </Collapse> */}
     </List>
   );
 }

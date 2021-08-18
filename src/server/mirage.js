@@ -137,12 +137,15 @@ export function createServer({ environment = "development" } = {}) {
     },
 
     routes() {
-
       this.post("/login", (schema, request) => {
         let attrs = JSON.parse(request.requestBody);
 
         if (attrs["username"] == "sampleInvalidCredential") {
-          return new Response(400, { some: 'header', Location: '/' }, { errors: [ 'Username does not exist'] });
+          return new Response(
+            400,
+            { some: "header", Location: "/" },
+            { errors: ["Username does not exist"] }
+          );
         } else {
           return {
             username: attrs["username"],
@@ -154,7 +157,57 @@ export function createServer({ environment = "development" } = {}) {
       this.get("/landing/stores", () => {
         console.log(`returning store locations from backend`);
         return {
-          storeLocations: ["Scarborough Town Center", "Markville Mall"],
+          storeLocations: ["Scarborough Town Center", "Markville Mall", "test"],
+          sidebar: [
+            {
+              type: "SHORTCUTS",
+              icon: "ExitToAppIcon",
+              text: "SHORTCUTS",
+              url: null,
+              sublist: [],
+            },
+            {
+              type: "PROMOS",
+              icon: "CardGiftcardIcon",
+              text: "PROMOS",
+              url: null,
+              sublist: [],
+            },
+            {
+              type: "MESSAGES",
+              icon: "MessageIcon",
+              text: "MESSAGES",
+              url: null,
+              sublist: [
+                {
+                  type: "test",
+                  icon: "",
+                  text: "test",
+                  url: null,
+                },
+              ],
+            },
+            {
+              type: "SETTINGS",
+              icon: "SettingsIcon",
+              text: "SETTINGS",
+              url: null,
+              sublist: [
+                {
+                  type: "SWITCH STORE",
+                  icon: "",
+                  text: "SWITCH STORE",
+                  url: null,
+                },
+                {
+                  type: "STARRED",
+                  icon: "",
+                  text: "STARRED",
+                  url: null,
+                },
+              ],
+            },
+          ],
           storeProfile: {
             "OPEN POS": [
               {
@@ -173,7 +226,7 @@ export function createServer({ environment = "development" } = {}) {
               },
             ],
             "START/STOP SHIFT": {},
-            "STORE ADMIN": {}
+            "STORE ADMIN": {},
           },
         };
       });
