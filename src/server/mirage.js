@@ -157,22 +157,22 @@ export function createServer({ environment = "development" } = {}) {
       this.get("/landing/stores", () => {
         console.log(`returning store locations from backend`);
         return {
-          storeLocations: ["Scarborough Town Center", "Markville Mall", "test"],
+          storeLocations: ["Scarborough Town Center", "Markville Mall"],
           sidebar: [
-            {
-              type: "SHORTCUTS",
-              icon: "ExitToAppIcon",
-              text: "SHORTCUTS",
-              url: null,
-              sublist: [],
-            },
-            {
-              type: "PROMOS",
-              icon: "CardGiftcardIcon",
-              text: "PROMOS",
-              url: null,
-              sublist: [],
-            },
+            // {
+            //   type: "SHORTCUTS",
+            //   icon: "ExitToAppIcon",
+            //   text: "SHORTCUTS",
+            //   url: null,
+            //   sublist: [],
+            // },
+            // {
+            //   type: "PROMOS",
+            //   icon: "CardGiftcardIcon",
+            //   text: "PROMOS",
+            //   url: null,
+            //   sublist: [],
+            // },
             {
               type: "MESSAGES",
               icon: "MessageIcon",
@@ -180,9 +180,15 @@ export function createServer({ environment = "development" } = {}) {
               url: null,
               sublist: [
                 {
-                  type: "test",
+                  type: "message",
                   icon: "",
-                  text: "test",
+                  text: "Logged in to Markville Mall",
+                  url: null,
+                },
+                {
+                  type: "message",
+                  icon: "",
+                  text: "Logged in as k.iam",
                   url: null,
                 },
               ],
@@ -199,10 +205,29 @@ export function createServer({ environment = "development" } = {}) {
                   text: "SWITCH STORE",
                   url: null,
                 },
+                // {
+                //   type: "STARRED",
+                //   icon: "",
+                //   text: "STARRED",
+                //   url: null,
+                // },
+               
                 {
-                  type: "STARRED",
+                  type: "LOGOUT",
                   icon: "",
-                  text: "STARRED",
+                  text: "LOGOUT",
+                  url: null,
+                },
+                {
+                  type: "HELP",
+                  icon: "",
+                  text: "HELP",
+                  url: null,
+                },
+                {
+                  type: "ABOUT",
+                  icon: "",
+                  text: "ABOUT",
                   url: null,
                 },
               ],
@@ -232,11 +257,11 @@ export function createServer({ environment = "development" } = {}) {
       });
 
       //get message
-      this.get("/landing/message", () => {
-        return {
-          messages: ["Logged in Markville Mall", "Logged in  as k.Iam"],
-        };
-      });
+      // this.get("/landing/message", () => {
+      //   return {
+      //     messages: ["Logged in Markville Mall", "Logged in  as k.Iam"],
+      //   };
+      // });
       //       this.get('https://www.techiediaries.com/api/data.json', (schema, request) => {
       //         console.log("get data from https://www.techiediaries.com/api/data.json");
       //         return schema.db.jargons;

@@ -202,15 +202,15 @@ export default function SideBar() {
       })}
 
       {/* Messages */}
-      {/* <ListItem button onClick={handleMessagesClick}>
+       {/* <ListItem button onClick={handleMessagesClick}>
         <ListItemIcon>
           <MessageIcon />
         </ListItemIcon>
         <ListItemText primary="MESSAGES" />
         {openMessages ? <ExpandLess /> : <ExpandMore />}
-      </ListItem>
+      </ListItem>  */}
 
-      <Collapse in={openMessages} timeout="auto" unmountOnExit>
+      {/* <Collapse in={openMessages} timeout="auto" unmountOnExit>
         {message &&
           message.map((item) => {
             return (
