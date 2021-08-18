@@ -169,7 +169,7 @@ export default function SideBar() {
               <ListItemText primary={sidebarItems.text} key={idx} />
               {sidebarItems.type === "MESSAGES" && (
                 <div>
-                  {moment().format("hh:mm a")} <MoreVertIcon />
+                  <MoreVertIcon />
                 </div>
               )}
               {openCollapse && key === idx ? <ExpandLess /> : <ExpandMore />}
@@ -217,9 +217,9 @@ export default function SideBar() {
         </ListItemIcon>
         <ListItemText primary="MESSAGES" />
         {openMessages ? <ExpandLess /> : <ExpandMore />}
-      </ListItem>
+      </ListItem>  */}
 
-      <Collapse in={openMessages} timeout="auto" unmountOnExit>
+      {/* <Collapse in={openMessages} timeout="auto" unmountOnExit>
         {message &&
           message.map((item) => {
             return (

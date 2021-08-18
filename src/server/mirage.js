@@ -157,10 +157,9 @@ export function createServer({ environment = "development" } = {}) {
       this.get("/landing/stores", () => {
         console.log(`returning store locations from backend`);
         return {
-          storeLocations: ["Scarborough Town Center", "Markville Mall", "test"],
+          storeLocations: ["Scarborough Town Center", "Markville Mall"],
           sidebar: [
             // {
-            //   key: 0,
             //   type: "SHORTCUTS",
             //   icon: "ExitToAppIcon",
             //   text: "SHORTCUTS",
@@ -168,15 +167,15 @@ export function createServer({ environment = "development" } = {}) {
             //   sublist: [],
             // },
             // {
-            //   key: 1,
             //   type: "PROMOS",
             //   icon: "CardGiftcardIcon",
             //   text: "PROMOS",
             //   url: null,
             //   sublist: [],
             // },
+
             {
-              key: 0,
+              key: 2,
               type: "MESSAGES",
               icon: "MessageIcon",
               text: "MESSAGES",
@@ -209,12 +208,12 @@ export function createServer({ environment = "development" } = {}) {
                   text: "SWITCH STORE",
                   url: null,
                 },
-                {
-                  type: "STARRED",
-                  icon: "",
-                  text: "STARRED",
-                  url: null,
-                },
+                // {
+                //   type: "STARRED",
+                //   icon: "",
+                //   text: "STARRED",
+                //   url: null,
+                // },
                 {
                   type: "LOGOUT",
                   icon: "",
@@ -260,11 +259,11 @@ export function createServer({ environment = "development" } = {}) {
       });
 
       //get message
-      this.get("/landing/message", () => {
-        return {
-          messages: ["Logged in Markville Mall", "Logged in  as k.Iam"],
-        };
-      });
+      // this.get("/landing/message", () => {
+      //   return {
+      //     messages: ["Logged in Markville Mall", "Logged in  as k.Iam"],
+      //   };
+      // });
       //       this.get('https://www.techiediaries.com/api/data.json', (schema, request) => {
       //         console.log("get data from https://www.techiediaries.com/api/data.json");
       //         return schema.db.jargons;
