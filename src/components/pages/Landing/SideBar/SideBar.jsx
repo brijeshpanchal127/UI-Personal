@@ -16,10 +16,11 @@ import MessageIcon from "@material-ui/icons/Message";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
+import Popper from "@material-ui/core/Popper";
+import MenuItem from "@material-ui/core/MenuItem";
+import MenuList from "@material-ui/core/MenuList";
 import moment from "moment";
-import StarBorder from "@material-ui/icons/StarBorder";
 
-import data from "../../../../data/data";
 import {
   selectCurrentFunction,
   selectStore,
@@ -40,12 +41,25 @@ const useStyles = makeStyles((theme) => ({
   nested: {
     paddingLeft: theme.spacing(4),
   },
+  promos_modal: {
+    padding: "0 50px 0 50px",
+    backgroundColor: "#72BB53",
+    color: "#ffffff",
+  },
 }));
 
 export default function SideBar() {
   const classes = useStyles();
   const [openCollapse, setCollapse] = React.useState(false);
   const [key, setKey] = React.useState(null);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleToggle = (event) => {
+    setAnchorEl(anchorEl ? null : event.currentTarget);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? "spring-popper" : undefined;
 
   const selectedStore = useSelector((state) => state.landing.selectedStore);
   const displayProfileName = useSelector(
@@ -54,15 +68,16 @@ export default function SideBar() {
   const storeLocations = useSelector(
     (state) => state.landing.storesData.storeLocations
   );
+
   const sidebar =
     useSelector((state) => state.landing.storesData.sidebar) || [];
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.login.auth);
   const history = useHistory();
 
-  useEffect(() => {
-    dispatch(messageService.getMessages(auth.accessToken));
-  }, []);
+  // useEffect(() => {
+  //   dispatch(messageService.getMessages(auth.accessToken));
+  // }, []);
 
   const handleClick = (e, type, key) => {
     setKey(key);
@@ -158,21 +173,48 @@ export default function SideBar() {
           case "SettingsIcon":
             sidebarIcon = <SettingsIcon />;
             break;
+          case "LocationOnIcon":
+            sidebarIcon = <LocationOnIcon />;
+            break;
           default:
+            sidebarIcon = null;
             break;
         }
 
         return (
           <div>
-            <ListItem button onClick={(e) => handleClick(e, sidebarItems, idx)}>
+            <ListItem button>
               <ListItemIcon>{sidebarIcon}</ListItemIcon>
               <ListItemText primary={sidebarItems.text} key={idx} />
               {sidebarItems.type === "MESSAGES" && (
+                <div>{sidebar[2]["sublist"].length}</div>
+              )}
+              {sidebarItems.type === "PROMOS" && (
                 <div>
-                  <MoreVertIcon />
+                  <MoreVertIcon onClick={handleToggle} />
+                  <Popper
+                    id={id}
+                    open={open}
+                    anchorEl={anchorEl}
+                    transition
+                    placement={"right-start"}
+                    className={classes.promos_modal}
+                  >
+                    <MenuList>
+                      <MenuItem>Add</MenuItem>
+                    </MenuList>
+                  </Popper>
                 </div>
               )}
-              {openCollapse && key === idx ? <ExpandLess /> : <ExpandMore />}
+              {openCollapse && key === idx ? (
+                <ExpandLess
+                  onClick={(e) => handleClick(e, sidebarItems, idx)}
+                />
+              ) : (
+                <ExpandMore
+                  onClick={(e) => handleClick(e, sidebarItems, idx)}
+                />
+              )}
             </ListItem>
             <Collapse
               in={openCollapse && key === idx}
@@ -182,12 +224,44 @@ export default function SideBar() {
               <List component="div">
                 {sidebarItems.sublist &&
                   sidebarItems.sublist.map((item, index) => {
+                    let sublistIcon;
+                    switch (item.icon) {
+                      case "LocationOnIcon":
+                        sublistIcon = <LocationOnIcon />;
+                        break;
+                      default:
+                        sublistIcon = null;
+                        break;
+                    }
+
                     return selectedStore !== null ? (
-                      <ListItem button className={classes.nested}>
+                      <ListItem
+                        button
+                        className={classes.nested}
+                        onClick={item.type === "SWITCH STORE" && switchStore}
+                      >
+                        <ListItemIcon>{sublistIcon}</ListItemIcon>
                         <ListItemText primary={item.text} />
                         {sidebarItems.type === "MESSAGES" && (
                           <div>
                             {moment().format("hh:mm a")} <MoreVertIcon />
+                          </div>
+                        )}
+                        {sidebarItems.type === "PROMOS" && (
+                          <div>
+                            <MoreVertIcon onClick={handleToggle} />
+                            <Popper
+                              id={id}
+                              open={open}
+                              anchorEl={anchorEl}
+                              transition
+                              placement={"right-start"}
+                              className={classes.promos_modal}
+                            >
+                              <MenuList>
+                                <MenuItem>Add</MenuItem>
+                              </MenuList>
+                            </Popper>
                           </div>
                         )}
                       </ListItem>
@@ -200,6 +274,7 @@ export default function SideBar() {
                               {moment().format("hh:mm a")} <MoreVertIcon />
                             </div>
                           )}
+                          {sidebarItems.type === "PROMOS" && <MoreVertIcon />}
                         </ListItem>
                       )
                     );
