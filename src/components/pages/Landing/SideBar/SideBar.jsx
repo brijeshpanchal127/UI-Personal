@@ -29,6 +29,7 @@ import {
 import messageService from "../../../../services/message.service";
 import { Redirect, useHistory } from "react-router-dom";
 import { CompassCalibrationOutlined } from "@material-ui/icons";
+import { Button } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: theme.spacing(4),
   },
   promos_modal: {
-    padding: "0 50px 0 50px",
+    padding: "0 30px 0 30px",
     backgroundColor: "#72BB53",
     color: "#ffffff",
   },
@@ -197,11 +198,24 @@ export default function SideBar() {
                     open={open}
                     anchorEl={anchorEl}
                     transition
-                    placement={"right-start"}
+                    placement={"left-start"}
                     className={classes.promos_modal}
                   >
                     <MenuList>
-                      <MenuItem>Add</MenuItem>
+                      {sidebarItems.menu.length > 0 &&
+                        sidebarItems.menu.map((item) => {
+                          return (
+                            <div>
+                              <MenuItem
+                                onClick={() => {
+                                  alert("Will implemented it in future");
+                                }}
+                              >
+                                {item.text}
+                              </MenuItem>
+                            </div>
+                          );
+                        })}
                     </MenuList>
                   </Popper>
                 </div>
