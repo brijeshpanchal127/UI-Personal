@@ -159,20 +159,35 @@ export function createServer({ environment = "development" } = {}) {
         return {
           storeLocations: ["Scarborough Town Center", "Markville Mall"],
           sidebar: [
-            // {
-            //   type: "SHORTCUTS",
-            //   icon: "ExitToAppIcon",
-            //   text: "SHORTCUTS",
-            //   url: null,
-            //   sublist: [],
-            // },
-            // {
-            //   type: "PROMOS",
-            //   icon: "CardGiftcardIcon",
-            //   text: "PROMOS",
-            //   url: null,
-            //   sublist: [],
-            // },
+            {
+              key: 0,
+              type: "SHORTCUTS",
+              icon: "ExitToAppIcon",
+              text: "SHORTCUTS",
+              url: null,
+              sublist: [],
+            },
+            {
+              key: 1,
+              type: "PROMOS",
+              icon: "CardGiftcardIcon",
+              text: "PROMOS",
+              url: null,
+              sublist: [
+                {
+                  type: "CAS 1092",
+                  icon: "",
+                  text: "CAS 1092",
+                  url: null,
+                },
+                {
+                  type: "CAS 1093",
+                  icon: "",
+                  text: "CAS 1093",
+                  url: null,
+                },
+              ],
+            },
 
             {
               key: 2,
@@ -196,7 +211,7 @@ export function createServer({ environment = "development" } = {}) {
               ],
             },
             {
-              key: 1,
+              key: 3,
               type: "SETTINGS",
               icon: "SettingsIcon",
               text: "SETTINGS",
@@ -204,7 +219,7 @@ export function createServer({ environment = "development" } = {}) {
               sublist: [
                 {
                   type: "SWITCH STORE",
-                  icon: "",
+                  icon: "LocationOnIcon",
                   text: "SWITCH STORE",
                   url: null,
                 },
