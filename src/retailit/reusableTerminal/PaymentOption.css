@@ -4,9 +4,9 @@
     height: 100%;
     padding: 1rem;
   }
-  .MuiTypography-root{
+  /* .MuiTypography-root{
     color: black;
-  }
+  } */
   .MuiAccordionSummary-root.Mui-expanded {
  background-color: darkgray;
   }

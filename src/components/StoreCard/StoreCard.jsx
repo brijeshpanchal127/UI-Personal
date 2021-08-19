@@ -13,6 +13,7 @@ const useStyles = makeStyles({
     color: "white",
     height: "150px",
     marginLeft: "1.5rem",
+    textAlign:"center",
     marginTop: "1.5rem",
     '&:hover': {
       cursor: "pointer",
@@ -25,6 +26,7 @@ const useStyles = makeStyles({
   },
   title: {
     fontSize: 14,
+    
   },
   pos: {
     marginBottom: 12,
