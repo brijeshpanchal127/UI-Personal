@@ -166,6 +166,7 @@ export function createServer({ environment = "development" } = {}) {
               text: "SHORTCUTS",
               url: null,
               sublist: [],
+              menu: [],
             },
             {
               key: 1,
@@ -173,6 +174,12 @@ export function createServer({ environment = "development" } = {}) {
               icon: "CardGiftcardIcon",
               text: "PROMOS",
               url: null,
+              menu: [
+                {
+                  text: "Add",
+                  url: "",
+                },
+              ],
               sublist: [
                 {
                   type: "CAS 1092",
@@ -195,6 +202,7 @@ export function createServer({ environment = "development" } = {}) {
               icon: "MessageIcon",
               text: "MESSAGES",
               url: null,
+              menu: [],
               sublist: [
                 {
                   type: "Logged in as K.lam",
@@ -216,6 +224,7 @@ export function createServer({ environment = "development" } = {}) {
               icon: "SettingsIcon",
               text: "SETTINGS",
               url: null,
+              menu: [],
               sublist: [
                 {
                   type: "SWITCH STORE",
