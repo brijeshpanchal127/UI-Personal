@@ -18,7 +18,7 @@ import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import Popper from "@material-ui/core/Popper";
 import MenuItem from "@material-ui/core/MenuItem";
-import MenuList from "@material-ui/core/MenuList";
+import Menu from "@material-ui/core/Menu";
 import moment from "moment";
 
 import {
@@ -42,11 +42,6 @@ const useStyles = makeStyles((theme) => ({
   nested: {
     paddingLeft: theme.spacing(4),
   },
-  promos_modal: {
-    padding: "0 30px 0 30px",
-    backgroundColor: "#72BB53",
-    color: "#ffffff",
-  },
 }));
 
 export default function SideBar() {
@@ -56,11 +51,14 @@ export default function SideBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleToggle = (event) => {
-    setAnchorEl(anchorEl ? null : event.currentTarget);
+    setAnchorEl(event.currentTarget);
   };
 
-  const open = Boolean(anchorEl);
-  const id = open ? "spring-popper" : undefined;
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  // const open = Boolean(anchorEl);
+  // const id = open ? "spring-popper" : undefined;
 
   const selectedStore = useSelector((state) => state.landing.selectedStore);
   const displayProfileName = useSelector(
@@ -192,16 +190,25 @@ export default function SideBar() {
               )}
               {sidebarItems.type === "PROMOS" && (
                 <div>
-                  <MoreVertIcon onClick={handleToggle} />
-                  <Popper
-                    id={id}
-                    open={open}
-                    anchorEl={anchorEl}
-                    transition
-                    placement={"left-start"}
-                    className={classes.promos_modal}
-                  >
-                    <MenuList>
+                  <div>
+                    <MoreVertIcon onClick={handleToggle} />
+                  </div>
+                  <div>
+                    <Menu
+                      id="simple-menu"
+                      anchorEl={anchorEl}
+                      keepMounted
+                      open={Boolean(anchorEl)}
+                      onClose={handleClose}
+                      PaperProps={{
+                        style: {
+                          backgroundColor: "#72BB53",
+                          marginTop: "36px",
+                          marginRight: "20px",
+                          color: "#ffffff",
+                        },
+                      }}
+                    >
                       {sidebarItems.menu.length > 0 &&
                         sidebarItems.menu.map((item) => {
                           return (
@@ -216,8 +223,18 @@ export default function SideBar() {
                             </div>
                           );
                         })}
-                    </MenuList>
-                  </Popper>
+                    </Menu>
+                  </div>
+                  {/* <Popper
+                    id={id}
+                    open={open}
+                    anchorEl={anchorEl}
+                    transition
+                    placement={"left-start"}
+                    className={classes.promos_modal}
+                  >
+                   
+                  </Popper> */}
                 </div>
               )}
               {openCollapse && key === idx ? (
@@ -264,18 +281,6 @@ export default function SideBar() {
                         {sidebarItems.type === "PROMOS" && (
                           <div>
                             <MoreVertIcon onClick={handleToggle} />
-                            <Popper
-                              id={id}
-                              open={open}
-                              anchorEl={anchorEl}
-                              transition
-                              placement={"right-start"}
-                              className={classes.promos_modal}
-                            >
-                              <MenuList>
-                                <MenuItem>Add</MenuItem>
-                              </MenuList>
-                            </Popper>
                           </div>
                         )}
                       </ListItem>
