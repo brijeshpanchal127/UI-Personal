@@ -35,14 +35,14 @@ const useStyles = makeStyles((theme) => ({
     color: "#212121",
     width: "91px",
     height: "47px",
-    paddingLeft: "40px",
-    marginTop: "-29px",
+    paddingLeft: "100px",
+    marginTop: "-47px",
   },
   label2: {
     color: "#212121",
     width: "91px",
     height: "47px",
-    paddingLeft: "140px",
+    paddingLeft: "160px",
     marginTop: "-47px",
   },
   amount: {
@@ -64,6 +64,7 @@ const Terminal = (props) => {
   const [value, setValue] = useState("1");
 
   const paymentOptionHandler = () => {
+    alert("payment");
     setPaymentOptions({ paymentOptions: true });
   };
   const handleChange = (event) => {
@@ -73,12 +74,10 @@ const Terminal = (props) => {
   return (
     <div className="terminal">
       <div className={classes.terminalbox}>
-        <div>
+        <RadioGroup value={value} onChange={handleChange}>
           <FormLabel className={classes.list}>
             <h5>Terminal</h5>
           </FormLabel>
-        </div>
-        <RadioGroup value={value} onChange={handleChange}>
           <div className={classes.label1}>
             <FormControlLabel
               value="1"
