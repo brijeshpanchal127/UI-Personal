@@ -224,17 +224,7 @@ export default function SideBar() {
                           );
                         })}
                     </Menu>
-                  </div>
-                  {/* <Popper
-                    id={id}
-                    open={open}
-                    anchorEl={anchorEl}
-                    transition
-                    placement={"left-start"}
-                    className={classes.promos_modal}
-                  >
-                   
-                  </Popper> */}
+                  </div>           
                 </div>
               )}
               {openCollapse && key === idx ? (

@@ -176,19 +176,20 @@ export function createServer({ environment = "development" } = {}) {
               url: null,
               menu: [
                 {
+                  type:"menu",
                   text: "Add",
                   url: "",
                 },
               ],
               sublist: [
                 {
-                  type: "CAS 1092",
+                  type: "promocode",
                   icon: "",
                   text: "CAS 1092",
                   url: null,
                 },
                 {
-                  type: "CAS 1093",
+                  type: "promocode",
                   icon: "",
                   text: "CAS 1093",
                   url: null,
