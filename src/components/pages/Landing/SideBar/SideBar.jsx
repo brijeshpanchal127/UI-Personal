@@ -182,7 +182,7 @@ export default function SideBar() {
 
         return (
           <div>
-            <ListItem button>
+            <ListItem button   onClick={(e) => handleClick(e, sidebarItems, idx)} >
               <ListItemIcon>{sidebarIcon}</ListItemIcon>
               <ListItemText primary={sidebarItems.text} key={idx} />
               {sidebarItems.type === "MESSAGES" && (
@@ -228,13 +228,9 @@ export default function SideBar() {
                 </div>
               )}
               {openCollapse && key === idx ? (
-                <ExpandLess
-                  onClick={(e) => handleClick(e, sidebarItems, idx)}
-                />
+                <ExpandLess/>
               ) : (
-                <ExpandMore
-                  onClick={(e) => handleClick(e, sidebarItems, idx)}
-                />
+                <ExpandMore />
               )}
             </ListItem>
             <Collapse

@@ -260,6 +260,50 @@ export function createServer({ environment = "development" } = {}) {
               ],
             },
           ],
+          checkOutOption: [
+            {
+              key: 0,
+              type: "CREDIT CARD",
+              icon: "CreditCardIcon",
+              text: "CREDIT CARD",
+            },
+            {
+              key: 1,
+              type: "DEBIT CARD",
+              icon: "CreditCardIcon",
+              text: "DEBIT CARD",
+            },
+            {
+              key: 2,
+              type: "APPLE PAY",
+              icon: "APPLE",
+              text: "APPLE PAY",
+            },
+            {
+              key: 3,
+              type: "GIFT CARD",
+              icon: "CardGiftcardIcon",
+              text: "GIFT CARD",
+            },
+            {
+              key: 4,
+              type: "CASH",
+              icon: "AttachMoneyIcon",
+              text: "CASH",
+            },
+            {
+              key: 5,
+              type: "US CASH",
+              icon: "MonetizationOnIcon",
+              text: "US CASH",
+            },
+            {
+              key: 6,
+              type: "RECEIPT OPTION",
+              icon: "ReceiptIcon",
+              text: " RECEIPT OPTION",
+            },
+          ],
           storeProfile: {
             "OPEN POS": [
               {
