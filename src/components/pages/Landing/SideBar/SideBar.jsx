@@ -16,7 +16,6 @@ import MessageIcon from "@material-ui/icons/Message";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
-import Popper from "@material-ui/core/Popper";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import moment from "moment";
@@ -47,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
 export default function SideBar() {
   const classes = useStyles();
   const [openCollapse, setCollapse] = React.useState(false);
-  const [key, setKey] = React.useState(null);
+  const [selectedIndex, setSelectedIndex] = React.useState("");
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleToggle = (event) => {
@@ -57,9 +56,6 @@ export default function SideBar() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  // const open = Boolean(anchorEl);
-  // const id = open ? "spring-popper" : undefined;
-
   const selectedStore = useSelector((state) => state.landing.selectedStore);
   const displayProfileName = useSelector(
     (state) => state.display.displayProfile
@@ -74,13 +70,12 @@ export default function SideBar() {
   const auth = useSelector((state) => state.login.auth);
   const history = useHistory();
 
-  // useEffect(() => {
-  //   dispatch(messageService.getMessages(auth.accessToken));
-  // }, []);
-
-  const handleClick = (e, type, key) => {
-    setKey(key);
-    type.key === key && setCollapse(!openCollapse);
+  const handleClick = (e, key) => {
+    if (selectedIndex === key) {
+      setSelectedIndex("");
+    } else {
+      setSelectedIndex(key);
+    }
   };
   const switchStore = (e) => {
     dispatch(selectStore(null));
@@ -182,7 +177,7 @@ export default function SideBar() {
 
         return (
           <div>
-            <ListItem button>
+            <ListItem button onClick={(e) => handleClick(e, idx)}>
               <ListItemIcon>{sidebarIcon}</ListItemIcon>
               <ListItemText primary={sidebarItems.text} key={idx} />
               {sidebarItems.type === "MESSAGES" && (
@@ -225,33 +220,15 @@ export default function SideBar() {
                         })}
                     </Menu>
                   </div>
-                  {/* <Popper
-                    id={id}
-                    open={open}
-                    anchorEl={anchorEl}
-                    transition
-                    placement={"left-start"}
-                    className={classes.promos_modal}
-                  >
-                   
-                  </Popper> */}
                 </div>
               )}
-              {openCollapse && key === idx ? (
-                <ExpandLess
-                  onClick={(e) => handleClick(e, sidebarItems, idx)}
-                />
+              {idx === selectedIndex ? (
+                <ExpandLess />
               ) : (
-                <ExpandMore
-                  onClick={(e) => handleClick(e, sidebarItems, idx)}
-                />
+                <ExpandMore  />
               )}
             </ListItem>
-            <Collapse
-              in={openCollapse && key === idx}
-              timeout="auto"
-              unmountOnExit
-            >
+            <Collapse in={idx === selectedIndex} timeout="auto" unmountOnExit>
               <List component="div">
                 {sidebarItems.sublist &&
                   sidebarItems.sublist.map((item, index) => {

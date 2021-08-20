@@ -91,10 +91,13 @@ const Detail = () => {
           vertical: "top",
           horizontal: "right",
         }}
+        style={{
+          marginTop: "-8%",
+        }}
       >
-        <Typography className={classes.typography}>
-          <PaymentOption />
-        </Typography>
+        {/* <Typography className={classes.typography}> */}
+        <PaymentOption />
+        {/* </Typography> */}
       </Popover>
     </div>
   );
