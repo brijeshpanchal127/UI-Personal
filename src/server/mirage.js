@@ -176,20 +176,20 @@ export function createServer({ environment = "development" } = {}) {
               url: null,
               menu: [
                 {
-                  type:"menu",
+                  type: "MENU",
                   text: "Add",
                   url: "",
                 },
               ],
               sublist: [
                 {
-                  type: "promocode",
+                  type: "PROMOCODE",
                   icon: "",
                   text: "CAS 1092",
                   url: null,
                 },
                 {
-                  type: "promocode",
+                  type: "PROMOCODE",
                   icon: "",
                   text: "CAS 1093",
                   url: null,
@@ -206,13 +206,13 @@ export function createServer({ environment = "development" } = {}) {
               menu: [],
               sublist: [
                 {
-                  type: "Logged in as K.lam",
+                  type: "MESSAGE",
                   icon: "",
-                  text: "Logged in as K.lam",
+                  text: "Logged in to Markville mall",
                   url: null,
                 },
                 {
-                  type: "Logged in as K.lam",
+                  type: "MESSAGE",
                   icon: "",
                   text: "Logged in as K.lam",
                   url: null,
@@ -307,14 +307,14 @@ export function createServer({ environment = "development" } = {}) {
           storeProfile: {
             "OPEN POS": [
               {
-                type: "promos",
+                type: "PROMOS",
                 icon: "CardGiftcardIcon",
                 text: "PROMOS",
                 url: null,
                 sublist: null,
               },
               {
-                type: "shortcuts",
+                type: "SHORTCUTS",
                 icon: "ExitToAppIcon",
                 text: "SHORTCUTS",
                 url: null,

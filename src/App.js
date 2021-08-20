@@ -12,7 +12,7 @@ import {
 } from "react-router-dom";
 
 class App extends Component {
-  
+
   render() {
 
     return (
@@ -22,16 +22,15 @@ class App extends Component {
             <ShoppingCart />
           </Route>
           <Route exact path="/landing">
-            <Landing />   
+            <Landing />
           </Route>
-          <Route exact path="/"> 
-            <LoginPage />  
+          <Route exact path="/">
+            <LoginPage />
           </Route>
-        </Switch> 
-      </Router> 
+        </Switch>
+      </Router>
     );
   }
 }
 
 export default App;
-

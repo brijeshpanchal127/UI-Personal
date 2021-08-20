@@ -74,17 +74,17 @@ const useStyles = makeStyles((theme) => ({
     color: 'inherit',
   },
   iconContainer: {
-    width:'100%',
+    width: '100%',
     display: 'flex',
     justifyContent: 'flex-end',
     position: 'relative',
     bottom: 20,
     '&:hover': {
-       cursor: "pointer",
+      cursor: "pointer",
     },
   },
   addButton: {
-    width:'100%',
+    width: '100%',
     display: 'flex',
     justifyContent: 'flex-end',
     position: 'relative',
@@ -126,10 +126,10 @@ export default function MainPanel() {
     <div className="shoppingCart__main">
       <div className="shoppingCart__main--inventory">
         <div className="inventory">
-          
+
           {/* Search bar */}
-          <div className = { classes.search }>
-            <div className = { classes.searchIcon }>
+          <div className={classes.search}>
+            <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
             <InputBase
@@ -148,7 +148,7 @@ export default function MainPanel() {
             {data.inventory.map((item, index) => (
               <>
                 {index === 0 ? <Divider /> : null}
-                <ListItem  className={classes.inventoryParent} key={item.NAME}>
+                <ListItem className={classes.inventoryParent} key={item.NAME}>
                   <div className={classes.inventoryFirstRow}>
                     <div ><span className="inventory__card--label">SKU: </span>{item.SKU}</div>
                     <div ><span className="inventory__card--label">UID: </span>{item.UID}</div>

@@ -11,7 +11,7 @@ import landingService from "../../services/landing.service";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from 'react-router-dom';
 
-export default function Login(props) { 
+export default function Login(props) {
   const theme = createMuiTheme({
     palette: {
       primary: green,
@@ -55,31 +55,31 @@ export default function Login(props) {
   if (isLoggedIn) {
     //console.log("Login pg layer: redirecting to landing/");
     return <Redirect to="/landing" />;
-  } 
-     
+  }
 
-  return(
+
+  return (
     <form id="loginPanel" onSubmit={handleLogin}>
-      <div className="panelInputs"> 
-          
+      <div className="panelInputs">
+
         <div className="inputFields">
           <p>Username</p>
           <TextField type="text" id="username" value={username} onChange={onChangeUsername} variant="outlined" inputProps={inputProps} />
         </div>
-        
+
         <div className="inputFields">
           <p>Password</p>
           <TextField type="password" id="password" value={password} onChange={onChangePassword} variant="outlined" inputProps={inputProps} />
         </div>
-        
+
         <div id="loginButton">
-        <ThemeProvider theme={theme}>
+          <ThemeProvider theme={theme}>
             <Button variant="contained" color="primary" type="submit">Login</Button>
-            </ThemeProvider>
+          </ThemeProvider>
         </div>
-          
+
       </div>
-      
+
     </form>
   )
 }

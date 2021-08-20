@@ -9,12 +9,12 @@ const data = {
       "name": "STORE_SELECTION",
       "searchInputPlaceholder": "Store",
       "sideBarFunctionalities": ["MESSAGES", "SETTINGS", "LOGOUT", "HELP", "ABOUT"]
-    }, 
+    },
     {
       "name": "STORE_FUNCTIONALITIES",
       "searchInputPlaceholder": "Store/ Message",
       "sideBarFunctionalities": ["MESSAGES", "SETTINGS", "SWITCH STORE", "LOGOUT", "HELP", "ABOUT"]
-    }, 
+    },
     {
       "name": "STORE_POS",
       "searchInputPlaceholder": "SKU/ Serial #/ Transaction #/ Text",
@@ -74,12 +74,12 @@ const data = {
       "name": "OPEN POS",
       "url": "/shopping",
       "displayProfle": "STORE_POS"
-    }, 
+    },
     {
       "name": "START/STOP SHIFT",
       "url": "/shift",
       "displayProfle": "STORE_FUNCTIONALITIES"
-    }, 
+    },
     {
       "name": "STORE ADMIN",
       "url": "/admin",
@@ -88,9 +88,9 @@ const data = {
   ],
   //functionalities: ["OPEN POS", "START/STOP SHIFT", "STORE ADMIN"],
   inventory: [
-    {SKU: 'IPHONE12MAX', UID: '1207126312638', QTY: 1, PRICE: '0.00', NAME: 'IPHONE 12 MAX'},
-    {SKU: 'WLCHARGER', UID: '120712342342638', QTY: 1, PRICE: '29.99', NAME: 'QI WIRELESS CHARGER'},
-    {SKU: 'NTDSWITCH', UID: '2342374987272', QTY: 1, PRICE: '329.99', NAME: 'NINTENDO SWITCH LITE'}
+    { SKU: 'IPHONE12MAX', UID: '1207126312638', QTY: 1, PRICE: '0.00', NAME: 'IPHONE 12 MAX' },
+    { SKU: 'WLCHARGER', UID: '120712342342638', QTY: 1, PRICE: '29.99', NAME: 'QI WIRELESS CHARGER' },
+    { SKU: 'NTDSWITCH', UID: '2342374987272', QTY: 1, PRICE: '329.99', NAME: 'NINTENDO SWITCH LITE' }
   ]
 };
 export default data;

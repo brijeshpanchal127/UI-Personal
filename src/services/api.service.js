@@ -5,22 +5,22 @@ export function apiAction({
     method = "GET",
     data = null,
     accessToken = null,
-    onSuccess = () => {},
-    onFailure = () => {},
+    onSuccess = () => { },
+    onFailure = () => { },
     label = "",
     headersOverride = null
 }) {
-return {
-    type: API,
-    payload: {
-    url,
-    method,
-    data,
-    accessToken,
-    onSuccess,
-    onFailure,
-    label,
-    headersOverride
-    }
-};
+    return {
+        type: API,
+        payload: {
+            url,
+            method,
+            data,
+            accessToken,
+            onSuccess,
+            onFailure,
+            label,
+            headersOverride
+        }
+    };
 }

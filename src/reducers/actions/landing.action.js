@@ -1,4 +1,4 @@
-import { SELECT_STORE, CACHE_STORES_DATA, SELECT_CURRENT_FUNCTION,DISPLAY_MESSAGE } from "./types";
+import { SELECT_STORE, CACHE_STORES_DATA, SELECT_CURRENT_FUNCTION, DISPLAY_MESSAGE } from "./types";
 
 export const selectStore = (storeLocation) => {
   return {

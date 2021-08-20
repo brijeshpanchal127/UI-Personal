@@ -5,7 +5,7 @@ export default function loginReducer(state = {
     message: "",
     auth: {},
 }, action
-    ) {
+) {
     switch (action.type) {
         case LOGIN_SUCCESS:
             return {

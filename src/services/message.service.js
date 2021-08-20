@@ -2,7 +2,7 @@ import { apiAction } from "./api.service";
 import { MessageData } from "../reducers/actions/landing.action";
 import { apiError } from "../reducers/actions/api.action";
 
-const API_URL = window.location.href.replaceAll(/\?/g,'');
+const API_URL = window.location.href.replaceAll(/\?/g, '');
 
 class messageService {
     getMessages(accessToken) {

@@ -182,7 +182,7 @@ export default function SideBar() {
 
         return (
           <div>
-            <ListItem button   onClick={(e) => handleClick(e, sidebarItems, idx)} >
+            <ListItem button onClick={(e) => handleClick(e, sidebarItems, idx)} >
               <ListItemIcon>{sidebarIcon}</ListItemIcon>
               <ListItemText primary={sidebarItems.text} key={idx} />
               {sidebarItems.type === "MESSAGES" && (
@@ -224,11 +224,11 @@ export default function SideBar() {
                           );
                         })}
                     </Menu>
-                  </div>           
+                  </div>
                 </div>
               )}
               {openCollapse && key === idx ? (
-                <ExpandLess/>
+                <ExpandLess />
               ) : (
                 <ExpandMore />
               )}

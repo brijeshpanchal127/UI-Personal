@@ -1,7 +1,7 @@
 import { apiAction } from "./api.service";
 import authAction from '../reducers/actions/auth.action';
 
-const API_URL = window.location.href.replaceAll(/\?/g,'');
+const API_URL = window.location.href.replaceAll(/\?/g, '');
 
 class AuthService {
     login(username, password) {
@@ -16,7 +16,7 @@ class AuthService {
             onFailure: authAction.loginFail
         });
     };
-    
+
     // logout = () => {
     //     localStorage.removeItem("user");
     // };

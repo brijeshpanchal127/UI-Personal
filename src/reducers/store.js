@@ -10,7 +10,7 @@ import { LOGIN_SUCCESS } from "./actions/types";
 //       localStorage.setItem("store", JSON.stringify(s));
 //     }
 //   };
-  
+
 // export const loadStore = () => {
 // try{
 //     const s = localStorage.getItem("store");

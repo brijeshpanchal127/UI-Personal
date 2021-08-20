@@ -1,13 +1,7 @@
 import React, { useState } from "react";
 import "./PaymentOption.css";
 import { makeStyles } from "@material-ui/core/styles";
-import { useDispatch, useSelector } from "react-redux";
-import Accordion from "@material-ui/core/Accordion";
-import AccordionSummary from "@material-ui/core/AccordionSummary";
-import AccordionDetails from "@material-ui/core/AccordionDetails";
-import Typography from "@material-ui/core/Typography";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import ListSubheader from "@material-ui/core/ListSubheader";
+import { useSelector } from "react-redux";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import CreditCardIcon from "@material-ui/icons/CreditCard";
 import ReceiptIcon from "@material-ui/icons/Receipt";
@@ -18,25 +12,10 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormControl from "@material-ui/core/FormControl";
 import Collapse from "@material-ui/core/Collapse";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import DraftsIcon from "@material-ui/icons/Drafts";
-import SendIcon from "@material-ui/icons/Send";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
-import StarBorder from "@material-ui/icons/StarBorder";
 import Divider from "@material-ui/core/Divider";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
-
-import { traverse } from "@babel/core";
-import CashPay from "../payment/Cash/CashPay";
-import UsCash from "../payment/UsCash/UsCash";
-import ReceiptOptions from "../payment/ReceiptOptions/ReceiptOptions";
 import Terminal from "./Terminal";
 
 const useStyles = makeStyles((theme) => ({
@@ -52,14 +31,6 @@ const useStyles = makeStyles((theme) => ({
 
 const PaymentOption = (props) => {
   const classes = useStyles();
-  const [creditCardexpand, setCreditCardExpand] = React.useState(true);
-  const [debitCradexpand, setdebitCardExpand] = React.useState(false);
-  const [GiftCardexpand, setgiftCardExpand] = React.useState(false);
-  const [applePayexpand, setApplePayExpand] = React.useState(false);
-  const [cashexpand, setCashExpand] = React.useState(false);
-  const [usCashdexpand, setUsCashExpand] = React.useState(false);
-  const [receiptOptionexpand, setReceiptOptionExpand] = React.useState(false);
-  const [open, setOpen] = React.useState(true);
   const [selectedIndex, setSelectedIndex] = React.useState("");
   const [value, setValue] = React.useState("terminal1");
 

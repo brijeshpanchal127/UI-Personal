@@ -17,10 +17,10 @@ export default function StoreSelection() {
     }
 
     return (
-        <div className="cardContainer"> 
+        <div className="cardContainer">
             {
-                storeLocations?.map(location => <StoreCard text={location} key={location} onclick={selectLocation}/>)
-            } 
+                storeLocations?.map(location => <StoreCard text={location} key={location} onclick={selectLocation} />)
+            }
         </div>
     );
 }

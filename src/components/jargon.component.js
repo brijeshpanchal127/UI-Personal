@@ -30,7 +30,7 @@ class JargonList extends React.Component {
 
                                 </div>
                             );
-                        })}                
+                        })}
                     </div>
                 </div>
             )
@@ -42,25 +42,25 @@ class JargonList extends React.Component {
                         JS Jargon
                     </h1>
                     <div>
-                        <button onClick={() => { this.toggleFavorites() }} > 
+                        <button onClick={() => { this.toggleFavorites() }} >
                             Show Favorites
                         </button>
                     </div>
                     <hr />
                     <div className="table-div">
-                    {this.props.jargons.map((j, index) => {
-                        return (
-                            <div key={index} className="row-div">
-                                <div className="cell-div"> {j.name} </div> 
-                                <div className="cell-div">{j.description}</div>
-                                <div className="cell-div">
-                                <button onClick={() => this.props.dispatch(addToFavorite({ name: j.name,description: j.description }))}>
-                                    Add to favorites
-                                </button>
+                        {this.props.jargons.map((j, index) => {
+                            return (
+                                <div key={index} className="row-div">
+                                    <div className="cell-div"> {j.name} </div>
+                                    <div className="cell-div">{j.description}</div>
+                                    <div className="cell-div">
+                                        <button onClick={() => this.props.dispatch(addToFavorite({ name: j.name, description: j.description }))}>
+                                            Add to favorites
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                        );
-                    })}
+                            );
+                        })}
                     </div>
                 </div>
             )

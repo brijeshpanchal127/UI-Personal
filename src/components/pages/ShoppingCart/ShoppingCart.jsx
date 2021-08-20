@@ -8,8 +8,8 @@ import {
 import landingService from "../../../services/landing.service";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from 'react-router-dom';
-import{ selectCurrentFunction } from "../../../reducers/actions/landing.action";
-import{ selectDisplayStoreSelection, selectDisplayStorePos } from "../../../reducers/actions/display.action";
+import { selectCurrentFunction } from "../../../reducers/actions/landing.action";
+import { selectDisplayStoreSelection, selectDisplayStorePos } from "../../../reducers/actions/display.action";
 
 const ShoppingCart = () => {
 
@@ -19,11 +19,11 @@ const ShoppingCart = () => {
   const currentStoreFunction = useSelector(state => state.landing.currentStoreFunction);
 
   const isLoggedIn = useSelector(state => state.login.isLoggedIn);
-  
-  if (!isLoggedIn) {    
+
+  if (!isLoggedIn) {
     console.log("/shopping: redirecting to /");
     return <Redirect to="/" />;
-  }  
+  }
 
   return (
     <div className="landing">

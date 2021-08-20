@@ -20,8 +20,8 @@ export default function StoreFunctionalities() {
 
         console.log("switch block");
         console.log(functionality.name);
-        switch(functionality.name) {
-            case "OPEN POS": 
+        switch (functionality.name) {
+            case "OPEN POS":
                 console.log("redirect to open pos page");
                 <Route exact path="/shopping" />;
             case "START/STOP SHIFT": return <Redirect to="/shift" />;
@@ -29,11 +29,11 @@ export default function StoreFunctionalities() {
             default: return <div></div>
         }
     }
-    return(
-        <div className="cardContainer"> 
+    return (
+        <div className="cardContainer">
             {
-                data["STORE_PROFILE_FUNCTIONALITIES"].map(functionality => <StoreCard text={functionality.name} key={functionality.name} onclick={(e) => {redirectPage(e, functionality)}} />)
-            } 
+                data["STORE_PROFILE_FUNCTIONALITIES"].map(functionality => <StoreCard text={functionality.name} key={functionality.name} onclick={(e) => { redirectPage(e, functionality) }} />)
+            }
         </div>
     );
 }
