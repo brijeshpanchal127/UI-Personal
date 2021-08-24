@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { helloWorld } from "./login.js";
 
 class Test extends Component {
   componentDidMount() {
@@ -17,9 +18,10 @@ class Test extends Component {
       <div className="firstScript">
         <h1>Hello react</h1>
         {
+          helloWorld()
           /* Script is inserted here */
           // alert("demo")
-          window["pass_function"]
+          // window["pass_function"]
         }
       </div>
     );
