@@ -2,4 +2,6 @@
 //     return p1 * p2;}
 //     console.log(myFunction(3,4))
 
-alert("tested");
+function pass_function(){
+    alert('hello');
+  }
