@@ -11,7 +11,25 @@ import landingService from "../../services/landing.service";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from 'react-router-dom';
 
+
 export default function Login(props) {
+
+  React.useEffect(() => {
+    const LoadExternalScript = () => {
+      const externalScript = document.createElement("script");
+      
+      externalScript.id = "external";
+      externalScript.async = true;
+      externalScript.type = "text/javascript";
+      externalScript.setAttribute("crossorigin", "anonymous");
+      externalScript.src = ("/login.js");
+      this.div.appendChild(externalScript);
+     
+    };
+    LoadExternalScript();
+  }, []);
+
+  
   const theme = createMuiTheme({
     palette: {
       primary: green,
@@ -59,8 +77,15 @@ export default function Login(props) {
 
 
   return (
+
+
     <form id="loginPanel" onSubmit={handleLogin}>
       <div className="panelInputs">
+      <div className="App" ref={el => (this.div = el)}>
+        <h1>Hello react</h1>
+        {/* Script is inserted here */}
+      </div>
+    
 
         <div className="inputFields">
           <p>Username</p>
@@ -75,6 +100,8 @@ export default function Login(props) {
         <div id="loginButton">
           <ThemeProvider theme={theme}>
             <Button variant="contained" color="primary" type="submit">Login</Button>
+           
+            
           </ThemeProvider>
         </div>
 

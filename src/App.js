@@ -5,6 +5,7 @@ import JargonList from './components/jargon.component';
 import JargonService from './services/jargon.service';
 import LoginPage from "./components/pages/LoginPage.jsx";
 import ShoppingCart from './components/pages/ShoppingCart/ShoppingCart.jsx';
+import Test from './components/pages/test'
 import {
   BrowserRouter as Router,
   Switch,
@@ -20,6 +21,9 @@ class App extends Component {
         <Switch>
           <Route exact path="/shopping">
             <ShoppingCart />
+          </Route>
+          <Route exact path="/test">
+            <Test />
           </Route>
           <Route exact path="/landing">
             <Landing />
