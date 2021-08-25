@@ -76,7 +76,7 @@ const Detail = () => {
       </div>
       <div className={classes.balance}>BALANCE</div>
       <button className={classes.button} onClick={handleClick}>
-        CHECKOUT
+        <a> CHECKOUT</a>
       </button>
       <Popover
         id={id}

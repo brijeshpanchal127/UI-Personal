@@ -11,6 +11,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import CreditCard from "@material-ui/icons/CreditCard";
 
 class App extends Component {
 
@@ -21,7 +22,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/shopping">
             <ShoppingCart />
-          </Route>
+          </Route>      
           <Route exact path="/test">
             <Test />
           </Route>

@@ -16,7 +16,8 @@ import Collapse from "@material-ui/core/Collapse";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import Divider from "@material-ui/core/Divider";
-import Terminal from "./Terminal";
+
+
 
 const useStyles = makeStyles((theme) => ({
   heading: {
@@ -59,6 +60,7 @@ const PaymentOption = (props) => {
     <List component="nav" aria-labelledby="nested-list-subheader">
       {checkOutOption.map((option, index) => {
         let listIcon;
+        let checkOption;
         switch (option.icon) {
           case "CreditCardIcon":
             listIcon = <CreditCardIcon />;
@@ -82,6 +84,35 @@ const PaymentOption = (props) => {
             listIcon = null;
             break;
         }
+        switch (option.type) {
+          case "CREDIT CARD":
+            checkOption =  
+            <iframe src={process.env.PUBLIC_URL+ "/plugins/payments/creditCard/creditCard.html"} />;
+            break;
+          case "DEBIT CARD":
+            checkOption= <iframe src={process.env.PUBLIC_URL+ "/plugins/payments/debitCard/debitCard.html"} />;
+            break;
+          case "APPLE PAY":
+            checkOption= <iframe src={process.env.PUBLIC_URL+ "/plugins/payments/applePay/applePay.html"} />;
+            break;
+          case "GIFT CARD":
+            checkOption= <iframe src={process.env.PUBLIC_URL+ "/plugins/payments/giftCard/giftCard.html"} />;
+            break;
+          case "CASH":
+            checkOption= <iframe src={process.env.PUBLIC_URL+ "/plugins/payments/cash/cash.html"} />;
+            break;
+            case "US CASH":
+              checkOption= <iframe src={process.env.PUBLIC_URL+ "/plugins/payments/UsCash/UsCash.html"} />;
+              break;
+               case "RECEIPT OPTION":
+                checkOption= <iframe src={process.env.PUBLIC_URL+ "/plugins/payments/ReceiptOptions/ReceiptOptions.html"} />;
+              break;
+            
+          default:
+            checkOption = null;
+            break;
+        }
+
 
         return (
           <div>
@@ -101,7 +132,7 @@ const PaymentOption = (props) => {
                 timeout="auto"
                 unmountOnExit
               >
-                <Terminal />
+                    {checkOption}        
               </Collapse>
               <Divider />
             </div>
