@@ -49,14 +49,14 @@ const PaymentOption = (props) => {
     }
   };
 
-  const onSubmitClick = () => {
-    alert("payment");
-  };
+  // const onSubmitClick = () => {
+  //   alert("payment");
+  // };
 
   return (
-    
 
-    
+
+
     <List component="nav" aria-labelledby="nested-list-subheader">
       {checkOutOption.map((option, index) => {
         let listIcon;
@@ -86,28 +86,26 @@ const PaymentOption = (props) => {
         }
         switch (option.type) {
           case "CREDIT CARD":
-            checkOption =  
-            <iframe src={process.env.PUBLIC_URL+ "/plugins/payments/creditCard/creditCard.html"} />;
+            checkOption = <iframe src={process.env.PUBLIC_URL + "/plugins/payments/creditCard/creditCard.html"} />;
             break;
           case "DEBIT CARD":
-            checkOption= <iframe src={process.env.PUBLIC_URL+ "/plugins/payments/debitCard/debitCard.html"} />;
+            checkOption = <iframe src={process.env.PUBLIC_URL + "/plugins/payments/debitCard/debitCard.html"} />;
             break;
           case "APPLE PAY":
-            checkOption= <iframe src={process.env.PUBLIC_URL+ "/plugins/payments/applePay/applePay.html"} />;
+            checkOption = <iframe src={process.env.PUBLIC_URL + "/plugins/payments/applePay/applePay.html"} />;
             break;
           case "GIFT CARD":
-            checkOption= <iframe src={process.env.PUBLIC_URL+ "/plugins/payments/giftCard/giftCard.html"} />;
+            checkOption = <iframe src={process.env.PUBLIC_URL + "/plugins/payments/giftCard/giftCard.html"} />;
             break;
           case "CASH":
-            checkOption= <iframe src={process.env.PUBLIC_URL+ "/plugins/payments/cash/cash.html"} />;
+            checkOption = <iframe src={process.env.PUBLIC_URL + "/plugins/payments/cash/cash.html"} />;
             break;
-            case "US CASH":
-              checkOption= <iframe src={process.env.PUBLIC_URL+ "/plugins/payments/UsCash/UsCash.html"} />;
-              break;
-               case "RECEIPT OPTION":
-                checkOption= <iframe src={process.env.PUBLIC_URL+ "/plugins/payments/ReceiptOptions/ReceiptOptions.html"} />;
-              break;
-            
+          case "US CASH":
+            checkOption = <iframe src={process.env.PUBLIC_URL + "/plugins/payments/UsCash/UsCash.html"} />;
+            break;
+          case "RECEIPT OPTION":
+            checkOption = <iframe src={process.env.PUBLIC_URL + "/plugins/payments/ReceiptOptions/ReceiptOptions.html"} />;
+            break;
           default:
             checkOption = null;
             break;
@@ -132,7 +130,7 @@ const PaymentOption = (props) => {
                 timeout="auto"
                 unmountOnExit
               >
-                    {checkOption}        
+                {checkOption}
               </Collapse>
               <Divider />
             </div>
