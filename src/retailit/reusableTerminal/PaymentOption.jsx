@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./PaymentOption.css";
 import { makeStyles } from "@material-ui/core/styles";
 import { useSelector } from "react-redux";
@@ -17,8 +17,6 @@ import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import Divider from "@material-ui/core/Divider";
 
-
-
 const useStyles = makeStyles((theme) => ({
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -34,6 +32,42 @@ const PaymentOption = (props) => {
   const classes = useStyles();
   const [selectedIndex, setSelectedIndex] = React.useState("");
   const [value, setValue] = React.useState("terminal1");
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src =
+      process.env.PUBLIC_URL + "/plugins/payments/creditCard/creditCard.js";
+    script.async = true;
+
+    const debit = document.createElement("script");
+    debit.src =
+      process.env.PUBLIC_URL + "/plugins/payments/debitCard/debitCard.js";
+    debit.async = true;
+    document.body.appendChild(debit);
+
+    const receipt = document.createElement("script");
+    receipt.src =
+      process.env.PUBLIC_URL +
+      "/plugins/payments/receiptOption/receiptOption.js";
+    receipt.async = true;
+    document.body.appendChild(receipt);
+
+    const cash = document.createElement("script");
+    cash.src = process.env.PUBLIC_URL + "/plugins/payments/cash/cash.js";
+    cash.async = true;
+    document.body.appendChild(cash);
+
+    const usCash = document.createElement("script");
+    usCash.src = process.env.PUBLIC_URL + "/plugins/payments/usCash/usCash.js";
+    usCash.async = true;
+    document.body.appendChild(usCash);
+
+    const applePay = document.createElement("script");
+    applePay.src =
+      process.env.PUBLIC_URL + "/plugins/payments/applePay/applePay.js";
+    applePay.async = true;
+    document.body.appendChild(applePay);
+  }, []);
 
   const checkOutOption =
     useSelector((state) => state.landing.storesData.checkOutOption) || [];
@@ -54,9 +88,6 @@ const PaymentOption = (props) => {
   // };
 
   return (
-
-
-
     <List component="nav" aria-labelledby="nested-list-subheader">
       {checkOutOption.map((option, index) => {
         let listIcon;
@@ -86,31 +117,32 @@ const PaymentOption = (props) => {
         }
         switch (option.type) {
           case "CREDIT CARD":
-            checkOption = <iframe src={process.env.PUBLIC_URL + "/plugins/payments/creditCard/creditCard.html"} />;
+            checkOption = (
+              <div className="creditcardOption" key={option.key}></div>
+            );
             break;
           case "DEBIT CARD":
-            checkOption = <iframe src={process.env.PUBLIC_URL + "/plugins/payments/debitCard/debitCard.html"} />;
+            checkOption = <div id="debitCardOption" key={option.key}></div>;
             break;
           case "APPLE PAY":
-            checkOption = <iframe src={process.env.PUBLIC_URL + "/plugins/payments/applePay/applePay.html"} />;
+            checkOption = <div id="applePay" key={option.key}></div>;
             break;
           case "GIFT CARD":
-            checkOption = <iframe src={process.env.PUBLIC_URL + "/plugins/payments/giftCard/giftCard.html"} />;
+            checkOption = <div id="giftcard" key={option.key}></div>;
             break;
           case "CASH":
-            checkOption = <iframe src={process.env.PUBLIC_URL + "/plugins/payments/cash/cash.html"} />;
+            checkOption = <div id="cash" key={option.key}></div>;
             break;
           case "US CASH":
-            checkOption = <iframe src={process.env.PUBLIC_URL + "/plugins/payments/UsCash/UsCash.html"} />;
+            checkOption = <div id="uscash" key={option.key}></div>;
             break;
           case "RECEIPT OPTION":
-            checkOption = <iframe src={process.env.PUBLIC_URL + "/plugins/payments/ReceiptOptions/ReceiptOptions.html"} />;
+            checkOption = <div id="uscash" key={option.key}></div>;
             break;
           default:
             checkOption = null;
             break;
         }
-
 
         return (
           <div>
