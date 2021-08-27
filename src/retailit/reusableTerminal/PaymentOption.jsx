@@ -36,7 +36,10 @@ const PaymentOption = (props) => {
   const [selectedIndex, setSelectedIndex] = React.useState("");
   const [value, setValue] = React.useState("terminal1");
 
-  useEffect(() => {
+  const checkOutOption =
+    useSelector((state) => state.landing.storesData.checkOutOption) || [];
+
+  const handleClick = (e, key) => {
     const script = document.createElement("script");
     script.src = "./plugins/payments/creditCard/creditCard.js";
     script.async = true;
@@ -78,12 +81,7 @@ const PaymentOption = (props) => {
     applePay.async = true;
     document.body.appendChild(applePay);
     document.head.appendChild(applePay);
-  });
 
-  const checkOutOption =
-    useSelector((state) => state.landing.storesData.checkOutOption) || [];
-
-  const handleClick = (e, key) => {
     if (selectedIndex === key) {
       setSelectedIndex("");
     } else {
