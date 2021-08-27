@@ -64,7 +64,7 @@ const Terminal = (props) => {
   const [value, setValue] = useState("1");
 
   const paymentOptionHandler = () => {
-    alert("payment");
+    // alert("payment");
     setPaymentOptions({ paymentOptions: true });
   };
   const handleChange = (event) => {
@@ -97,7 +97,7 @@ const Terminal = (props) => {
         <div className={classes.amount_box}>
           <Input className={classes.amount} type="text" />
         </div>
-        <button className={classes.button} onClick={paymentOptionHandler}>
+        <button className={classes.button} id={props.id+"_payment"}>
           SUBMIT
         </button>
       </div>

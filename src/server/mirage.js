@@ -264,12 +264,14 @@ export function createServer({ environment = "development" } = {}) {
             {
               key: 0,
               type: "CREDIT CARD",
+              classname:"credit_card",
               icon: "CreditCardIcon",
               text: "CREDIT CARD",
             },
             {
               key: 1,
               type: "DEBIT CARD",
+              classname:"debit_card",
               icon: "CreditCardIcon",
               text: "DEBIT CARD",
             },

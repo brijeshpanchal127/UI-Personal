@@ -1,5 +1,5 @@
 
-alert("tested")
+// alert("tested")
 
 // exports.helloWorld = function () {
  
@@ -11,3 +11,8 @@ alert("tested")
     
 //     console.log("button clicked")
 // }
+
+document.getElementsById("demo_payment").onclick= function(e){
+    alert("payment from login")
+}
+

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Terminal from '../../retailit/reusableTerminal/Terminal'
 
 
 class Test extends Component {
@@ -24,6 +25,8 @@ class Test extends Component {
           // alert("demo")
           // window["pass_function"]
         }
+
+        <Terminal id="demo"/>
 
         
       </div>

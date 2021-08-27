@@ -35,30 +35,31 @@ const PaymentOption = (props) => {
 
   useEffect(() => {
     const script = document.createElement("script");
-    script.src =
-      process.env.PUBLIC_URL + "/plugins/payments/creditCard/creditCard.js";
+    script.src = "./plugins/payments/creditCard/creditCard.js";
     script.async = true;
+    document.body.appendChild(script);
+    document.head.appendChild(script);
 
     const debit = document.createElement("script");
-    debit.src =
-      process.env.PUBLIC_URL + "/plugins/payments/debitCard/debitCard.js";
+    debit.src = "./plugins/payments/debitCard/debitCard.js";
     debit.async = true;
     document.body.appendChild(debit);
+    document.head.appendChild(debit);
 
     const receipt = document.createElement("script");
     receipt.src =
-      process.env.PUBLIC_URL +
-      "/plugins/payments/receiptOption/receiptOption.js";
+      "./plugins/payments/receiptOption/receiptOption.js";
     receipt.async = true;
     document.body.appendChild(receipt);
+    document.head.appendChild(receipt);
 
     const cash = document.createElement("script");
-    cash.src = process.env.PUBLIC_URL + "/plugins/payments/cash/cash.js";
+    cash.src = "/plugins/payments/cash/cash.js";
     cash.async = true;
     document.body.appendChild(cash);
 
     const usCash = document.createElement("script");
-    usCash.src = process.env.PUBLIC_URL + "/plugins/payments/usCash/usCash.js";
+    usCash.src = "/plugins/payments/usCash/usCash.js";
     usCash.async = true;
     document.body.appendChild(usCash);
 
@@ -88,88 +89,122 @@ const PaymentOption = (props) => {
   // };
 
   return (
-    <List component="nav" aria-labelledby="nested-list-subheader">
-      {checkOutOption.map((option, index) => {
-        let listIcon;
-        let checkOption;
-        switch (option.icon) {
-          case "CreditCardIcon":
-            listIcon = <CreditCardIcon />;
-            break;
-          case "APPLE":
-            listIcon = <AppleIcon />;
-            break;
-          case "CardGiftcardIcon":
-            listIcon = <CardGiftcardIcon />;
-            break;
-          case "AttachMoneyIcon":
-            listIcon = <AttachMoneyIcon />;
-            break;
-          case "MonetizationOnIcon":
-            listIcon = <MonetizationOnIcon />;
-            break;
-          case "ReceiptIcon":
-            listIcon = <ReceiptIcon />;
-            break;
-          default:
-            listIcon = null;
-            break;
-        }
-        switch (option.type) {
-          case "CREDIT CARD":
-            checkOption = (
-              <div className="creditcardOption" key={option.key}></div>
-            );
-            break;
-          case "DEBIT CARD":
-            checkOption = <div id="debitCardOption" key={option.key}></div>;
-            break;
-          case "APPLE PAY":
-            checkOption = <div id="applePay" key={option.key}></div>;
-            break;
-          case "GIFT CARD":
-            checkOption = <div id="giftcard" key={option.key}></div>;
-            break;
-          case "CASH":
-            checkOption = <div id="cash" key={option.key}></div>;
-            break;
-          case "US CASH":
-            checkOption = <div id="uscash" key={option.key}></div>;
-            break;
-          case "RECEIPT OPTION":
-            checkOption = <div id="uscash" key={option.key}></div>;
-            break;
-          default:
-            checkOption = null;
-            break;
-        }
+    <div>
+      <div> Creditcard
 
-        return (
-          <div>
-            <div>
-              <ListItem
-                button
-                key={option.key}
-                onClick={(e) => handleClick(e, index)}
-              >
-                <ListItemIcon>{listIcon}</ListItemIcon>
-                <ListItemText primary={option.text} />
-                {index === selectedIndex ? <ExpandLess /> : <ExpandMore />}
-              </ListItem>
-              <Collapse
-                key={option.key}
-                in={index === selectedIndex}
-                timeout="auto"
-                unmountOnExit
-              >
-                {checkOption}
-              </Collapse>
-              <Divider />
-            </div>
-          </div>
-        );
-      })}
-    </List>
+        <div id="creditcardOption"></div>
+      </div>
+      <div>Debitcard
+        <div id="debitCardOption" ></div>
+      </div>
+      <div>apple Pay
+
+        <div id="applePay" ></div>
+      </div>
+
+      <div>giftcard
+        <div id="giftcard" ></div>
+      </div>
+
+      <div>cash
+
+
+        <div id="cash" ></div>
+      </div>
+
+      <div>us cash
+
+        <div id="uscash" ></div>
+      </div>
+
+      <div> receipt
+        <div id="receipt" ></div>
+      </div>
+
+    </div>
+    // <List component="nav" aria-labelledby="nested-list-subheader">
+    //   {checkOutOption.map((option, index) => {
+    //     let listIcon;
+    //     let checkOption;
+    //     switch (option.icon) {
+    //       case "CreditCardIcon":
+    //         listIcon = <CreditCardIcon />;
+    //         break;
+    //       case "APPLE":
+    //         listIcon = <AppleIcon />;
+    //         break;
+    //       case "CardGiftcardIcon":
+    //         listIcon = <CardGiftcardIcon />;
+    //         break;
+    //       case "AttachMoneyIcon":
+    //         listIcon = <AttachMoneyIcon />;
+    //         break;
+    //       case "MonetizationOnIcon":
+    //         listIcon = <MonetizationOnIcon />;
+    //         break;
+    //       case "ReceiptIcon":
+    //         listIcon = <ReceiptIcon />;
+    //         break;
+    //       default:
+    //         listIcon = null;
+    //         break;
+    //     }
+    //     switch (option.type) {
+    //       case "CREDIT CARD":
+    //         checkOption = (
+    //           <div id="creditcardOption" key={option.key}></div>
+    //         );
+    //         break;
+    //       case "DEBIT CARD":
+    //         checkOption = <div id="debitCardOption" key={option.key}></div>;
+    //         break;
+    //       case "APPLE PAY":
+    //         checkOption = <div id="applePay" key={option.key}></div>;
+    //         break;
+    //       case "GIFT CARD":
+    //         checkOption = <div id="giftcard" key={option.key}></div>;
+    //         break;
+    //       case "CASH":
+    //         checkOption = <div id="cash" key={option.key}></div>;
+    //         break;
+    //       case "US CASH":
+    //         checkOption = <div id="uscash" key={option.key}></div>;
+    //         break;
+    //       case "RECEIPT OPTION":
+    //         checkOption = <div id="uscash" key={option.key}></div>;
+    //         break;
+    //       default:
+    //         checkOption = null;
+    //         break;
+    //     }
+
+    //     return (
+    //       <div>
+    //         <div>
+    //           <ListItem
+    //             button
+    //             key={option.key}
+    //             onClick={(e) => handleClick(e, index)}
+    //           >
+    //             <ListItemIcon>{listIcon}</ListItemIcon>
+    //             <ListItemText primary={option.text} />
+    //             {index === selectedIndex ? <ExpandLess /> : <ExpandMore />}
+    //           </ListItem>
+    //           <Collapse
+    //             key={option.key}
+    //             in={index === selectedIndex}
+    //             timeout="auto"
+    //             unmountOnExit
+    //           >
+    //             {checkOption}
+    //           </Collapse>
+    //           <Divider />
+    //         </div>
+    //       </div>
+    //     );
+    //   })}
+    // </List>
+
   );
 };
 
