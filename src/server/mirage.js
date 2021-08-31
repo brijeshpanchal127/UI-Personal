@@ -1,5 +1,11 @@
 import { Server, Model } from "miragejs";
 import jargons from "./fixtures/jargons";
+import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
+import CreditCardIcon from "@material-ui/icons/CreditCard";
+import ReceiptIcon from "@material-ui/icons/Receipt";
+import AppleIcon from "@material-ui/icons/Apple";
+import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
+import CardGiftcardIcon from "@material-ui/icons/CardGiftcard";
 
 export function createServer({ environment = "development" } = {}) {
   return new Server({
@@ -264,46 +270,81 @@ export function createServer({ environment = "development" } = {}) {
             {
               key: 0,
               type: "CREDIT CARD",
-              classname:"credit_card",
-              icon: "CreditCardIcon",
+              classname: "credit_card",
+              icon: (
+                <div>
+                  <CreditCardIcon />
+                </div>
+              ),
               text: "CREDIT CARD",
+              component: <div id="creditcardOption"></div>,
             },
             {
               key: 1,
               type: "DEBIT CARD",
-              classname:"debit_card",
-              icon: "CreditCardIcon",
+              classname: "debit_card",
+              icon: (
+                <div>
+                  <CreditCardIcon />
+                </div>
+              ),
               text: "DEBIT CARD",
+              component: <div id="debitCardOption"></div>,
             },
             {
               key: 2,
               type: "APPLE PAY",
-              icon: "APPLE",
+              icon: (
+                <div>
+                  <AppleIcon />
+                </div>
+              ),
               text: "APPLE PAY",
+              component: <div id="applePay"></div>,
             },
             {
               key: 3,
               type: "GIFT CARD",
-              icon: "CardGiftcardIcon",
+              icon: (
+                <div>
+                  <CardGiftcardIcon />
+                </div>
+              ),
               text: "GIFT CARD",
+              component: <div id="applePay"></div>,
             },
             {
               key: 4,
               type: "CASH",
-              icon: "AttachMoneyIcon",
+              icon: (
+                <div>
+                  <AttachMoneyIcon />
+                </div>
+              ),
               text: "CASH",
+              component: <div id="cash"></div>,
             },
             {
               key: 5,
               type: "US CASH",
-              icon: "MonetizationOnIcon",
+              icon: (
+                <div>
+                  <MonetizationOnIcon />
+                </div>
+              ),
               text: "US CASH",
+              component: <div id="uscash"></div>,
             },
             {
               key: 6,
               type: "RECEIPT OPTION",
-              icon: "ReceiptIcon",
+              icon: (
+                <div>
+                  <ReceiptIcon />
+                </div>
+              ),
               text: " RECEIPT OPTION",
+              component: <div id="receipt"></div>,
             },
           ],
           storeProfile: {
