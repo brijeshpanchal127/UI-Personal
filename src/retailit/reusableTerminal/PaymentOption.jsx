@@ -94,29 +94,30 @@ const PaymentOption = (props) => {
       {checkOutOption.map((option, index) => {
         let listIcon;
         let checkOption;
-        switch (option.icon) {
-          case "CreditCardIcon":
-            listIcon = <CreditCardIcon />;
-            break;
-          case "APPLE":
-            listIcon = <AppleIcon />;
-            break;
-          case "CardGiftcardIcon":
-            listIcon = <CardGiftcardIcon />;
-            break;
-          case "AttachMoneyIcon":
-            listIcon = <AttachMoneyIcon />;
-            break;
-          case "MonetizationOnIcon":
-            listIcon = <MonetizationOnIcon />;
-            break;
-          case "ReceiptIcon":
-            listIcon = <ReceiptIcon />;
-            break;
-          default:
-            listIcon = null;
-            break;
-        }
+        debugger;
+        // switch (option.icon) {
+        //   case "CreditCardIcon":
+        //     listIcon = <CreditCardIcon />;
+        //     break;
+        //   case "APPLE":
+        //     listIcon = <AppleIcon />;
+        //     break;
+        //   case "CardGiftcardIcon":
+        //     listIcon = <CardGiftcardIcon />;
+        //     break;
+        //   case "AttachMoneyIcon":
+        //     listIcon = <AttachMoneyIcon />;
+        //     break;
+        //   case "MonetizationOnIcon":
+        //     listIcon = <MonetizationOnIcon />;
+        //     break;
+        //   case "ReceiptIcon":
+        //     listIcon = <ReceiptIcon />;
+        //     break;
+        //   default:
+        //     listIcon = null;
+        //     break;
+        // }
         switch (option.type) {
           case "CREDIT CARD":
             checkOption = <div id="creditcardOption" key={option.key}></div>;
@@ -152,7 +153,10 @@ const PaymentOption = (props) => {
                 key={option.key}
                 onClick={(e) => handleClick(e, index)}
               >
-                <ListItemIcon>{listIcon}</ListItemIcon>
+                <ListItemIcon>
+                  {/* <div dangerouslySetInnerHTML={{ __html: option.icon }} /> */}
+                  {/* <span dangerouslySetInnerHTML={{ __html: option.icon }} /> */}
+                </ListItemIcon>
                 <ListItemText primary={option.text} />
                 {index === selectedIndex ? <ExpandLess /> : <ExpandMore />}
               </ListItem>
@@ -162,6 +166,7 @@ const PaymentOption = (props) => {
                 timeout="auto"
                 unmountOnExit
               >
+                {/* <div className={classes.option_list}>{option.component}</div> */}
                 <div className={classes.option_list}>{checkOption}</div>
               </Collapse>
               <Divider />
