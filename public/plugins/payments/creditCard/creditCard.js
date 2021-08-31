@@ -1,5 +1,5 @@
 var form = document.createElement('form')
-form.setAttribute('method', 'post')
+// form.setAttribute('method', 'post')
 
 // const para = document.createElement("p");
 // para.innerHTML = 'terminal';
@@ -39,9 +39,9 @@ ID.setAttribute('type', 'text')
 ID.setAttribute('name', 'amount')
 ID.setAttribute('placeholder', 'amount')
 
-var lable = document.createElement('label')
-lable.innerHTML = 'Terminal'
-form.append(lable)
+var label = document.createElement('label')
+label.innerHTML = 'Terminal'
+form.append(label)
 // Create a submit button
 var s = document.createElement('input')
 s.setAttribute('type', 'submit')
@@ -49,10 +49,11 @@ s.setAttribute('value', 'Submit')
 s.setAttribute('class', 'submit_btn')
 s.style.backgroundColor = '#72bb53'
 s.style.color = '#ffffff'
-s.style.width = '100%'
+s.style.width = '90%'
+s.style.height='150%'
 s.onclick = function () {
   // Note this is a function
-  window.location.reload(false)
+//   window.location.reload(false)
   alert('credit submit' + document.getElementsByName('name').value)
 }
 

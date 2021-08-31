@@ -1,5 +1,5 @@
 var form = document.createElement('form')
-form.setAttribute('method', 'post')
+// form.setAttribute('method', 'post')
 
 // const p7 = document.createElement("p");
 // p7.innerHTML = 'terminal';
