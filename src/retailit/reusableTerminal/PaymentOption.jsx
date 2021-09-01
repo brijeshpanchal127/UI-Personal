@@ -8,6 +8,7 @@ import ReceiptIcon from "@material-ui/icons/Receipt";
 import AppleIcon from "@material-ui/icons/Apple";
 import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
 import CardGiftcardIcon from "@material-ui/icons/CardGiftcard";
+import * as Icons from "@material-ui/icons/";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -92,59 +93,6 @@ const PaymentOption = (props) => {
   return (
     <List component="nav" aria-labelledby="nested-list-subheader">
       {checkOutOption.map((option, index) => {
-        let listIcon;
-        let checkOption;
-        debugger;
-        // switch (option.icon) {
-        //   case "CreditCardIcon":
-        //     listIcon = <CreditCardIcon />;
-        //     break;
-        //   case "APPLE":
-        //     listIcon = <AppleIcon />;
-        //     break;
-        //   case "CardGiftcardIcon":
-        //     listIcon = <CardGiftcardIcon />;
-        //     break;
-        //   case "AttachMoneyIcon":
-        //     listIcon = <AttachMoneyIcon />;
-        //     break;
-        //   case "MonetizationOnIcon":
-        //     listIcon = <MonetizationOnIcon />;
-        //     break;
-        //   case "ReceiptIcon":
-        //     listIcon = <ReceiptIcon />;
-        //     break;
-        //   default:
-        //     listIcon = null;
-        //     break;
-        // }
-        switch (option.type) {
-          case "CREDIT CARD":
-            checkOption = <div id="creditcardOption" key={option.key}></div>;
-            break;
-          case "DEBIT CARD":
-            checkOption = <div id="debitCardOption" key={option.key}></div>;
-            break;
-          case "APPLE PAY":
-            checkOption = <div id="applePay" key={option.key}></div>;
-            break;
-          case "GIFT CARD":
-            checkOption = <div id="giftcard" key={option.key}></div>;
-            break;
-          case "CASH":
-            checkOption = <div id="cash" key={option.key}></div>;
-            break;
-          case "US CASH":
-            checkOption = <div id="uscash" key={option.key}></div>;
-            break;
-          case "RECEIPT OPTION":
-            checkOption = <div id="receipt" key={option.key}></div>;
-            break;
-          default:
-            checkOption = null;
-            break;
-        }
-
         return (
           <div>
             <div>
@@ -153,10 +101,6 @@ const PaymentOption = (props) => {
                 key={option.key}
                 onClick={(e) => handleClick(e, index)}
               >
-                <ListItemIcon>
-                  {/* <div dangerouslySetInnerHTML={{ __html: option.icon }} /> */}
-                  {/* <span dangerouslySetInnerHTML={{ __html: option.icon }} /> */}
-                </ListItemIcon>
                 <ListItemText primary={option.text} />
                 {index === selectedIndex ? <ExpandLess /> : <ExpandMore />}
               </ListItem>
@@ -166,8 +110,11 @@ const PaymentOption = (props) => {
                 timeout="auto"
                 unmountOnExit
               >
-                {/* <div className={classes.option_list}>{option.component}</div> */}
-                <div className={classes.option_list}>{checkOption}</div>
+                {option.component && (
+                  <div className={classes.option_list}>
+                    <div id={option.component.props.id} key={option.key}></div>
+                  </div>
+                )}
               </Collapse>
               <Divider />
             </div>

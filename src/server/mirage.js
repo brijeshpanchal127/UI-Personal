@@ -271,11 +271,7 @@ export function createServer({ environment = "development" } = {}) {
               key: 0,
               type: "CREDIT CARD",
               classname: "credit_card",
-              icon: (
-                <div>
-                  <CreditCardIcon />
-                </div>
-              ),
+              icon: "CreditCardIcon",
               text: "CREDIT CARD",
               component: <div id="creditcardOption"></div>,
             },
@@ -283,66 +279,42 @@ export function createServer({ environment = "development" } = {}) {
               key: 1,
               type: "DEBIT CARD",
               classname: "debit_card",
-              icon: (
-                <div>
-                  <CreditCardIcon />
-                </div>
-              ),
+              icon: "CreditCardIcon",
               text: "DEBIT CARD",
               component: <div id="debitCardOption"></div>,
             },
             {
               key: 2,
               type: "APPLE PAY",
-              icon: (
-                <div>
-                  <AppleIcon />
-                </div>
-              ),
+              icon: "AppleIcon",
               text: "APPLE PAY",
               component: <div id="applePay"></div>,
             },
             {
               key: 3,
               type: "GIFT CARD",
-              icon: (
-                <div>
-                  <CardGiftcardIcon />
-                </div>
-              ),
+              icon: "CardGiftcardIcon",
               text: "GIFT CARD",
               component: <div id="applePay"></div>,
             },
             {
               key: 4,
               type: "CASH",
-              icon: (
-                <div>
-                  <AttachMoneyIcon />
-                </div>
-              ),
+              icon: "AttachMoneyIcon",
               text: "CASH",
               component: <div id="cash"></div>,
             },
             {
               key: 5,
               type: "US CASH",
-              icon: (
-                <div>
-                  <MonetizationOnIcon />
-                </div>
-              ),
+              icon: "MonetizationOnIcon",
               text: "US CASH",
               component: <div id="uscash"></div>,
             },
             {
               key: 6,
               type: "RECEIPT OPTION",
-              icon: (
-                <div>
-                  <ReceiptIcon />
-                </div>
-              ),
+              icon: "ReceiptIcon",
               text: " RECEIPT OPTION",
               component: <div id="receipt"></div>,
             },
