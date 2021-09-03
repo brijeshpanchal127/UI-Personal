@@ -273,8 +273,8 @@ export function createServer({ environment = "development" } = {}) {
               classname: "credit_card",
               icon: "CreditCardIcon",
               text: "CREDIT CARD",
-              div_id:"creditcardOption",
-
+              div_id: "creditcardOption",
+              src: "./plugins/payments/creditCard/creditCard.js",
               // component: <div id="creditcardOption"></div>,
             },
             {
@@ -283,8 +283,8 @@ export function createServer({ environment = "development" } = {}) {
               classname: "debit_card",
               icon: "CreditCardIcon",
               text: "DEBIT CARD",
-              div_id:"debitCardOption",
-
+              div_id: "debitCardOption",
+              src: "./plugins/payments/debitCard/debitCard.js",
               // component: <div id="debitCardOption"></div>,
             },
             {
@@ -292,8 +292,8 @@ export function createServer({ environment = "development" } = {}) {
               type: "APPLE PAY",
               icon: "AppleIcon",
               text: "APPLE PAY",
-              div_id:"applePay",
-
+              div_id: "applePay",
+              src: "/plugins/payments/applePay/applePay.js",
               // component: <div id="applePay"></div>,
             },
             {
@@ -301,7 +301,8 @@ export function createServer({ environment = "development" } = {}) {
               type: "GIFT CARD",
               icon: "CardGiftcardIcon",
               text: "GIFT CARD",
-              div_id:"giftcard"
+              div_id: "giftcard",
+              src: "/plugins/payments/giftCard/giftCard.js",
               // component: <div id="giftCard"></div>,
             },
             {
@@ -309,7 +310,8 @@ export function createServer({ environment = "development" } = {}) {
               type: "CASH",
               icon: "AttachMoneyIcon",
               text: "CASH",
-              div_id:"cash"
+              div_id: "cash",
+              src: "/plugins/payments/cash/cash.js",
               // component: <div id="cash"></div>,
             },
             {
@@ -317,7 +319,8 @@ export function createServer({ environment = "development" } = {}) {
               type: "US CASH",
               icon: "MonetizationOnIcon",
               text: "US CASH",
-              div_id:"uscash"
+              div_id: "uscash",
+              src: "/plugins/payments/usCash/usCash.js",
               // component: <div id="uscash"></div>,
             },
             {
@@ -325,10 +328,10 @@ export function createServer({ environment = "development" } = {}) {
               type: "RECEIPT OPTION",
               icon: "ReceiptIcon",
               text: " RECEIPT OPTION",
-              div_id:"receipt"
+              div_id: "receipt",
+              src: "./plugins/payments/receiptOptions/receiptOptions.js",
               // component: <div id="receipt"></div>,
             },
-                 
           ],
           storeProfile: {
             "OPEN POS": [
