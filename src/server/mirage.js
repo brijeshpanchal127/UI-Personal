@@ -273,7 +273,9 @@ export function createServer({ environment = "development" } = {}) {
               classname: "credit_card",
               icon: "CreditCardIcon",
               text: "CREDIT CARD",
-              component: <div id="creditcardOption"></div>,
+              div_id:"creditcardOption",
+
+              // component: <div id="creditcardOption"></div>,
             },
             {
               key: 1,
@@ -281,43 +283,52 @@ export function createServer({ environment = "development" } = {}) {
               classname: "debit_card",
               icon: "CreditCardIcon",
               text: "DEBIT CARD",
-              component: <div id="debitCardOption"></div>,
+              div_id:"debitCardOption",
+
+              // component: <div id="debitCardOption"></div>,
             },
             {
               key: 2,
               type: "APPLE PAY",
               icon: "AppleIcon",
               text: "APPLE PAY",
-              component: <div id="applePay"></div>,
+              div_id:"applePay",
+
+              // component: <div id="applePay"></div>,
             },
             {
               key: 3,
               type: "GIFT CARD",
               icon: "CardGiftcardIcon",
               text: "GIFT CARD",
-              component: <div id="applePay"></div>,
+              div_id:"giftcard"
+              // component: <div id="giftCard"></div>,
             },
             {
               key: 4,
               type: "CASH",
               icon: "AttachMoneyIcon",
               text: "CASH",
-              component: <div id="cash"></div>,
+              div_id:"cash"
+              // component: <div id="cash"></div>,
             },
             {
               key: 5,
               type: "US CASH",
               icon: "MonetizationOnIcon",
               text: "US CASH",
-              component: <div id="uscash"></div>,
+              div_id:"uscash"
+              // component: <div id="uscash"></div>,
             },
             {
               key: 6,
               type: "RECEIPT OPTION",
               icon: "ReceiptIcon",
               text: " RECEIPT OPTION",
-              component: <div id="receipt"></div>,
+              div_id:"receipt"
+              // component: <div id="receipt"></div>,
             },
+                 
           ],
           storeProfile: {
             "OPEN POS": [

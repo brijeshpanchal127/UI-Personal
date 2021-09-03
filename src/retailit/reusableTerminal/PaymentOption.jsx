@@ -110,11 +110,11 @@ const PaymentOption = (props) => {
                 timeout="auto"
                 unmountOnExit
               >
-                {option.component && (
+                 
                   <div className={classes.option_list}>
-                    <div id={option.component.props.id} key={option.key}></div>
+                    <div id={option.div_id} key={option.key}></div>
                   </div>
-                )}
+                
               </Collapse>
               <Divider />
             </div>
