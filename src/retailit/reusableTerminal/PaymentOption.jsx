@@ -41,47 +41,18 @@ const PaymentOption = (props) => {
     useSelector((state) => state.landing.storesData.checkOutOption) || [];
 
   const handleClick = (e, key) => {
-    const script = document.createElement("script");
-    script.src = "./plugins/payments/creditCard/creditCard.js";
-    script.async = true;
-    document.body.appendChild(script);
-    document.head.appendChild(script);
+    let scripts = [];
 
-    const debit = document.createElement("script");
-    debit.src = "./plugins/payments/debitCard/debitCard.js";
-    debit.async = true;
-    document.body.appendChild(debit);
-    document.head.appendChild(debit);
+    checkOutOption.map((option) => {
+      scripts.push(option.src);
+    });
 
-    const receipt = document.createElement("script");
-    receipt.src = "./plugins/payments/receiptOptions/receiptOptions.js";
-    receipt.async = true;
-    document.body.appendChild(receipt);
-    document.head.appendChild(receipt);
-
-    const cash = document.createElement("script");
-    cash.src = "/plugins/payments/cash/cash.js";
-    cash.async = true;
-    document.body.appendChild(cash);
-    document.head.appendChild(cash);
-
-    const usCash = document.createElement("script");
-    usCash.src = "/plugins/payments/usCash/usCash.js";
-    usCash.async = true;
-    document.body.appendChild(usCash);
-    document.head.appendChild(usCash);
-
-    const giftCard = document.createElement("script");
-    giftCard.src = "/plugins/payments/giftCard/giftCard.js";
-    giftCard.async = true;
-    document.body.appendChild(giftCard);
-    document.head.appendChild(giftCard);
-
-    const applePay = document.createElement("script");
-    applePay.src = "/plugins/payments/applePay/applePay.js";
-    applePay.async = true;
-    document.body.appendChild(applePay);
-    document.head.appendChild(applePay);
+    scripts.forEach(function (url) {
+      let script = document.createElement("script");
+      script.src = url;
+      script.async = false;
+      document.body.appendChild(script);
+    });
 
     if (selectedIndex === key) {
       setSelectedIndex("");
@@ -110,11 +81,9 @@ const PaymentOption = (props) => {
                 timeout="auto"
                 unmountOnExit
               >
-                 
-                  <div className={classes.option_list}>
-                    <div id={option.div_id} key={option.key}></div>
-                  </div>
-                
+                <div className={classes.option_list}>
+                  <div id={option.div_id} key={option.key}></div>
+                </div>
               </Collapse>
               <Divider />
             </div>
