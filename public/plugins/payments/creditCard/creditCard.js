@@ -6,6 +6,11 @@ var form = document.createElement('form')
 // form.appendChild(para);
 var div = document.createElement('div')
 
+var radiodiv = document.createElement('div')
+var label = document.createElement('label')
+label.innerHTML = 'Terminal'
+label.className = 'teminal_label'
+radiodiv.append(label)
 var terminal = ['1', '2']
 terminal.forEach((Value, i) => {
   var labelValue = document.createElement('label')
@@ -25,40 +30,58 @@ terminal.forEach((Value, i) => {
   inputValue.type = 'radio'
   inputValue.name = Value
   inputValue.id = Value
-  inputValue.Value = i
-  div.appendChild(labelValue)
-  div.appendChild(inputValue)
+  inputValue.className = 'radio_btn'
+  inputValue.Value = Value
+  radiodiv.appendChild(labelValue)
+  radiodiv.appendChild(inputValue)
 })
 
 // var lable = document.createElement('label')
 // lable.innerHTML = 'amount'
 // lable.append(ID)
 // Create an input element for amount
+var inputdiv = document.createElement('div')
+inputdiv.className = 'amount_div'
+var labelAmount = document.createElement('label')
+labelAmount.innerHTML = 'amount'
+labelAmount.className = 'amount_label'
+
 var ID = document.createElement('input')
 ID.setAttribute('type', 'text')
 ID.setAttribute('name', 'amount')
-ID.setAttribute('placeholder', 'amount')
+ID.setAttribute('id', 'amount_input')
+inputdiv.append(labelAmount)
+inputdiv.append(ID)
 
-var label = document.createElement('label')
-label.innerHTML = 'Terminal'
-form.append(label)
 // Create a submit button
 var s = document.createElement('input')
 s.setAttribute('type', 'submit')
 s.setAttribute('value', 'Submit')
 s.setAttribute('class', 'submit_btn')
-s.style.backgroundColor = '#72bb53'
-s.style.color = '#ffffff'
-s.style.width = '90%'
-s.style.height='150%'
+s.setAttribute('id', 'button_submit')
+// s.style.backgroundColor = '#72bb53'
+// s.style.color = '#ffffff'
+// s.style.width = '90%'
+// s.style.height='150%'
 s.onclick = function () {
-  // Note this is a function
-//   window.location.reload(false)
-  alert('credit submit' + document.getElementsByName('name').value)
-}
+  var selectedValue = 0
+  if (document.getElementById('1').checked) {
+    selectedValue = 1
+  }
+  if (document.getElementById('2').checked) {
+    selectedValue = 2
+  }
 
-// Append the email_ID input to the form
-div.append(ID)
+  alert(
+    'credit submit' +
+      '  Amount :' +
+      document.getElementById('amount_input').value +
+      '  Terminal :' +
+      selectedValue,
+  )
+}
+form.append(radiodiv)
+form.append(inputdiv)
 form.append(div)
 
 // Append the button to the form

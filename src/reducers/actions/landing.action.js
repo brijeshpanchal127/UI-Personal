@@ -24,7 +24,6 @@ export const cacheStoresData = (payload) => {
   };
 };
 export const MessageData = (payload) => {
-  debugger;
   return {
     type: DISPLAY_MESSAGE,
     payload: payload,
