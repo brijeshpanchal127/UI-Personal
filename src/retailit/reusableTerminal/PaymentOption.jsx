@@ -23,12 +23,33 @@ const useStyles = makeStyles((theme) => ({
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular,
   },
-  submit_btn: {
-    backgroundColor: "#72BB53",
-    color: "#ffffff",
-  },
+  // submit_btn: {
+  //   backgroundColor: "#72BB53",
+  //   color: "#ffffff",
+  // },
   option_list: {
-    padding: "10%",
+    padding: "5%",
+  },
+  item: {
+    "& #amount_input": {
+      margin: "0 0 0 4px",
+      width: "25%",
+    },
+    "& #button_submit": {
+      backgroundColor: "#72BB53",
+      width: "105%",
+      color: "#ffffff",
+      padding: "4%",
+      border: "none",
+    },
+    "& .radio_btn": { padding: "20%", margin: "2%" },
+    "& .amount_div": { display: "flex", margin: "2%" },
+    "& .teminal_label": { padding: "1px 10px 1px 1px", fontSize: "x-small" },
+    "& .amount_label": {
+      fontSize: "x-small",
+      paddingTop: "4px",
+      marginRight: "9px",
+    },
   },
 }));
 
@@ -82,7 +103,11 @@ const PaymentOption = (props) => {
                 unmountOnExit
               >
                 <div className={classes.option_list}>
-                  <div id={option.div_id} key={option.key}></div>
+                  <div
+                    id={option.div_id}
+                    key={option.key}
+                    className={classes.item}
+                  ></div>
                 </div>
               </Collapse>
               <Divider />
