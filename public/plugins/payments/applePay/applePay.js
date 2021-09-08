@@ -1,9 +1,6 @@
 var form = document.createElement('form')
 // form.setAttribute('method', 'post')
 
-// const para = document.createElement("p");
-// para.innerHTML = 'terminal';
-// form.appendChild(para);
 var div = document.createElement('div')
 
 var radiodiv = document.createElement('div')
@@ -36,10 +33,6 @@ terminal.forEach((Value, i) => {
   radiodiv.appendChild(labelValue)
 })
 
-// var lable = document.createElement('label')
-// lable.innerHTML = 'amount'
-// lable.append(ID)
-// Create an input element for amount
 var inputdiv = document.createElement('div')
 inputdiv.className = 'amount_div'
 var labelAmount = document.createElement('label')
@@ -59,13 +52,8 @@ s.setAttribute('type', 'submit')
 s.setAttribute('value', 'SUBMIT')
 s.setAttribute('class', 'submit_btn')
 s.setAttribute('id', 'button_submit')
-// s.style.backgroundColor = '#72bb53'
-// s.style.color = '#ffffff'
-// s.style.width = '90%'
-// s.style.height='150%'
+
 s.onclick = function () {
-  // Note this is a function
-  //   window.location.reload(false)
   var selectedValue = 0
   if (document.getElementById('1').checked) {
     selectedValue = 1
@@ -76,12 +64,13 @@ s.onclick = function () {
 
   alert(
     'applePay submit' +
-      '  Amount :' +
-      document.getElementById('amount_input').value +
-      '  Terminal :' +
-      selectedValue,
+    '  Amount :' +
+    document.getElementById('amount_input').value +
+    '  Terminal :' +
+    selectedValue,
   )
 }
+
 form.append(radiodiv)
 form.append(inputdiv)
 form.append(div)
@@ -91,7 +80,3 @@ form.append(s)
 if (document.getElementById('applePay')) {
   document.getElementById('applePay').append(form)
 }
-
-// function onSubmit() {
-//   alert('The form was submitted')
-// }
