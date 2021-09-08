@@ -356,6 +356,21 @@ export function createServer({ environment = "development" } = {}) {
         };
       });
 
+//  this.get("/landing/shopping", () => {
+//   "results": [
+//     {
+//       "gender": "female",
+//       "name": {
+//         "title": "Mademoiselle",
+//         "first": "Francesca",
+//         "last": "Mathieu"
+//       },
+//     ],
+//         return {
+//           messages: ["test", "test"],
+//         };
+//       });
+
       //get message
       // this.get("/landing/message", () => {
       //   return {
