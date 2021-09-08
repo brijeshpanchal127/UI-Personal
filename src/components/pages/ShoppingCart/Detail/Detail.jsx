@@ -8,7 +8,6 @@ import Popover from "@material-ui/core/Popover";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import PaymentOption from "../../../../retailit/reusableTerminal/PaymentOption";
-import { dummyData } from "../../../../refData";
 
 const useStyles = makeStyles((theme) => ({
   list: {
@@ -79,9 +78,7 @@ const Detail = () => {
       <button className={classes.button} onClick={handleClick}>
         <a> CHECKOUT</a>
       </button>
-      {dummyData.map((item) => {
-        return <div>{item.value}</div>;
-      })}
+    
       <Popover
         id={id}
         open={open}

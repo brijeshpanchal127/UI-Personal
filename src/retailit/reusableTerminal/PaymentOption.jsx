@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
   option_list: {
     padding: "10%",
+    fontSize:"20px"
   },
 }));
 
@@ -82,7 +83,7 @@ const PaymentOption = (props) => {
                 unmountOnExit
               >
                 <div className={classes.option_list}>
-                  <div id={option.div_id} key={option.key}></div>
+                  <div id={option.div_id} key={option.key} className={classes.option_list}></div>
                 </div>
               </Collapse>
               <Divider />
