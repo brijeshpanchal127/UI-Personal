@@ -16,7 +16,7 @@ import {
 import { selectDisplayStorePos } from "../../../../reducers/actions/display.action";
 import messageService from "../../../../services/message.service";
 import StoreSelection from "./StoreSelection";
-import FetchData from "./FetchData";
+// import FetchData from "./FetchData";
 const useStyles = makeStyles((theme) => ({
   search: {
     position: "relative",
@@ -99,7 +99,7 @@ export default function MainPanel() {
       <div className="panelContent">
 
 
-        <FetchData />
+        {/* <FetchData /> */}
 
 
         {(() => {

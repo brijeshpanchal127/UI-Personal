@@ -11,7 +11,7 @@ import landingService from "../../services/landing.service";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 
-import FetchData from "./Landing/MainPanel/FetchData";
+// import FetchData from "./Landing/MainPanel/FetchData";
 
 export default function Login(props) {
   // React.useEffect(() => {
@@ -107,7 +107,7 @@ export default function Login(props) {
               Login
             </Button>
 
-            <FetchData /> 
+            {/* <FetchData />  */}
           </ThemeProvider>
         </div>
       </div>

@@ -42,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
       color: "#ffffff",
       padding: "4%",
       border: "none",
+      borderRadious:"20px"
     },
     "& .radio_btn": { padding: "20%", margin: "2%" },
     "& .amount_div": { display: "flex", margin: "2%" },
