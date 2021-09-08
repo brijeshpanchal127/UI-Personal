@@ -78,6 +78,7 @@ const Detail = () => {
       <button className={classes.button} onClick={handleClick}>
         <a> CHECKOUT</a>
       </button>
+
       <Popover
         id={id}
         open={open}

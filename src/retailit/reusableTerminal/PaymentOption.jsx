@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
   //   color: "#ffffff",
   // },
   option_list: {
+
     padding: "5%",
   },
   item: {
@@ -42,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
       color: "#ffffff",
       padding: "4%",
       border: "none",
+      borderRadious:"20px"
     },
     "& .radio_btn": { padding: "20%", margin: "4%" },
     "& .amount_div": { display: "flex", margin: "2%" },
@@ -51,6 +53,7 @@ const useStyles = makeStyles((theme) => ({
       paddingTop: "6px",
       marginRight: "9px",
     },
+
   },
 }));
 
@@ -104,11 +107,13 @@ const PaymentOption = (props) => {
                 unmountOnExit
               >
                 <div className={classes.option_list}>
+
                   <div
                     id={option.div_id}
                     key={option.key}
                     className={classes.item}
                   ></div>
+
                 </div>
               </Collapse>
               <Divider />

@@ -16,7 +16,7 @@ import {
 import { selectDisplayStorePos } from "../../../../reducers/actions/display.action";
 import messageService from "../../../../services/message.service";
 import StoreSelection from "./StoreSelection";
-import TodoList from "./TodoList";
+// import FetchData from "./FetchData";
 const useStyles = makeStyles((theme) => ({
   search: {
     position: "relative",
@@ -97,7 +97,11 @@ export default function MainPanel() {
         />
       </div>
       <div className="panelContent">
-        <TodoList />
+
+
+        {/* <FetchData /> */}
+
+
         {(() => {
           switch (currentDisplay.name) {
             case "STORE_SELECTION":

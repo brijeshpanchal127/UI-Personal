@@ -8,7 +8,7 @@ var div = document.createElement('div')
 
 var radiodiv = document.createElement('div')
 var label = document.createElement('label')
-label.innerHTML = 'Terminal'
+label.innerHTML = 'TERMINAL'
 label.className = 'teminal_label'
 radiodiv.append(label)
 var terminal = ['1', '2']
@@ -43,7 +43,7 @@ terminal.forEach((Value, i) => {
 var inputdiv = document.createElement('div')
 inputdiv.className = 'amount_div'
 var labelAmount = document.createElement('label')
-labelAmount.innerHTML = 'Amount'
+labelAmount.innerHTML = 'AMOUNT'
 labelAmount.className = 'amount_label'
 
 var ID = document.createElement('input')
@@ -56,7 +56,7 @@ inputdiv.append(ID)
 // Create a submit button
 var s = document.createElement('input')
 s.setAttribute('type', 'submit')
-s.setAttribute('value', 'Submit')
+s.setAttribute('value', 'SUBMIT')
 s.setAttribute('class', 'submit_btn')
 s.setAttribute('id', 'button_submit')
 // s.style.backgroundColor = '#72bb53'
