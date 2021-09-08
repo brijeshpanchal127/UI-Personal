@@ -13,9 +13,9 @@ label.className = 'teminal_label'
 radiodiv.append(label)
 var terminal = ['1', '2']
 terminal.forEach((Value, i) => {
+  var inputValue = document.createElement('input')
   var labelValue = document.createElement('label')
   labelValue.innerHTML = Value
-  var inputValue = document.createElement('input')
   inputValue.onclick = function () {
     if (inputValue.name == 1) {
       console.log('Choice: ', inputValue.name)
@@ -32,8 +32,8 @@ terminal.forEach((Value, i) => {
   inputValue.id = Value
   inputValue.className = 'radio_btn'
   inputValue.Value = Value
-  radiodiv.appendChild(labelValue)
   radiodiv.appendChild(inputValue)
+  radiodiv.appendChild(labelValue)
 })
 
 // var lable = document.createElement('label')

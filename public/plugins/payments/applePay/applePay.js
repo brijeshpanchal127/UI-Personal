@@ -32,8 +32,8 @@ terminal.forEach((Value, i) => {
   inputValue.id = Value
   inputValue.className = 'radio_btn'
   inputValue.Value = Value
-  radiodiv.appendChild(labelValue)
   radiodiv.appendChild(inputValue)
+  radiodiv.appendChild(labelValue)
 })
 
 // var lable = document.createElement('label')
