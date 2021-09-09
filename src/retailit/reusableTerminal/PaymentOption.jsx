@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./PaymentOption.scss";
-import { makeStyles } from "@material-ui/core/styles";
 import { useSelector } from "react-redux";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -9,8 +7,7 @@ import Collapse from "@material-ui/core/Collapse";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import Divider from "@material-ui/core/Divider";
-
-import { useStyles } from "./styles.js";
+import { useStyles } from "./PaymentOptionStyles.js";
 
 
 const PaymentOption = (props) => {
@@ -67,16 +64,15 @@ const PaymentOption = (props) => {
                     id={option.div_id}
                     key={option.key}
                     className={classes.item}
-
                   ></div>
-
                 </div>
               </Collapse>
               <Divider />
             </div>
           </div>
         );
-      })}
+      })
+      }
     </List>
   );
 };
