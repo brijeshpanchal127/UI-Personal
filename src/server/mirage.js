@@ -1,5 +1,6 @@
 import { Server, Model } from "miragejs";
 import jargons from "./fixtures/jargons";
+import axios from "axios";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import CreditCardIcon from "@material-ui/icons/CreditCard";
 import ReceiptIcon from "@material-ui/icons/Receipt";
@@ -161,6 +162,19 @@ export function createServer({ environment = "development" } = {}) {
       });
 
       this.get("/landing/stores", () => {
+        fetch("./data.js")
+          .then((response) => {
+            console.log(response);
+            // return response.json();
+          })
+          .then((data) => {
+            // Work with JSON data here
+            console.log(data);
+          })
+          .catch((err) => {
+            // Do something for an error here
+            console.log("Error Reading data " + err);
+          });
         console.log(`returning store locations from backend`);
         return {
           storeLocations: ["Scarborough Town Center", "Markville Mall"],
@@ -356,20 +370,20 @@ export function createServer({ environment = "development" } = {}) {
         };
       });
 
-//  this.get("/landing/shopping", () => {
-//   "results": [
-//     {
-//       "gender": "female",
-//       "name": {
-//         "title": "Mademoiselle",
-//         "first": "Francesca",
-//         "last": "Mathieu"
-//       },
-//     ],
-//         return {
-//           messages: ["test", "test"],
-//         };
-//       });
+      //  this.get("/landing/shopping", () => {
+      //   "results": [
+      //     {
+      //       "gender": "female",
+      //       "name": {
+      //         "title": "Mademoiselle",
+      //         "first": "Francesca",
+      //         "last": "Mathieu"
+      //       },
+      //     ],
+      //         return {
+      //           messages: ["test", "test"],
+      //         };
+      //       });
 
       //get message
       // this.get("/landing/message", () => {

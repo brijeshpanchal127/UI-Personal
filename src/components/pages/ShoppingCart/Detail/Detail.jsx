@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Detail.css";
+import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import DescriptionIcon from "@material-ui/icons/Description";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
@@ -46,6 +47,29 @@ const Detail = () => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [terminalbox, setTerminalbox] = useState(false);
+  const [albums, setAlbums] = useState([]);
+
+  useEffect(() => {
+    // axios
+    //   .get("./data.js")
+    //   .then((res) => setAlbums(res.data))
+    //   .catch((err) => console.log(err));
+
+    fetch("./data.js")
+      .then((response) => {
+        console.log(response);
+        // return response.json();
+      })
+      .then((data) => {
+        // Work with JSON data here
+        console.log(data);
+      })
+      .catch((err) => {
+        // Do something for an error here
+        console.log("Error Reading data " + err);
+      });
+  }, []);
+
   const terminalboxHandler = () => {
     setTerminalbox({ terminalbox: true });
   };
