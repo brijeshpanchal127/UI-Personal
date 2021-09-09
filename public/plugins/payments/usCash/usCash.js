@@ -1,9 +1,6 @@
 var form = document.createElement('form')
 // form.setAttribute('method', 'post')
 
-// const para = document.createElement("p");
-// para.innerHTML = 'terminal';
-// form.appendChild(para);
 var div = document.createElement('div')
 
 var radiodiv = document.createElement('div')
@@ -35,10 +32,6 @@ terminal.forEach((Value, i) => {
   radiodiv.appendChild(inputValue)
   radiodiv.appendChild(labelValue)
 })
-
-// var lable = document.createElement('label')
-// lable.innerHTML = 'amount'
-// lable.append(ID)
 // Create an input element for amount
 var inputdiv = document.createElement('div')
 inputdiv.className = 'amount_div'
@@ -59,10 +52,7 @@ s.setAttribute('type', 'submit')
 s.setAttribute('value', 'SUBMIT')
 s.setAttribute('class', 'submit_btn')
 s.setAttribute('id', 'button_submit')
-// s.style.backgroundColor = '#72bb53'
-// s.style.color = '#ffffff'
-// s.style.width = '90%'
-// s.style.height='150%'
+
 s.onclick = function () {
   var selectedValue = 0
   if (document.getElementById('1').checked) {
@@ -89,7 +79,3 @@ form.append(s)
 if (document.getElementById('uscash')) {
   document.getElementById('uscash').appendChild(form)
 }
-
-// function onSubmit() {
-//   alert('The form was submitted')
-// }

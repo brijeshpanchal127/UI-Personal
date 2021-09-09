@@ -9,7 +9,9 @@ import Collapse from "@material-ui/core/Collapse";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import Divider from "@material-ui/core/Divider";
+
 import { useStyles } from "./styles.js";
+
 
 const PaymentOption = (props) => {
   const classes = useStyles();
@@ -65,7 +67,9 @@ const PaymentOption = (props) => {
                     id={option.div_id}
                     key={option.key}
                     className={classes.item}
+
                   ></div>
+
                 </div>
               </Collapse>
               <Divider />
