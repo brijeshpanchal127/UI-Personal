@@ -29,16 +29,16 @@ export default function Login(props) {
   //   LoadExternalScript();
   // }, []);
 
-  const theme = createMuiTheme({
-    palette: {
-      primary: green,
-    },
-    typography: {
-      button: {
-        textTransform: "none",
-      },
-    },
-  });
+  // const theme = createMuiTheme({
+  //   palette: {
+  //     primary: green,
+  //   },
+  //   typography: {
+  //     button: {
+  //       textTransform: "none",
+  //     },
+  //   },
+  // });
   const inputProps = {
     required: true,
     step: 300,
@@ -76,10 +76,17 @@ export default function Login(props) {
   return (
     <form id="loginPanel" onSubmit={handleLogin}>
       <div className="panelInputs">
-
         <div className="inputFields">
           <p>Username</p>
-          <TextField
+          {/* <TextField
+            type="text"
+            id="username"
+            value={username}
+            onChange={onChangeUsername}
+            variant="outlined"
+            inputProps={inputProps}
+          /> */}
+          <input
             type="text"
             id="username"
             value={username}
@@ -91,7 +98,7 @@ export default function Login(props) {
 
         <div className="inputFields">
           <p>Password</p>
-          <TextField
+          <input
             type="password"
             id="password"
             value={password}
@@ -99,16 +106,26 @@ export default function Login(props) {
             variant="outlined"
             inputProps={inputProps}
           />
+          {/* <TextField
+            type="password"
+            id="password"
+            value={password}
+            onChange={onChangePassword}
+            variant="outlined"
+            inputProps={inputProps}
+          /> */}
         </div>
 
         <div id="loginButton">
-          <ThemeProvider theme={theme}>
+          {/* <ThemeProvider>
             <Button variant="contained" color="primary" type="submit">
               Login
-            </Button>
-
-            {/* <FetchData />  */}
-          </ThemeProvider>
+            </Button> */}
+          <button variant="contained" color="primary" type="submit">
+            Login
+          </button>
+          {/* <FetchData />  */}
+          {/* </ThemeProvider> */}
         </div>
       </div>
     </form>

@@ -162,19 +162,6 @@ export function createServer({ environment = "development" } = {}) {
       });
 
       this.get("/landing/stores", () => {
-        fetch("./data.js")
-          .then((response) => {
-            console.log(response);
-            // return response.json();
-          })
-          .then((data) => {
-            // Work with JSON data here
-            console.log(data);
-          })
-          .catch((err) => {
-            // Do something for an error here
-            console.log("Error Reading data " + err);
-          });
         console.log(`returning store locations from backend`);
         return {
           storeLocations: ["Scarborough Town Center", "Markville Mall"],
