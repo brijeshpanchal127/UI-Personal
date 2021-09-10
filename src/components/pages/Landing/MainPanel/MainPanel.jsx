@@ -18,45 +18,45 @@ import messageService from "../../../../services/message.service";
 import StoreSelection from "./StoreSelection";
 // import FetchData from "./FetchData";
 const useStyles = makeStyles((theme) => ({
-  search: {
-    position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: "white",
-    marginTop: theme.spacing(2),
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing(3),
-      width: "auto",
-    },
-  },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  inputRoot: {
-    color: "inherit",
-    // width: '100%',
-    // display: 'block',
-  },
-  inputInput: {
-    color: "inherit",
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create("width"),
-    // width: 'inherit',
-    // display: 'block',
-    [theme.breakpoints.up("md")]: {
-      width: "20ch",
-    },
-  },
+  // search: {
+  //   position: "relative",
+  //   borderRadius: theme.shape.borderRadius,
+  //   backgroundColor: "white",
+  //   marginTop: theme.spacing(2),
+  //   marginRight: theme.spacing(2),
+  //   marginLeft: 0,
+  //   width: "100%",
+  //   [theme.breakpoints.up("sm")]: {
+  //     marginLeft: theme.spacing(3),
+  //     width: "auto",
+  //   },
+  // },
+  // searchIcon: {
+  //   padding: theme.spacing(0, 2),
+  //   height: "100%",
+  //   position: "absolute",
+  //   pointerEvents: "none",
+  //   display: "flex",
+  //   alignItems: "center",
+  //   justifyContent: "center",
+  // },
+  // inputRoot: {
+  //   color: "inherit",
+  //   // width: '100%',
+  //   // display: 'block',
+  // },
+  // inputInput: {
+  //   color: "inherit",
+  //   padding: theme.spacing(1, 1, 1, 0),
+  //   // vertical padding + font size from searchIcon
+  //   paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+  //   transition: theme.transitions.create("width"),
+  //   // width: 'inherit',
+  //   // display: 'block',
+  //   [theme.breakpoints.up("md")]: {
+  //     width: "20ch",
+  //   },
+  // },
 }));
 
 export default function MainPanel() {
@@ -83,24 +83,21 @@ export default function MainPanel() {
   return (
     <div className="mainPanel">
       {/* Search bar */}
-      <div className={classes.search}>
-        <div className={classes.searchIcon}>
+      <div className={"search"}>
+        <div className={"searchIcon"}>
           <ReorderRoundedIcon />
         </div>
         <InputBase
           placeholder={currentDisplay.searchInputPlaceholder}
           classes={{
-            root: classes.inputRoot,
-            input: classes.inputInput,
+            root: "inputRoot",
+            input: "inputInput",
           }}
           inputProps={{ "aria-label": "search" }}
         />
       </div>
       <div className="panelContent">
-
-
         {/* <FetchData /> */}
-
 
         {(() => {
           switch (currentDisplay.name) {

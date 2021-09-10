@@ -55,7 +55,7 @@ const Detail = () => {
     //   .then((res) => setAlbums(res.data))
     //   .catch((err) => console.log(err));
 
-    fetch("./data.js")
+    axios("./data.js")
       .then((response) => {
         console.log(response);
         // return response.json();
