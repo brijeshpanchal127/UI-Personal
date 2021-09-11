@@ -1,14 +1,7 @@
 import React from "react";
-
-import { fade, makeStyles } from "@material-ui/core/styles";
-import InputBase from "@material-ui/core/InputBase";
-import ReorderRoundedIcon from "@material-ui/icons/ReorderRounded";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-
-import "./MainPanel.css";
 import StoreCard from "../../../StoreCard/StoreCard.jsx";
-import data from "../../../../data/data";
 import {
   selectCurrentFunction,
   MessageData,
@@ -16,51 +9,8 @@ import {
 import { selectDisplayStorePos } from "../../../../reducers/actions/display.action";
 import messageService from "../../../../services/message.service";
 import StoreSelection from "./StoreSelection";
-// import FetchData from "./FetchData";
-const useStyles = makeStyles((theme) => ({
-  // search: {
-  //   position: "relative",
-  //   borderRadius: theme.shape.borderRadius,
-  //   backgroundColor: "white",
-  //   marginTop: theme.spacing(2),
-  //   marginRight: theme.spacing(2),
-  //   marginLeft: 0,
-  //   width: "100%",
-  //   [theme.breakpoints.up("sm")]: {
-  //     marginLeft: theme.spacing(3),
-  //     width: "auto",
-  //   },
-  // },
-  // searchIcon: {
-  //   padding: theme.spacing(0, 2),
-  //   height: "100%",
-  //   position: "absolute",
-  //   pointerEvents: "none",
-  //   display: "flex",
-  //   alignItems: "center",
-  //   justifyContent: "center",
-  // },
-  // inputRoot: {
-  //   color: "inherit",
-  //   // width: '100%',
-  //   // display: 'block',
-  // },
-  // inputInput: {
-  //   color: "inherit",
-  //   padding: theme.spacing(1, 1, 1, 0),
-  //   // vertical padding + font size from searchIcon
-  //   paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-  //   transition: theme.transitions.create("width"),
-  //   // width: 'inherit',
-  //   // display: 'block',
-  //   [theme.breakpoints.up("md")]: {
-  //     width: "20ch",
-  //   },
-  // },
-}));
-
+import data from "../../../../data/data";
 export default function MainPanel() {
-  const classes = useStyles();
   const auth = useSelector((state) => state.login.auth);
   const currentDisplayProfile = useSelector(
     (state) => state.display.displayProfile
@@ -82,23 +32,22 @@ export default function MainPanel() {
 
   return (
     <div className="mainPanel">
-      {/* Search bar */}
       <div className={"search"}>
         <div className={"searchIcon"}>
-          <ReorderRoundedIcon />
+          <i class="fas fa-bars"></i>
+          {/* <ReorderRoundedIcon /> */}
         </div>
-        <InputBase
-          placeholder={currentDisplay.searchInputPlaceholder}
-          classes={{
-            root: "inputRoot",
-            input: "inputInput",
-          }}
-          inputProps={{ "aria-label": "search" }}
-        />
+        <div className="MuiInputBase-root inputRoot">
+          <input
+            placeholder="Store"
+            type="text"
+            aria-label="search"
+            class="MuiInputBase-input inputInput"
+            value=""
+          />
+        </div>
       </div>
       <div className="panelContent">
-        {/* <FetchData /> */}
-
         {(() => {
           switch (currentDisplay.name) {
             case "STORE_SELECTION":
