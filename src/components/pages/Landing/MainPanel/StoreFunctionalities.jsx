@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import data from '../../../../data/data';
 import { useDispatch } from "react-redux";
-import ReactDOM from 'react-dom';
 import { Redirect, Route } from 'react-router-dom';
 import StoreCard from '../../../StoreCard/StoreCard.jsx';
 import { selectCurrentFunction } from "../../../../reducers/actions/landing.action";
 import { selectDisplayStorePos } from "../../../../reducers/actions/display.action";
+import data from '../../../../data/data';
 import './MainPanel.css';
-import MainPanel from './MainPanel.jsx';
 
 export default function StoreFunctionalities() {
     //const storeLocations = useSelector((state) => state.landing.storesData.storeLocations);
