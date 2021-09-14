@@ -1,6 +1,5 @@
 import React, { component } from "react";
 import * as ScanditSDK from "scandit-sdk";
-import Button from "@material-ui/core/Button";
 
 class CaptureCode extends React.Component {
   constructor(props) {
@@ -62,53 +61,33 @@ class CaptureCode extends React.Component {
       })
       .then((barcodePicker) => {
         // barcodePicker is ready here, show a message every time a barcode is scanned
-
         barcodePicker.on("scan", (scanResult) => {
-          scanResult.barcodes.reduce(function (string, barcode) {
-            this.setState({
-              barcode: barcode.data,
-            });
+          this.setState({
+            barcode: scanResult.barcodes,
           });
         });
-
-        barcodePicker.on("scan", (scanResult) => {
-          alert(
-            scanResult.barcodes.reduce(function (string, barcode) {
-              return (
-                string +
-                ScanditSDK.Barcode.Symbology.toHumanizedName(
-                  barcode.symbology
-                ) +
-                ": " +
-                barcode.data +
-                "\n"
-              );
-            }, "")
-          );
-        });
       });
-    // window.ScanditCamScan.scan("scanner-container")
-    //   .then((resp) => {
-    //     console.log(JSON.stringify(resp));
-    //     document.getElementById("scanner-result").innerHTML = JSON.stringify(
-    //       resp
-    //     );
-    //   })
-    //   .catch((resp) => {
-    //     console.log(JSON.stringify(resp));
-    //     document.getElementById("scanner-result").innerHTML = JSON.stringify(
-    //       resp
-    //     );
-    //   });
   };
 
   render() {
+    const { barcode } = this.state;
     return (
       <div>
         <div onClick={() => this.scan()}>
           <i class="fa fa-camera" aria-hidden="true"></i>
         </div>
-        <div>{this.state.barcode}</div>
+
+        {barcode &&
+          barcode !== null &&
+          barcode.map((data) => {
+            return (
+              <div>
+                <div>Data : {data.data} </div>
+                <div>Barcode symbology type : {data.symbology} </div>
+              </div>
+            );
+          })}
+
         <div id="scandit-barcode-picker"></div>
         <button class="capture_btn">Capture</button>
       </div>
