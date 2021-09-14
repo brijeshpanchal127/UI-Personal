@@ -222,3 +222,15 @@ p {
     position: relative;
     bottom: 20;
 }
+
+
+.capture_btn{
+    color: white;
+    width: 100%;
+    border: none;
+    height: 2rem;
+    font-size: 15px;
+    margin-top: 1.5rem;
+    border-radius: 5px;
+    background-color: #72BB53;
+}
