@@ -6,6 +6,9 @@ class CaptureCode extends React.Component {
   constructor(props) {
     super(props);
     this.scan = this.scan.bind(this);
+    this.state = {
+      barcode: null,
+    };
   }
 
   scan = () => {
@@ -41,6 +44,15 @@ class CaptureCode extends React.Component {
       })
       .then((barcodePicker) => {
         // barcodePicker is ready here, show a message every time a barcode is scanned
+
+        barcodePicker.on("scan", (scanResult) => {
+          scanResult.barcodes.reduce(function (string, barcode) {
+            this.setState({
+              barcode: barcode.data,
+            });
+          });
+        });
+
         barcodePicker.on("scan", (scanResult) => {
           alert(
             scanResult.barcodes.reduce(function (string, barcode) {
@@ -78,6 +90,7 @@ class CaptureCode extends React.Component {
         <div onClick={() => this.scan()}>
           <i class="fa fa-camera" aria-hidden="true"></i>
         </div>
+        <div>{this.state.barcode}</div>
         <div id="scandit-barcode-picker"></div>
         <button class="capture_btn">Capture</button>
       </div>
