@@ -144,6 +144,8 @@ export function createServer({ environment = "development" } = {}) {
     },
 
     routes() {
+      this.passthrough();
+
       this.post("/login", (schema, request) => {
         let attrs = JSON.parse(request.requestBody);
 
@@ -357,7 +359,7 @@ export function createServer({ environment = "development" } = {}) {
         };
       });
 
-      //  this.get("/landing/shopping", () => {
+       this.get("/landing/shopping", () => {
       //   "results": [
       //     {
       //       "gender": "female",
@@ -367,12 +369,12 @@ export function createServer({ environment = "development" } = {}) {
       //         "last": "Mathieu"
       //       },
       //     ],
-      //         return {
-      //           messages: ["test", "test"],
-      //         };
-      //       });
+              return {
+                messages: ["test", "test"],
+              };
+            });
 
-      //get message
+      // get message
       // this.get("/landing/message", () => {
       //   return {
       //     messages: ["Logged in Markville Mall", "Logged in  as k.Iam"],

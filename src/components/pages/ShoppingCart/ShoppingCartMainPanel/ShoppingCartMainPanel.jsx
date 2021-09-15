@@ -3,6 +3,9 @@ import data from "../../../../data/data";
 import Detail from "../Detail/Detail.jsx";
 
 export default function MainPanel() {
+  // window.QsmShoppingCart.addCartItem({id:456, description:'phone cover', unitPrice:4.99, qty:1});
+  // var cartItems = window.QsmShoppingCart.getCartItems();
+  // console.log('ShoppingCartMainPanel - cartItems', cartItems);  
   return (
     <div className="shoppingCart__main">
       <div className="shoppingCart__main--inventory">
