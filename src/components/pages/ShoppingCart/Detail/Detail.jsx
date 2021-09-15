@@ -96,17 +96,7 @@ const Detail = () => {
         <DescriptionIcon />
         <DeleteForeverIcon />
         <MoreVertIcon />
-<<<<<<< HEAD
       </div>   
-=======
-      </div>
-
-      
-      <div> 
-
-      <CaptureCode />
-      </div>
->>>>>>> 4bb0934ab496d0942f0971344c453a9c35f43141
       <div className={classes.list}>TRANS #</div>
       <div className="detail__list">
         <div className={classes.list}>SUBTOTAL</div>
