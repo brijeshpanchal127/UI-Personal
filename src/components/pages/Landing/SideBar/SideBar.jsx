@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "./SideBar.css";
 import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
 import ListSubheader from "@material-ui/core/ListSubheader";

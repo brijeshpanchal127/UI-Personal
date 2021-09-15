@@ -9,6 +9,7 @@ import Popover from "@material-ui/core/Popover";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import PaymentOption from "../../../../retailit/reusableTerminal/PaymentOption";
+import CaptureCode from "../CaptureCode/CaptureCode";
 
 const useStyles = makeStyles((theme) => ({
   list: {
@@ -86,11 +87,16 @@ const Detail = () => {
   const id = open ? "simple-popover" : undefined;
   return (
     <div className="detail">
+
+<div> 
+
+<CaptureCode />
+</div>
       <div className={classes.iconsContainer}>
         <DescriptionIcon />
         <DeleteForeverIcon />
         <MoreVertIcon />
-      </div>
+      </div>   
       <div className={classes.list}>TRANS #</div>
       <div className="detail__list">
         <div className={classes.list}>SUBTOTAL</div>
@@ -120,6 +126,7 @@ const Detail = () => {
           marginTop: "-8%",
         }}
       >
+      
         {/* <Typography className={classes.typography}> */}
         <PaymentOption />
         {/* </Typography> */}

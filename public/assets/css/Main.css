@@ -1,67 +1,71 @@
 body {
-    background-color: #EEEEEE;
-  }
-  #loginPanel {
-    background-color: #EEEEEE;
-    width: 100%;
-    overflow-y: scroll;
-  }
-  .panelInputs {
-    margin-top: 15%;
-    align-self: center;
-    justify-content: center;
-    padding-left: 20%;
-    padding-right: 20%;
-    margin-left: 10%;
-    margin-right: 10%;
-  }
-  
-  .inputFields {
-    display:flex;
-    align-self: center;
-    align-items: baseline;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 1%;
-    margin-bottom: 1%; 
-    
-  }
-  p {
-    text-align: center;
-    display: inline;
-    margin-right: 5px;
-    color: MediumSeaGreen;
-    font-weight: bold;
-  }
-  #loginButton {
-    display:flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 1.5rem;
-    margin-right: 10%;
-    background-color: "#72BB53";
-    border: none;
-    padding: 4px;
-    text-align: center;
-    width: 100%;
-  }
-  
-  #loginButton > Button {
-    width: 50%;
-    padding: 5px;
-    max-width: 40%;
-    color: whitesmoke;
-    background-color: #4caf50;
-  }
-
-
-  /*sideBar css*/
-  .hidden { 
-    display:none; 
+  background-color: #EEEEEE;
 }
-.MuiList-root{
-    background-color: "#72BB53" !important;
-    color:"#ffffff" !important
+
+#loginPanel {
+  background-color: #EEEEEE;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.panelInputs {
+  margin-top: 15%;
+  align-self: center;
+  justify-content: center;
+  padding-left: 20%;
+  padding-right: 20%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.inputFields {
+  display: flex;
+  align-self: center;
+  align-items: baseline;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+p {
+  text-align: center;
+  display: inline;
+  margin-right: 5px;
+  color: MediumSeaGreen;
+  font-weight: bold;
+}
+
+#loginButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 1.5rem;
+  margin-right: 10%;
+  background-color: "#72BB53";
+  border: none;
+  padding: 4px;
+  text-align: center;
+  width: 100%;
+}
+
+#loginButton>Button {
+  width: 50%;
+  padding: 5px;
+  max-width: 40%;
+  color: whitesmoke;
+  background-color: #4caf50;
+}
+
+/*sideBar css*/
+
+.hidden {
+  display: none;
+}
+
+.MuiList-root {
+  background-color: "#72BB53" !important;
+  color: "#ffffff" !important
 }
 
 /* Main Panel css*/
@@ -71,38 +75,156 @@ body {
   width: 100%;
   overflow-y: scroll;
 }
+
 .cardContainer {
-  display:flex;
+  display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin-top: 1.5rem;
 }
+
 .search {
-    width: 100%;
-    position: relative;
-    margin-top: 16px;
-    margin-left: 0;
-    margin-right: 16px;
-    border-radius: 4px;
-    background-color: white;
+  width: 100%;
+  position: relative;
+  margin-top: 16px;
+  margin-left: 0;
+  margin-right: 16px;
+  border-radius: 4px;
+  background-color: white;
 }
+
 .searchIcon {
   height: 100%;
-    display: flex;
-    padding: 0px 16px;
-    position: absolute;
-    align-items: center;
-    pointer-events: none;
-    justify-content: center;
+  display: flex;
+  padding: 0px 16px;
+  position: absolute;
+  align-items: center;
+  pointer-events: none;
+  justify-content: center;
 }
 
-.inputInput{
-  color: inherit;
-  padding: 8px 8px 8px 0px;
-  transition: width 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  padding-left: calc(1em + 32px) !important;
+.MuiInputBase-input {
+  font: inherit;
+  color: currentColor;
+  width: 100%;
+  border: 0;
+  height: 1.1876em;
+  margin: 0;
+  display: block;
+  padding: 6px 0 8px 40px;
+  min-width: 0;
+  background: none;
+  box-sizing: content-box;
+  animation-name: mui-auto-fill-cancel;
+  letter-spacing: inherit;
+  animation-duration: 10ms;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.inputRoot{
-  color: "inherit"
+.MuiInputBase-root {
+  color: rgba(0, 0, 0, 0.87);
+  cursor: text;
+  font-size: 1rem;
+  box-sizing: border-box;
+  align-items: center;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.1876em;
+  letter-spacing: 0.00938em;
 }
+
+/* css for storeCard.jsx */
+
+.card {
+  color: white;
+  width: 400px;
+  height: 150px;
+  margin-top: 1.5rem;
+  text-align: center;
+  margin-left: 1.5rem;
+  background-color: #72BB53;
+}
+
+.card_container {
+  padding: 1px;
+}
+
+.card_container:last-child {
+  padding-bottom: 24px;
+}
+
+.card_container h5 {
+  font-size: 1.5rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.334;
+  letter-spacing: 0em;
+}
+
+/* css for Landing.jsx */
+
+.landing {
+  display: flex;
+}
+
+/*css for ShoppingCardMainPanel */
+
+.shoppingCart__main_root {
+  width: "100%";
+  margin-top: "20px";
+}
+
+.shoppingCart__main {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.shoppingCart__main--inventory {
+  width: 70%;
+}
+
+.shoppingCart__main--detail {
+  width: 30%;
+}
+
+#shoppingInventoryParent {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  margin-top: 0.5rem;
+}
+
+.shoppingInventoryFirstRow {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin-right: 1rem
+}
+
+.shopping_InventorySecondRow {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin-top: 0.5rem;
+  margin-right: 1rem
+}
+
+.iconContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  bottom: 20;
+}
+
+.capture_btn{
+  color: white;
+  width: 100%;
+  border: none;
+  height: 2rem;
+  font-size: 15px;
+  margin-top: 1.5rem;
+  border-radius: 5px;
+  background-color: #72BB53;
+} 

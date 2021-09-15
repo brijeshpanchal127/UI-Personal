@@ -53,6 +53,9 @@ s.setAttribute('value', 'SUBMIT')
 s.setAttribute('class', 'submit_btn')
 s.setAttribute('id', 'button_submit')
 
+var cartItems = QsmShoppingCart.getCartItems();
+console.log('creditCard - cartItems', cartItems);
+
 s.onclick = function () {
   var selectedValue = 0
   if (document.getElementById('1').checked) {
