@@ -1,7 +1,6 @@
 import React from "react";
 import SideBar from "./SideBar/SideBar.jsx";
 import MainPanel from "./MainPanel/MainPanel.jsx";
-import "./Landing.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import landingService from "../../../services/landing.service";

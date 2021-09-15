@@ -3,9 +3,15 @@ import data from "../../../../data/data";
 import Detail from "../Detail/Detail.jsx";
 
 export default function MainPanel() {
+<<<<<<< HEAD
   // window.QsmShoppingCart.addCartItem({id:456, description:'phone cover', unitPrice:4.99, qty:1});
   // var cartItems = window.QsmShoppingCart.getCartItems();
   // console.log('ShoppingCartMainPanel - cartItems', cartItems);  
+=======
+  window.QsmShoppingCart.addCartItem({id:456, description:'phone cover', unitPrice:4.99, qty:1});
+  var cartItems = window.QsmShoppingCart.getCartItems();
+  console.log('ShoppingCartMainPanel - cartItems', cartItems);  
+>>>>>>> ab3be62fccfd51fdd57df71d4d5e31c0340fa244
   return (
     <div className="shoppingCart__main">
       <div className="shoppingCart__main--inventory">

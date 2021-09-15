@@ -2,22 +2,16 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import StoreCard from "../../../StoreCard/StoreCard.jsx";
-import {
-  selectCurrentFunction,
-  MessageData,
-} from "../../../../reducers/actions/landing.action";
+import { selectCurrentFunction, MessageData } from "../../../../reducers/actions/landing.action";
 import { selectDisplayStorePos } from "../../../../reducers/actions/display.action";
 import messageService from "../../../../services/message.service";
 import StoreSelection from "./StoreSelection";
 import data from "../../../../data/data";
+
 export default function MainPanel() {
   const auth = useSelector((state) => state.login.auth);
-  const currentDisplayProfile = useSelector(
-    (state) => state.display.displayProfile
-  );
-  var currentDisplay = data.DISPLAY_PROFILE.find(
-    (o) => o.name === currentDisplayProfile
-  );
+  const currentDisplayProfile = useSelector((state) => state.display.displayProfile);
+  var currentDisplay = data.DISPLAY_PROFILE.find((o) => o.name === currentDisplayProfile);
   const history = useHistory();
   const dispatch = useDispatch();
 

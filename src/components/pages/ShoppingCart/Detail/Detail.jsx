@@ -87,17 +87,16 @@ const Detail = () => {
   const id = open ? "simple-popover" : undefined;
   return (
     <div className="detail">
+
+<div> 
+
+<CaptureCode />
+</div>
       <div className={classes.iconsContainer}>
         <DescriptionIcon />
         <DeleteForeverIcon />
         <MoreVertIcon />
-      </div>
-
-      
-      <div> 
-
-      <CaptureCode />
-      </div>
+      </div>   
       <div className={classes.list}>TRANS #</div>
       <div className="detail__list">
         <div className={classes.list}>SUBTOTAL</div>
@@ -127,6 +126,7 @@ const Detail = () => {
           marginTop: "-8%",
         }}
       >
+      
         {/* <Typography className={classes.typography}> */}
         <PaymentOption />
         {/* </Typography> */}
