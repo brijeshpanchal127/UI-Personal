@@ -1,4 +1,4 @@
-import React, {useState,useEffect, useMemo} from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import data from "../../../../data/data";
 import Detail from "../Detail/Detail.jsx";
 import CaptureCode from "../CaptureCode/CaptureCode";
@@ -15,19 +15,19 @@ export default function MainPanel() {
   // const [qrValuePRICE, setQrValuePRICE] = useState("jeftar");
 
   useEffect(() => {
-    fetch("/landing/shopping")
-      .then((res) => res.json())
-      .then((json) => {        
-        setCaptureData(json.captureCodeData);
-      });
+  fetch("/landing/shopping")
+    .then((res) => res.json())
+    .then((json) => {
+    setCaptureData(json.captureCodeData);
+    });
   }, []);
 
   useEffect(() => {
-    fetch("/landing/shopping/code")
-      .then((res) => res.json())
-      .then((json) => {        
-        setCapturedData(json.capturedCodeData);
-      });
+  fetch("/landing/shopping/code")
+    .then((res) => res.json())
+    .then((json) => {
+    setCapturedData(json.capturedCodeData);
+    });
   }, []);
 
   // React.useEffect(() => {
@@ -36,16 +36,16 @@ export default function MainPanel() {
   //     .then((json) => {
   //       window.setTimeout(function () {
   //         window.JsBarcode("#barcode", json.barcodeValues.SKU
-          // +" "+json.barcodeValues.UID  + " " 
-          // +json.barcodeValues.QTY+" "
-          // +json.barcodeValues.PRICE
-          // );
-      
-        // }, 0);
-        // setQrValueUID(json.barcodeValues.UID);
-        // setQrValueQTY(json.barcodeValues.QTY);
-        // setQrValuePRICE(json.barcodeValues.PRICE);
-      // });
+  // +" "+json.barcodeValues.UID  + " "
+  // +json.barcodeValues.QTY+" "
+  // +json.barcodeValues.PRICE
+  // );
+
+  // }, 0);
+  // setQrValueUID(json.barcodeValues.UID);
+  // setQrValueQTY(json.barcodeValues.QTY);
+  // setQrValuePRICE(json.barcodeValues.PRICE);
+  // });
   // });
 
   // window.QsmShoppingCart.addCartItem({id:456, description:'phone cover', unitPrice:4.99, qty:1});
@@ -65,143 +65,170 @@ export default function MainPanel() {
   //     });
   // };
 
-
   useMemo(() => {
-    window.QsmShoppingCart.emptyCart();
-    window.QsmShoppingCart.addCartItem({id:123, sku:'IPHONE12MAX', uid:'1207126312638', description:'IPHONE 12 MAX', qty:1, unitPrice:1599.99});
-    window.QsmShoppingCart.addCartItem({id:124, sku:'WLCHARGER', uid:'1207126312638', description:'QI WIRELESS CHARGER', qty:1, unitPrice:29.99});
-    window.QsmShoppingCart.addCartItem({id:125, sku:'NTDSWITCH', uid:'2342374987272', description:'NINTENDO SWITCH LITE', qty:1, unitPrice:329.99});
+  window.QsmShoppingCart.emptyCart();
+  window.QsmShoppingCart.addCartItem({
+    id: 123,
+    sku: "IPHONE12MAX",
+    uid: "1207126312638",
+    description: "IPHONE 12 MAX",
+    qty: 1,
+    unitPrice: 1599.99,
+  });
+  window.QsmShoppingCart.addCartItem({
+    id: 124,
+    sku: "WLCHARGER",
+    uid: "1207126312638",
+    description: "QI WIRELESS CHARGER",
+    qty: 1,
+    unitPrice: 29.99,
+  });
+  window.QsmShoppingCart.addCartItem({
+    id: 125,
+    sku: "NTDSWITCH",
+    uid: "2342374987272",
+    description: "NINTENDO SWITCH LITE",
+    qty: 1,
+    unitPrice: 329.99,
+  });
   }, []);
 
   const [clicked, setClicked] = useState(false);
   const [cartItemAdded, setCartItemAdded] = useState(0);
 
-  const searchBarKeyPressed = event => {
-    var code = event.keyCode || event.which;
-    console.log('code', code);
-  }
+  const searchBarKeyPressed = (event) => {
+  var code = event.keyCode || event.which;
+  console.log("code", code);
+  };
 
   const scan = () => {
-    window.ScanditCamScan.scan("scandit-scancam-scanner-pane").then(
-      resp => {
-        console.log(JSON.stringify(resp));
-        if (resp.status.code == 0){
-          const barcode = resp.barcode.value;
-          var el = document.getElementById('qsm-shopping-cart-search-bar');
-          el.value = barcode;
+  window.ScanditCamScan.scan("scandit-scancam-scanner-pane")
+    .then((resp) => {
+    console.log(JSON.stringify(resp));
+    if (resp.status.code == 0) {
+      const barcode = resp.barcode.value;
+      var el = document.getElementById("qsm-shopping-cart-search-bar");
+      el.value = barcode;
 
-          axios.get(`/inventory/item/${barcode}`).then(
-            res => {
-              console.log('item',res.data);
-              window.QsmShoppingCart.addCartItem(res.data);
-              setCartItemAdded(Date.now());
-            }
-          ).catch(
-            err => console.log(err)
-          );
-        }
-      }
-    ).catch(
-      err => console.log(JSON.stringify(err))
-    ).finally(
-      () => {
-        if (window.ScanditCamScan.isContinueScanning()) scan()
-      }
-    )
-}
+      axios
+      .get(`/inventory/item/${barcode}`)
+      .then((res) => {
+        console.log("item", res.data);
+        window.QsmShoppingCart.addCartItem(res.data);
+        setCartItemAdded(Date.now());
+      })
+      .catch((err) => console.log(err));
+    }
+    })
+    .catch((err) => console.log(JSON.stringify(err)))
+    .finally(() => {
+    if (window.ScanditCamScan.isContinueScanning()) scan();
+    });
+  };
 
-  const handleClick= () =>{
-    clicked ? window.ScanditCamScan.cancelScan() : scan();
-    setClicked(!clicked);
-  }
-
-
+  const handleClick = () => {
+  clicked ? window.ScanditCamScan.cancelScan() : scan();
+  setClicked(!clicked);
+  };
 
   return (
-    <div className="shoppingCart__main">
-      <div className="shoppingCart__main--inventory">
-        <div className="inventory">
-          {/* Search bar */}
-          <div className={"search"}>
-            <div className={"searchIcon"}>
-              <i class="fa fa-search"></i>
-            </div>
-            <div className="MuiInputBase-root inputRoot">
-              <input
-                id="qsm-shopping-cart-search-bar"
-                placeholder="SKU/Transaction#"
-                type="text"
-                aria-label="search"
-                class="MuiInputBase-input inputInput"
-                value=""
-                onKeyPress={searchBarKeyPressed}
-                />
-            </div>
-          </div>
-
-          <div className="camera_on_search">
-            <i class="fas fa-camera" aria-hidden="true" onClick={handleClick}></i>
-          </div>
-          {/* Invetory panel */}
-          {/* <div className="shoppingCart__main_root">
-            <ul component="nav" aria-label="main mailbox folders">
-              {window.QsmShoppingCart.getCartItems().map((item, index) => (
-                <>
-                  {index === 0 ? <hr class="solid" /> : null}
-                  <li id="shoppingInventoryParent" key={item.name}>
-                    <div className="shoppingInventoryFirstRow">
-                      <div>
-                        <span className="inventory__card--label">SKU: </span>
-                        {item.sku}
-                      </div>
-                      <div>
-                        <span className="inventory__card--label">UID: </span>
-                        {item.uid}
-                      </div>
-                      <div>
-                        <span className="inventory__card--label">QTY: </span>
-                        {item.qty}
-                      </div>
-                      <div>
-                        <span className="inventory__card--label">PRICE: </span>
-                        {item.unitPrice}
-                      </div>
-                    </div>
-                    <div className={"shopping_InventorySecondRow"}>
-                      <div>{item.description}</div>
-                    </div>
-                    <div className={"iconContainer"}>
-                      <hr class="solid" />
-                    </div>
-                  </li>
-                  <hr class="solid" />
-                </>
-              ))}
-            </ul>
-          </div> */}
-
-          <div className="card_scan_result">
-            {captureData.map((item) => {
-              
-              return (
-                <div>
-                  <div>
-                    {/* <div> {item.Data} </div> */}
-                    <div id={item.id}></div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-        </div>
+  <div className="shoppingCart__main">
+    <div className="shoppingCart__main--inventory">
+    <div className="inventory">
+      {/* Search bar */}
+      <div className={"search"}>
+      <div className={"searchIcon"}>
+        {/* <i class="fa fa-search"></i> */}
+        <i class="fas fa-bars"></i>
+      </div>
+      <div className="MuiInputBase-root inputRoot">
+        <input
+        id="qsm-shopping-cart-search-bar"
+        placeholder="SKU/Transaction#"
+        type="text"
+        aria-label="search"
+        class="MuiInputBase-input inputInput"
+        value=""
+        onKeyPress={searchBarKeyPressed}
+        />
+      </div>
       </div>
 
-      {/* Right Side Bar */}
-      <div className="shoppingCart__main--detail">
-        {/* {console.log(value)} */}
-        <Detail cameraClicked = {!clicked} />
+      <div className={clicked ? "Camera_cancelScan" : "camera_scan"}>
+      <i
+        class="fas fa-camera"
+        aria-hidden="true"
+        onClick={handleClick}
+      ></i>
+      </div>
+      {/* Invetory panel */}
+      <div className="shoppingCart__main_root">
+      <ul component="nav" aria-label="main mailbox folders">
+        {window.QsmShoppingCart.getCartItems().map((item, index) => (
+        <>
+          {/* {index === 0 ? <hr class="solid" /> : null} */}
+          <div className="d-flex">
+          <li id="shoppingInventoryParent" key={item.name}>
+            <div className="shoppingInventoryFirstRow">
+            <div className="d-flex">
+              <span className="inventory__card--label pr">
+              SKU:
+              </span>
+              <div className="fw">{item.sku}</div>
+            </div>
+            <div className="d-flex">
+              <span className="inventory__card--label pr">
+              UID:
+              </span>
+              <div className="fw">{item.uid}</div>
+            </div>
+            <div className="d-flex">
+              <span className="inventory__card--label pr">
+              QTY:
+              </span>
+              <div className="fw"> {item.qty}</div>
+            </div>
+            <div className="d-flex">
+              <span className="inventory__card--label pr">
+              PRICE:
+              </span>
+              <div className="fw">{item.unitPrice}</div>
+            </div>
+            </div>
+            <div className={"shopping_InventorySecondRow"}>
+            <div>{item.description}</div>
+            </div>
+            <div className={"iconContainer"}>
+            <hr class="solid" />
+            </div>
+          </li>
+          <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+          </div>
+        </>
+        ))}
+      </ul>
+      </div>
+
+      <div className="card_scan_result">
+      {captureData.map((item) => {
+        return (
+        <div>
+          <div>
+          {/* <div> {item.Data} </div> */}
+          <div id={item.id}></div>
+          </div>
+        </div>
+        );
+      })}
       </div>
     </div>
+    </div>
+
+    {/* Right Side Bar */}
+    <div className="shoppingCart__main--detail">
+    {/* {console.log(value)} */}
+    <Detail cameraClicked={!clicked} />
+    </div>
+  </div>
   );
 }

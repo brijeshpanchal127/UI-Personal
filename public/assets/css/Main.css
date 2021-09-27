@@ -1,4 +1,3 @@
-
 /*css for index.css*/
 body {
   margin: 0;
@@ -29,7 +28,6 @@ code {
 .cell-div {
   display: table-cell;
 }
-
 
 /*css for login page*/
 
@@ -115,7 +113,7 @@ p {
 }
 
 .search {
-  width: 95%;
+  width: 90%;
   position: relative;
   margin-top: 16px;
   margin-left: 0;
@@ -213,6 +211,12 @@ p {
 
 .shoppingCart__main--inventory {
   width: 70%;
+  overflow-y: scroll;
+}
+
+nav ul {
+  overflow: hidden;
+  overflow-y: scroll;
 }
 
 .shoppingCart__main--detail {
@@ -224,6 +228,11 @@ p {
   flex-direction: column;
   font-size: 13px;
   margin-top: 0.5rem;
+  width: 97%;
+}
+
+#shoppingInventoryParent:hover {
+  background-color: rgb(160, 154, 154);
 }
 
 .shoppingInventoryFirstRow {
@@ -261,13 +270,22 @@ p {
 }
 
 /* camera css class */
-.camera_on_search {
+.Camera_cancelScan {
   display: flex;
   cursor: pointer;
   justify-content: end;
   font-size: 1.33rem;
-  /* margin: -29px 0px 0px 0px; */
-
+  color: red;
+  margin: -44px 10px 0px 0px;
+}
+/* camera css class */
+.camera_scan {
+  display: flex;
+  cursor: pointer;
+  justify-content: end;
+  font-size: 1.33rem;
+  color: #72bb53;
+  margin: -44px 10px 0px 0px;
 }
 
 .card_scan_result {
@@ -321,7 +339,7 @@ i.fa-camera {
   margin-top: 1.5rem;
   font-size: 15px;
   border: none;
-  height: 2rem;
+  height: 3rem;
   border-radius: 5px;
   width: 100%;
 }
@@ -412,3 +430,18 @@ i.fa-camera {
   color: grey;
   margin-right: 10px;
 } */
+
+.d-flex {
+  display: flex;
+}
+
+.item_content {
+  justify-content: space-between;
+}
+
+.fw {
+  font-weight: 700;
+}
+.pr {
+  padding-right: 10%;
+}

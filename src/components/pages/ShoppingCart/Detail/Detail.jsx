@@ -50,13 +50,9 @@ const Detail = (props) => {
     setAnchorEl(null);
   };
 
-
-  
-
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
   const onScan = (data) => {
-    
     setBarcodeData(data);
     props.onScan(data);
   };
@@ -76,12 +72,28 @@ const Detail = (props) => {
       </div>
       <div className={"list"}>TRANS #</div>
       <div className="detail__list">
-        <div className={"list"}>SUBTOTAL</div>
-        <div className={"list"}>DISC</div>
-        <div className={"list"}>GIFT CARD</div>
-        <div className={"list"}>HST</div>
+        <div className="d-flex item_content">
+          <div className={"list"}>SUBTOTAL</div>
+          <div>29.99</div>
+        </div>
+        <div className="d-flex item_content">
+          <div className={"list"}>DISC</div>
+          <div>9.99</div>
+        </div>
+        <div className="d-flex item_content">
+          <div className={"list"}>GIFT CARD</div> <div>9.99</div>
+        </div>
+        <div className="d-flex item_content">
+          <div className={"list"}>HST</div>
+          <div>3.90</div>
+        </div>
       </div>
-      <div className={"balance"}>BALANCE</div>
+      <div className="d-flex item_content">
+        <div className={"balance"}>BALANCE</div>
+        <div>
+          <h3>33.89</h3>
+        </div>
+      </div>
       <button className={"checkout_button"} onClick={handleClick}>
         {console.log(props)}
         <a> CHECKOUT</a>
