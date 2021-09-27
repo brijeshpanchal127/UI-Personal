@@ -13307,6 +13307,7 @@ var settings = {
 	resizePicker: true,
 	barcodePoolSize: 5,
 	selectOnScan: false,
+	closeOnSelect: true,
 	titleText: '&nbsp;',
 	systemErrMsg: 'Failed to capture due to error, please manually enter barcode and report error.',
 	licenseKeyErrMsg: 'Failed to capture due to license key error, please manually enter barcode and report error.'
@@ -13317,6 +13318,7 @@ var _picker;
 var _dom;
 var _resolve;
 var _reject;
+var _isScanning;
 
 var _hourglassIcon = "data:image/gif;base64,R0lGODlhIAAgAPcAAAAAAAEBAQICAgMDAwQEBAUFBQYGBgcHBwgICAkJCQoKCgsLCwwMDA0NDQ4ODg8PDxAQEBERERISEhMTExQUFBUVFRYWFhcXFxgYGBkZGRoaGhsbGxwcHB0dHR4eHh8fHyAgICEhISIiIiMjIyQkJCUlJSYmJicnJygoKCkpKSoqKisrKywsLC0tLS4uLi8vLzAwMDExMTIyMjMzMzQ0NDU1NTY2Njc3Nzg4ODk5OTo6Ojs7Ozw8PD09PT4+Pj8/P0BAQEFBQUJCQkNDQ0REREVFRUZGRkdHR0hISElJSUpKSktLS0xMTE1NTU5OTk9PT1BQUFFRUVJSUlNTU1RUVFVVVVZWVldXV1hYWFlZWVpaWltbW1xcXF1dXV5eXl9fX2BgYGFhYWJiYmNjY2RkZGVlZWZmZmdnZ2hoaGlpaWpqamtra2xsbG1tbW5ubm9vb3BwcHFxcXJycnNzc3R0dHV1dXZ2dnd3d3h4eHl5eXp6ent7e3x8fH19fX5+fn9/f4GBgYKCgoODg4SEhIWFhYaGhoeHh4iIiImJiYqKiouLi4yMjI2NjY6Ojo+Pj5CQkJGRkZKSkpOTk5SUlJWVlZaWlpeXl5iYmJmZmZqampubm5ycnJ2dnZ6enp+fn6CgoKGhoaKioqOjo6SkpKWlpaampqenp6ioqKmpqaqqqqurq6ysrK2tra6urq+vr7CwsLGxsbKysrOzs7S0tLW1tba2tre3t7i4uLm5ubq6uru7u7y8vL29vb6+vr+/v8DAwMHBwcLCwsPDw8TExMXFxcbGxsfHx8jIyMnJycrKysvLy8zMzM3Nzc7Ozs/Pz9DQ0NHR0dLS0tPT09TU1NXV1dbW1tfX19jY2NnZ2dra2tvb29zc3N3d3d7e3t/f3+Dg4OHh4eLi4uPj4+Tk5OXl5ebm5ufn5+jo6Onp6erq6uvr6+zs7O3t7e7u7u/v7/Dw8PHx8fLy8vPz8/T09PX19fb29vf39/j4+Pn5+fr6+vv7+/z8/P39/f7+/v///////yH/C05FVFNDQVBFMi4wAwEAAAAh+QQJCgD/ACwAAAAAIAAgAAAIcgD/CRxIsKDBgwgTKlzIsKHDhxAjRgRAsaLFihL/AVi4MePFjxkFdjw4UmLJgichphy40uHGlxpjtnQps2ZIljVnTrR5E2XMngZhAiU4UqdKn0BXGuWYcGnTpyFnOkUo9ebHi1GZmryKdajXr2DDik0YEAAh+QQJCgD/ACwAAAAAIAAgAAAIcQD/CRxIsKDBgwgTKlzIsKHDhxAjRgRAsaLFihL/AVi4MePFjxkFdjw4UmLJgichphy40uHGlyw1hhQpE2ZLlTVlziRoc6dBmD5R6gxKs2jQjkiPktx58ybDpjOhhpTq8aPFqRyrWr1KtKvXr2DDDgwIACH5BAkKAP8ALAAAAAAgACAAAAh0AP8JHEiwoMGDCBMqXMiwocOHECNGBECxosWKEv8BWLgx48WPGQV2PDhSYsmCJyGmHLjS4caTL0OK1EgzpsyZMVuarHnToM2eBH8CpTlzaMejQFfqbFiyqUydSzkmjKoQ6tOPFkNGpUoS68WhYMOKHUuWYEAAIfkECQoA/wAsAAAAACAAIAAACHIA/wkcSLCgwYMIEypcyLChw4cQI0YEQLGixYoS/wFYuDHjxY8ZBXY8OFJiyYInIaYcuNLhxpUtXWqc+TIkwZo1bd6kqdNgzp47Y3pkCVSk0Zk9YeosydRmTKEcdxIN+dTpR4tUo5q8erGo169gw4olGBAAIfkECQoA/wAsAAAAACAAIAAACHMA/wkcSLCgwYMIEypcyLChw4cQI0YEQLGixYoS/wFYuDHjxY8ZBXY8OFJiyYInIaYcuNJhS40hRcLcSDMmy5kwbd6sqZMgz547gd6UCbSj0Z4rXzYsyTTmS6UcfUoNOfIkVIUfL1KNajKrVqFgw4odGzYgACH5BAkKAP8ALAAAAAAgACAAAAh4AP8JHEiwoMGDCBMqXMiwocOHECNGBECxosWKEv8BWLgx48WPGQV2PDhSYsmCJyGmHLjSYUuNIUXClPny4cabM2OyhFnTZE6dBHECDbpz6MyOPRuuTKqwpNOYL5kifFrU486RUkl+tBiyZ9agWy8aHUu2rNmzBAMCACH5BAkKAP8ALAAAAAAgACAAAAh0AP8JHEiwoMGDCBMqXMiwocOHECNGBECxosWKEv8BWLgx48WPGQV2PDhSYsmCJyGmHLjSYUuNIUXCJPjy4cabM2OyhFnTZE6dNH8CzdnTpkyhHknqLMk05suiCZvuDIkT51GPHy1S5Yg1q9ahYMOKHUs2YUAAIfkECQoA/wAsAAAAACAAIAAACHQA/wkcSLCgwYMIEypcyLChw4cQI0YEQLGixYoS/wFYuDHjxY8ZBXY8OFJiyYInIaYcuNJhS40hRZKMyRLmxpcTbdI0eHMnT5g+a8oM2rGoz5U4GZZcGvNlUoVMhXrU2fNpwo8XQya1yhNr1qBgw4odS3ZgQAAh+QQJCgD/ACwAAAAAIAAgAAAIcwD/CRxIsKDBgwgTKlzIsKHDhxAjRgRAsaLFihL/AVi4MePFjxkFdjw4UmLJgichphy40mFLjSFFkozJEqZMmjU3vvRoEydBnT5/1gzasajPlTsZllwa82VShUaZhgRKtafJjxancvSI9WLQr2DDih1LMCAAIfkECQoA/wAsAAAAACAAIAAACHMA/wkcSLCgwYMIEypcyLChw4cQI0YEQLGixYoS/wFYuDHjxY8ZBXY8OFJiyYInIaYcuNJhS40hRZKMyRIlTYIbc960+TKkzp01ZQLtSHTnyp4MSyqN+RKpwqI/nSbUSRWmz48WfXL0iPUi0K9gw4odSzAgACH5BAkKAP8ALAAAAAAgACAAAAhzAP8JHEiwoMGDCBMqXMiwocOHECNGBECxosWKEv8BWLgx48WPGQV2PDhSYsmCJyGmHLjSYUuNIUWSjMkSJU2CI196hHnTpk6TNXvy7Piz4cqiCksqjZnTZkiiMKE+jUoVKcKPF6cm9Yg1q9CvYMOKHTswIAAh+QQJCgD/ACwAAAAAIAAgAAAIdQD/CRxIsKDBgwgTKlzIsKHDhxAjRgRAsaLFihL/AVi4MePFjxkFdjw4UmLJgichphy40mFLjSFFkozJEiVNgiNfeoR506ZOkzV78gxKc+VPjjiThsw59GjCjhujylwKU6rUpR8tUlXo1GBWkELDih1LtuzAgAAh+QQJCgD/ACwAAAAAIAAgAAAIdAD/CRxIsKDBgwgTKlzIsKHDhxAjSjwIAMDEhRYtXkSoUeNGghkFevzosePHfyNRiiRp0OTFlCtVToQpsuJLihIr6sQZkaZOmz155rQZciDNhiaLypy5MiTQmyqdnky6lGXUkyBjYjVadSvKo17Dih1LlmxAACH5BAkKAP8ALAAAAAAgACAAAAh8AP8JHEiwoMGDCBMqXMiwocOHECNKnEixosWLEQEAkKhR4UaNIBGC7Lgx4UeCJVGqTHnwpMqBLP+5FCnTYMmYNXGubKlzZsuaD33azEm041CdMGWedIlTaMGlRJPuNKk06kuBTleOFLkVKVavJsFiHEu2rNmzaNOqXYs2IAAh+QQJCgD/ACwAAAAAIAAgAAAIcwD/CRxIsKDBgwgTKlzIsKHDhxAjSvwHAMBEhRYtXjyoUeNGgh0pfhwYUqDHiyVJbkypciJLkSchVvSYkWJMiTVzjoTJc2ZFlD457rwp8iNRm0cZEn358CbTpgWfymyZdKpUlyZ3giyq1WTVrmDDih37MSAAOw==";
 
@@ -13346,6 +13348,7 @@ var configure = (licenseKey, _settings) => {
 	var enginePath = settings.enginePath || context+ "scandit/";
 	log('enginePath', enginePath);
 
+	_isScanning = false;
 	_configurePromise = new Promise((resolve, reject) => {
 		(async () => {
 			const resp1 = await fetch(enginePath + '/scandit-engine-sdk.min.js');
@@ -13379,12 +13382,23 @@ var configure = (licenseKey, _settings) => {
 	});
 };
 
+var reconfigure = (_settings) => {
+	if (_settings) {
+		Object.keys(_settings).forEach(function(key,index) {
+			settings[key] = _settings[key];
+		});
+	}
+	log('settings', settings);
+}
+
 var _isQuickScan = () => settings && (settings.quickScan || (settings.barcodePoolSize===1 && settings.selectOnScan));
+
 var quickScan = (parentContainerId) => scan(parentContainerId, true);
 
 var scan = (parentContainerId, isQuickScan) => {
 	settings.quickScan = isQuickScan || false;
-
+	_isScanning = true;
+	
 	return new Promise((resolve, reject) => {
 		_resolve = resolve;
 		_reject = reject;
@@ -13597,21 +13611,43 @@ var setResults = (contents) => {
 	if (_dom.results) _dom.results.innerHTML = contents;
 };
 
-var returnBarcode = (barcode) => {
-	if (_picker) _picker.pauseScanning(true);
-	_dom.parent.style.display = 'none';
+var returnBarcode = (barcode, cancelScan) => {
+	if (!_isScanning) return;
+
+	if (settings.closeOnSelect || cancelScan) {
+		if (_picker) _picker.pauseScanning(true);
+		_dom.parent.style.display = 'none';
+		_isScanning = false;
+	}
 	if (barcode) response(0, 'Barcode selected', barcode.data, ScanditSDK.Barcode.Symbology.toHumanizedName(barcode.symbology));
 	else response(1, 'Scan cancelled');
 }
 
-var cancelScan = () => returnBarcode(null);
+var cancelScan = () => {
+	returnBarcode(null, true);
+	return new Promise(
+		(resolve,reject) => resolve({ status: 1, message: 'Scan Cancelled', barcode:null })
+	)
+}
+
+var isScanning = () => {
+	return _isScanning;
+}
+
+var isContinueScanning = () => {
+	return !settings.closeOnSelect && _isScanning;
+}
 
 return {
-	configure, 
+	configure,
+	reconfigure,
 	scan,
 	quickScan,
-	cancelScan
+	cancelScan,
+	isScanning,
+	isContinueScanning
 };
 
 
 }))
+

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import authService from "../../services/auth.service";
-import landingService from "../../services/landing.service";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 

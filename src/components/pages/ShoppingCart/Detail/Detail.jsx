@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./Detail.css";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import DescriptionIcon from "@material-ui/icons/Description";
@@ -11,43 +10,11 @@ import Button from "@material-ui/core/Button";
 import PaymentOption from "../../../../retailit/reusableTerminal/PaymentOption";
 import CaptureCode from "../CaptureCode/CaptureCode";
 
-const useStyles = makeStyles((theme) => ({
-  list: {
-    marginTop: "0.5rem",
-    fontSize: "12px",
-    color: "grey",
-  },
-  balance: {
-    color: "grey",
-    fontWeight: "bold",
-    marginTop: "1rem",
-    fontSize: "1rem",
-  },
-  button: {
-    backgroundColor: "#72BB53",
-    color: "white",
-    marginTop: "1.5rem",
-    fontSize: "15px",
-    border: "none",
-    height: "2rem",
-    borderRadius: "5px",
-    "&:hover": {
-      cursor: "pointer",
-      backgroundColor: "#4c7a34",
-    },
-    width: "100%",
-  },
-  iconsContainer: {
-    width: "100%",
-    display: "flex",
-    justifyContent: "flex-end",
-  },
-}));
-
-const Detail = () => {
-  const classes = useStyles();
+const Detail = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
+
   const [terminalbox, setTerminalbox] = useState(false);
+  const [barcodeData, setBarcodeData] = useState(null);
   const [albums, setAlbums] = useState([]);
 
   useEffect(() => {
@@ -83,29 +50,40 @@ const Detail = () => {
     setAnchorEl(null);
   };
 
+
+  
+
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
+  const onScan = (data) => {
+    
+    setBarcodeData(data);
+    props.onScan(data);
+  };
   return (
     <div className="detail">
-
-<div> 
-
-<CaptureCode />
-</div>
-      <div className={classes.iconsContainer}>
-        <DescriptionIcon />
-        <DeleteForeverIcon />
-        <MoreVertIcon />
-      </div>   
-      <div className={classes.list}>TRANS #</div>
-      <div className="detail__list">
-        <div className={classes.list}>SUBTOTAL</div>
-        <div className={classes.list}>DISC</div>
-        <div className={classes.list}>GIFT CARD</div>
-        <div className={classes.list}>HST</div>
+      <div id="scandit-scancam-scanner-pane" />
+      <div className={"iconsContainer"}>
+        <div className="m-5">
+          <i class="fa fa-file" aria-hidden="true"></i>
+        </div>
+        <div className="m-5">
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        </div>
+        <div className="m-5">
+          <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+        </div>
       </div>
-      <div className={classes.balance}>BALANCE</div>
-      <button className={classes.button} onClick={handleClick}>
+      <div className={"list"}>TRANS #</div>
+      <div className="detail__list">
+        <div className={"list"}>SUBTOTAL</div>
+        <div className={"list"}>DISC</div>
+        <div className={"list"}>GIFT CARD</div>
+        <div className={"list"}>HST</div>
+      </div>
+      <div className={"balance"}>BALANCE</div>
+      <button className={"checkout_button"} onClick={handleClick}>
+        {console.log(props)}
         <a> CHECKOUT</a>
       </button>
 
@@ -126,7 +104,6 @@ const Detail = () => {
           marginTop: "-8%",
         }}
       >
-      
         {/* <Typography className={classes.typography}> */}
         <PaymentOption />
         {/* </Typography> */}

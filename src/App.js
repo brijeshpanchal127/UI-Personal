@@ -1,17 +1,13 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import Landing from './components/pages/Landing/Landing';
-import JargonList from './components/jargon.component';
-import JargonService from './services/jargon.service';
 import LoginPage from "./components/pages/LoginPage.jsx";
 import ShoppingCart from './components/pages/ShoppingCart/ShoppingCart.jsx';
-import Test from './components/pages/test'
+
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
-import CreditCard from "@material-ui/icons/CreditCard";
 
 class App extends Component {
 
@@ -22,11 +18,8 @@ class App extends Component {
         <Switch>
           <Route exact path="/shopping">
             <ShoppingCart />
-          </Route>      
-          <Route exact path="/test">
-            <Test />
-          </Route>
-          <Route exact path="/landing">
+          </Route> 
+            <Route exact path="/landing">
             <Landing />
           </Route>
           <Route exact path="/">

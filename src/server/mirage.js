@@ -1,19 +1,11 @@
 import { Server, Model } from "miragejs";
-import jargons from "./fixtures/jargons";
-import axios from "axios";
-import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
-import CreditCardIcon from "@material-ui/icons/CreditCard";
-import ReceiptIcon from "@material-ui/icons/Receipt";
-import AppleIcon from "@material-ui/icons/Apple";
-import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
-import CardGiftcardIcon from "@material-ui/icons/CardGiftcard";
+import inventories from "./fixtures/inventories";
 
 export function createServer({ environment = "development" } = {}) {
   return new Server({
     environment,
-
     models: {
-      jargon: Model,
+      inventory: Model,
     },
 
     /*
@@ -136,7 +128,7 @@ export function createServer({ environment = "development" } = {}) {
     */
 
     fixtures: {
-      jargons,
+      inventories,
     },
 
     seeds(server) {
@@ -161,6 +153,22 @@ export function createServer({ environment = "development" } = {}) {
             accessToken: attrs["username"] + "_" + attrs["password"],
           };
         }
+      });
+
+      this.get("/landing/inventory/item/Scandit", 
+        {id:128, sku:'Scandit', uid:'1207126312638', description:'Case Cover', qty:1, unitPrice:5.99}
+      );
+
+      this.get("/landing/inventory/item/SCANDIT", 
+        {id:129, sku:'SCANDIT', uid:'1207126312638', description:'Case Cover', qty:1, unitPrice:5.99}
+      );
+
+      this.get("/landing/inventory/item/:barcode", (schema, request) => {
+        let desc = ['AirPods with Charging Case', 'Foldable Tech Holder', 'Charging Cables','Screen Protectors','Batteries', 'Leather Cases', 'Memory Card', 'Drones', 'Cameras','Power Banks'];
+        let barcode = request.params.barcode;
+        let id = Date.now();
+        let price = Math.floor(Math.random() * (1000 - 5 + 1) + 5) + 0.99;
+        return {id:id, sku:barcode, uid:id.toString(), description:desc[id%10], qty:1, unitPrice:price};
       });
 
       this.get("/landing/stores", () => {
@@ -359,20 +367,57 @@ export function createServer({ environment = "development" } = {}) {
         };
       });
 
-       this.get("/landing/shopping", () => {
-      //   "results": [
-      //     {
-      //       "gender": "female",
-      //       "name": {
-      //         "title": "Mademoiselle",
-      //         "first": "Francesca",
-      //         "last": "Mathieu"
-      //       },
-      //     ],
-              return {
-                messages: ["test", "test"],
-              };
-            });
+      // this.get("/landing/shopping?barcode=1234", () => {
+
+      //   //   "results": [
+      //   //     {
+      //   //       "gender": "female",
+      //   //       "name": {
+      //   //         "title": "Mademoiselle",
+      //   //         "first": "Francesca",
+      //   //         "last": "Mathieu"
+      //   //       },
+      //   //     ],
+      //   return {
+      //     messages: ["test", "test"],
+      //   };
+      // });
+
+      this.get("/landing/shopping", () => {
+        console.log(`returning barcode from backend`);
+        return {
+          captureCodeData: [
+            {id: "capture_detail_result"},
+            {id: "capture_detail_symbology"},
+          ],
+          // barcodeValues: `Name: Iphone`,
+          // barcodeValues: { 
+            // SKU:"IPHONE 12 MAX" , 
+            // UID: "2342374987272", 
+            // QTY: "1", 
+            // PRICE: "329.99"
+           }
+        // };
+      });
+
+      this.post("/landing/shopping/code", () => {
+        console.log(`returning barcode from backend`);
+     
+        
+        return {
+
+          capturedCodeData: [
+            {id: "capture_detail_result"},
+            {id: "capture_detail_symbology"}          ],
+          // barcodeValues: `Name: Iphone`,
+          // barcodeValues: { 
+            // SKU:"IPHONE 12 MAX" , 
+            // UID: "2342374987272", 
+            // QTY: "1", 
+            // PRICE: "329.99"
+           }
+        // };
+      });
 
       // get message
       // this.get("/landing/message", () => {

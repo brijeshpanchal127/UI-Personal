@@ -28,15 +28,17 @@ export default function MainPanel() {
     <div className="mainPanel">
       <div className={"search"}>
         <div className={"searchIcon"}>
-          <i class="fas fa-bars"></i>
+
+          <i class="fas fa-bars" style={{color: 'grey'}}></i>
+
           {/* <ReorderRoundedIcon /> */}
         </div>
         <div className="MuiInputBase-root inputRoot">
           <input
-            placeholder="Store"
+            placeholder="SKU / Serial# / Transaction# / Text  "
             type="text"
             aria-label="search"
-            class="MuiInputBase-input inputInput"
+            className="MuiInputBase-input inputInput"
             value=""
           />
         </div>

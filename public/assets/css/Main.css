@@ -1,9 +1,40 @@
+
+/*css for index.css*/
 body {
-  background-color: #EEEEEE;
+  margin: 0;
+  background-color: #eeeeee;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.table-div {
+  width: 95%;
+  display: table;
+  margin: 0;
+  padding: 5px;
+}
+
+.row-div {
+  display: table-row;
+}
+
+.cell-div {
+  display: table-cell;
+}
+
+
+/*css for login page*/
+
 #loginPanel {
-  background-color: #EEEEEE;
+  background-color: #eeeeee;
   width: 100%;
   overflow-y: scroll;
 }
@@ -42,14 +73,14 @@ p {
   justify-content: center;
   margin-top: 1.5rem;
   margin-right: 10%;
-  background-color: "#72BB53";
+  background-color: '#72BB53';
   border: none;
   padding: 4px;
   text-align: center;
   width: 100%;
 }
 
-#loginButton>Button {
+#loginButton > Button {
   width: 50%;
   padding: 5px;
   max-width: 40%;
@@ -64,14 +95,14 @@ p {
 }
 
 .MuiList-root {
-  background-color: "#72BB53" !important;
-  color: "#ffffff" !important
+  background-color: '#72BB53' !important;
+  color: '#ffffff' !important;
 }
 
 /* Main Panel css*/
 
 .mainPanel {
-  background-color: #EEEEEE;
+  background-color: #eeeeee;
   width: 100%;
   overflow-y: scroll;
 }
@@ -84,7 +115,7 @@ p {
 }
 
 .search {
-  width: 100%;
+  width: 95%;
   position: relative;
   margin-top: 16px;
   margin-left: 0;
@@ -106,7 +137,7 @@ p {
 .MuiInputBase-input {
   font: inherit;
   color: currentColor;
-  width: 100%;
+  width: 90%;
   border: 0;
   height: 1.1876em;
   margin: 0;
@@ -127,7 +158,7 @@ p {
   font-size: 1rem;
   box-sizing: border-box;
   align-items: center;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   font-weight: 400;
   line-height: 1.1876em;
   letter-spacing: 0.00938em;
@@ -142,7 +173,7 @@ p {
   margin-top: 1.5rem;
   text-align: center;
   margin-left: 1.5rem;
-  background-color: #72BB53;
+  background-color: #72bb53;
 }
 
 .card_container {
@@ -155,7 +186,7 @@ p {
 
 .card_container h5 {
   font-size: 1.5rem;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   font-weight: 400;
   line-height: 1.334;
   letter-spacing: 0em;
@@ -170,8 +201,8 @@ p {
 /*css for ShoppingCardMainPanel */
 
 .shoppingCart__main_root {
-  width: "100%";
-  margin-top: "20px";
+  width: '100%';
+  margin-top: '20px';
 }
 
 .shoppingCart__main {
@@ -199,7 +230,7 @@ p {
   display: flex;
   justify-content: space-between;
   width: 90%;
-  margin-right: 1rem
+  margin-right: 1rem;
 }
 
 .shopping_InventorySecondRow {
@@ -207,7 +238,7 @@ p {
   justify-content: space-between;
   width: 90%;
   margin-top: 0.5rem;
-  margin-right: 1rem
+  margin-right: 1rem;
 }
 
 .iconContainer {
@@ -218,7 +249,7 @@ p {
   bottom: 20;
 }
 
-.capture_btn{
+.capture_btn {
   color: white;
   width: 100%;
   border: none;
@@ -226,5 +257,158 @@ p {
   font-size: 15px;
   margin-top: 1.5rem;
   border-radius: 5px;
-  background-color: #72BB53;
-} 
+  background-color: #72bb53;
+}
+
+/* camera css class */
+.camera_on_search {
+  display: flex;
+  cursor: pointer;
+  justify-content: end;
+  font-size: 1.33rem;
+  /* margin: -29px 0px 0px 0px; */
+
+}
+
+.card_scan_result {
+  /* color: white; */
+  width: 400px;
+  height: 150px;
+  margin-top: 1.5rem;
+  margin-left: 1.5rem;
+  /* background-color: gray; */
+}
+
+i.fa-camera {
+  font-size: 50px;
+}
+
+/*css for SideBar */
+
+.nested_list_sidebar {
+  width: 100%;
+  max-width: 360px;
+  background-color: lightgrey;
+  height: 100vh;
+  overflow: scroll;
+}
+.nested {
+  padding-left: 32px;
+}
+/*css for detail.jsx */
+.detail {
+  background-color: #f7f6f6;
+  height: 100%;
+  padding: 1rem;
+}
+
+.list {
+  margin-top: 0.5rem;
+  font-size: 12px;
+  color: gray;
+}
+
+.balance {
+  color: gray;
+  font-weight: bold;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.checkout_button {
+  background-color: #72bb53;
+  color: white;
+  margin-top: 1.5rem;
+  font-size: 15px;
+  border: none;
+  height: 2rem;
+  border-radius: 5px;
+  width: 100%;
+}
+.checkout_button:hover {
+  cursor: pointer;
+  background-color: #4c7a34;
+}
+.m-5 {
+  margin: 5px;
+}
+
+.iconsContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* css for paymentOption*/
+.option_list {
+  padding: 5%;
+}
+
+#amount_input {
+  margin: 0 0 0 4px;
+  width: 25%;
+  padding: 2%;
+}
+#button_submit {
+  background-color: #72bb53;
+  width: 100%;
+  color: #ffffff;
+  padding: 4%;
+  border: none;
+}
+
+.radio_btn {
+  padding: 20%;
+  margin: 4%;
+}
+
+.amount_div {
+  display: flex;
+  margin: 2%;
+}
+
+.teminal_label {
+  padding: 1px 10px 1px 3px;
+  font-size: x-small;
+}
+.amount_label {
+  font-size: x-small;
+  padding-top: 6px;
+  margin-right: 9px;
+}
+
+/*css for inventory*/
+.inventory__main_root {
+  width: 100%;
+  margin-top: 20px;
+}
+.inventoryParent {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  margin-top: 0.5rem;
+}
+
+.inventoryFirstRow {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin-right: 1rem;
+}
+.inventorySecondRow {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin-right: 1rem;
+  margin-top: 0.5rem;
+}
+/* .inventory{
+  overflow-y: scroll;
+  height: 100%;
+  background-color: #F7F6F6;
+}
+
+.inventory__card--label{
+  color: grey;
+  margin-right: 10px;
+} */

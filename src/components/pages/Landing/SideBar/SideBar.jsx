@@ -11,40 +11,25 @@ import CardGiftcardIcon from "@material-ui/icons/CardGiftcard";
 import ListItemText from "@material-ui/core/ListItemText";
 import Collapse from "@material-ui/core/Collapse";
 import SettingsIcon from "@material-ui/icons/Settings";
-import MessageIcon from "@material-ui/icons/Message";
+import MessageOutlinedIcon from "@material-ui/icons/MessageOutlined";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import Popper from "@material-ui/core/Popper";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
+import SettingsApplicationsIcon from '@material-ui/icons/SettingsApplicationsOutlined';
+import ArrowDropDown from '@material-ui/icons/ArrowDropDownOutlined';
+import ArrowDropUp from '@material-ui/icons/ArrowDropUpOutlined'
 import moment from "moment";
 
 import {
   selectCurrentFunction,
   selectStore,
-  MessageData,
 } from "../../../../reducers/actions/landing.action";
-import messageService from "../../../../services/message.service";
-import { Redirect, useHistory } from "react-router-dom";
-import { CompassCalibrationOutlined } from "@material-ui/icons";
-import { Button } from "@material-ui/core";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: "100%",
-    maxWidth: 360,
-    backgroundColor: "lightgrey",
-    height: "100vh",
-    overflowY: "scroll",
-  },
-  nested: {
-    paddingLeft: theme.spacing(4),
-  },
-}));
+import { useHistory } from "react-router-dom";
 
 export default function SideBar() {
-  const classes = useStyles();
   const [openCollapse, setCollapse] = React.useState(false);
   const [key, setKey] = React.useState(null);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -56,26 +41,12 @@ export default function SideBar() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  // const open = Boolean(anchorEl);
-  // const id = open ? "spring-popper" : undefined;
 
   const selectedStore = useSelector((state) => state.landing.selectedStore);
-  const displayProfileName = useSelector(
-    (state) => state.display.displayProfile
-  );
-  const storeLocations = useSelector(
-    (state) => state.landing.storesData.storeLocations
-  );
-
   const sidebar =
     useSelector((state) => state.landing.storesData.sidebar) || [];
   const dispatch = useDispatch();
-  const auth = useSelector((state) => state.login.auth);
   const history = useHistory();
-
-  // useEffect(() => {
-  //   dispatch(messageService.getMessages(auth.accessToken));
-  // }, []);
 
   const handleClick = (e, type, key) => {
     setKey(key);
@@ -95,11 +66,18 @@ export default function SideBar() {
       component="nav"
       aria-labelledby="nested-list-subheader"
       subheader={
-        <ListSubheader component="div" id="nested-list-subheader">
+        <ListSubheader component="div" id="nested-list-subheader"  style={{
+          display: "flex" , 
+          fontWeight: "bold",
+          fontSize: '1.33rem',
+          padding: '15px 5px 18px 8px',
+          borderBottom: '2px solid #8f9394',
+          color: '#282929'
+        }}>
           QPOS
         </ListSubheader>
       }
-      className={classes.root}
+      className={"nested_list_sidebar"}
     >
       {/* {storesData.storeProfile[currentStoreFunction]?.map((sidebarItem) => (
         <ListItem button>
@@ -166,10 +144,10 @@ export default function SideBar() {
             sidebarIcon = <CardGiftcardIcon />;
             break;
           case "MessageIcon":
-            sidebarIcon = <MessageIcon />;
+            sidebarIcon = <MessageOutlinedIcon />;
             break;
           case "SettingsIcon":
-            sidebarIcon = <SettingsIcon />;
+            sidebarIcon = <SettingsApplicationsIcon />;
             break;
           case "LocationOnIcon":
             sidebarIcon = <LocationOnIcon />;
@@ -181,7 +159,8 @@ export default function SideBar() {
 
         return (
           <div>
-            <ListItem button onClick={(e) => handleClick(e, sidebarItems, idx)} >
+            <ListItem button onClick={(e) => handleClick(e, sidebarItems, idx)}>
+            {openCollapse && key === idx ? <ArrowDropUp /> : <ArrowDropDown  />}
               <ListItemIcon>{sidebarIcon}</ListItemIcon>
               <ListItemText primary={sidebarItems.text} key={idx} />
               {sidebarItems.type === "MESSAGES" && (
@@ -190,7 +169,9 @@ export default function SideBar() {
               {sidebarItems.type === "PROMOS" && (
                 <div>
                   <div>
-                    <MoreVertIcon onClick={handleToggle} />
+                    <MoreVertIcon onClick={handleToggle} /><span>{sidebar[1]["sublist"].length}</span>
+                    
+                    
                   </div>
                   <div>
                     <Menu
@@ -226,11 +207,7 @@ export default function SideBar() {
                   </div>
                 </div>
               )}
-              {openCollapse && key === idx ? (
-                <ExpandLess />
-              ) : (
-                <ExpandMore />
-              )}
+              {/* {openCollapse && key === idx ? <ExpandLess /> : <ExpandMore />} */}
             </ListItem>
             <Collapse
               in={openCollapse && key === idx}
@@ -253,7 +230,7 @@ export default function SideBar() {
                     return selectedStore !== null ? (
                       <ListItem
                         button
-                        className={classes.nested}
+                        className={"nested"}
                         onClick={item.type === "SWITCH STORE" && switchStore}
                       >
                         <ListItemIcon>{sublistIcon}</ListItemIcon>
@@ -271,7 +248,7 @@ export default function SideBar() {
                       </ListItem>
                     ) : (
                       item.type !== "SWITCH STORE" && (
-                        <ListItem button className={classes.nested}>
+                        <ListItem button className={"nested"}>
                           <ListItemText primary={item.text} />
                           {sidebarItems.type === "MESSAGES" && (
                             <div>

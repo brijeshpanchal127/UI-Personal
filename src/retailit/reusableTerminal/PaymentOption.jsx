@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -7,13 +7,9 @@ import Collapse from "@material-ui/core/Collapse";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import Divider from "@material-ui/core/Divider";
-import { useStyles } from "./PaymentOptionStyles.js";
-
 
 const PaymentOption = (props) => {
-  const classes = useStyles();
   const [selectedIndex, setSelectedIndex] = React.useState("");
-  const [value, setValue] = React.useState("terminal1");
 
   const checkOutOption =
     useSelector((state) => state.landing.storesData.checkOutOption) || [];
@@ -59,20 +55,15 @@ const PaymentOption = (props) => {
                 timeout="auto"
                 unmountOnExit
               >
-                <div className={classes.option_list}>
-                  <div
-                    id={option.div_id}
-                    key={option.key}
-                    className={classes.item}
-                  ></div>
+                <div className={"option_list"}>
+                  <div id={option.div_id} key={option.key}></div>
                 </div>
               </Collapse>
               <Divider />
             </div>
           </div>
         );
-      })
-      }
+      })}
     </List>
   );
 };

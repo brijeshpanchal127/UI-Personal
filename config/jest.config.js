@@ -17,19 +17,19 @@ module.exports = {
   rootDir: '../',
 
   // Required for enzyme with jest
-/*
   setupFilesAfterEnv: [
-    '<rootDir>/test/config/setupEnzyme.js'
+    '<rootDir>/config/setupEnzyme.js'
   ],
-*/
 
   /* COVERAGE */
-//  collectCoverage: true,
-//  collectCoverageFrom: [
-//    'src/**/*.{js,jsx}',
-//    '!**/test/**',
-//    '!**/node_modules/**',
-//    '!**/dist/**'
-//  ],
-//  coverageDirectory: '<rootDir>/test/coverage/'
+  collectCoverage: true,
+  collectCoverageFrom: [
+    'src/**/*.{js,jsx}',
+    '!**/__test__/**',
+    '!**/node_modules/**',
+    '!**/dist/**',
+    '!src/server/**',
+    '!coverage/**'
+  ],
+  coverageDirectory: '<rootDir>/coverage/'
 };
