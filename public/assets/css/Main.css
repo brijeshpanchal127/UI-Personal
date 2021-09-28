@@ -65,7 +65,7 @@ p {
   font-weight: bold;
 }
 
-#loginButton {
+ #loginButton {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -75,8 +75,8 @@ p {
   border: none;
   padding: 4px;
   text-align: center;
-  width: 100%;
-}
+  width: 50%;
+} 
 
 #loginButton > Button {
   width: 50%;
@@ -84,7 +84,7 @@ p {
   max-width: 40%;
   color: whitesmoke;
   background-color: #4caf50;
-}
+} 
 
 
 #password {
