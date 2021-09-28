@@ -97,6 +97,14 @@ p {
   color: '#ffffff' !important;
 }
 
+#nested-list-subheader {
+  display: flex;
+  font-weight: bold;
+  font-size: 1.33rem;
+  padding: 15px 5px 18px 8px;
+  border-bottom: 2px solid #8f9394;
+  color: #282929;
+}
 /* Main Panel css*/
 
 .mainPanel {
@@ -320,6 +328,11 @@ i.fa-camera {
   padding: 1rem;
 }
 
+.collapsed_sidebar {
+  background-color: lightgrey;
+  height: 100vh;
+}
+
 .list {
   margin-top: 0.5rem;
   font-size: 12px;
@@ -431,6 +444,11 @@ i.fa-camera {
   margin-right: 10px;
 } */
 
+/*comman css*/
+.m10 {
+  margin: 10px;
+}
+
 .d-flex {
   display: flex;
 }
@@ -444,4 +462,67 @@ i.fa-camera {
 }
 .pr {
   padding-right: 10%;
+}
+
+.pl {
+  padding-left: 15rem;
+}
+
+.p10 {
+  padding: 10px;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+}
+/* Extra small devices (phones, 780px and down) */
+@media only screen and (max-width: 768px) {
+  .card {
+    width: 320px;
+    height: 114px;
+  }
+
+  .card_container h5 {
+    font-size: large;
+  }
+  i.fa-camera {
+    font-size: 25px;
+    margin-top: 13px;
+  }
+
+  #shoppingInventoryParent {
+    margin-top: 2.5rem;
+  }
+  .shoppingInventoryFirstRow {
+    display: grid;
+  }
+  .nested_list_sidebar {
+    width: 100%;
+    max-width: 150px;
+  }
+  .MuiListItem-gutters {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .MuiListItemIcon-root {
+    min-width: 28px !important;
+  }
+  .checkout_button {
+    height: 2rem;
+  }
+
+  /*login page*/
+  #password {
+    height: 30px;
+  }
+  #username {
+    height: 30px;
+  }
+  #loginButton > Button {
+    width: 100%;
+    max-width: 100%;
+  }
+  .inputFields > P {
+    font-weight: 900;
+  }
 }

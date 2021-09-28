@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
 import ListSubheader from "@material-ui/core/ListSubheader";
@@ -18,9 +18,9 @@ import ExpandMore from "@material-ui/icons/ExpandMore";
 import Popper from "@material-ui/core/Popper";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import SettingsApplicationsIcon from '@material-ui/icons/SettingsApplicationsOutlined';
-import ArrowDropDown from '@material-ui/icons/ArrowDropDownOutlined';
-import ArrowDropUp from '@material-ui/icons/ArrowDropUpOutlined'
+import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplicationsOutlined";
+import ArrowDropDown from "@material-ui/icons/ArrowDropDownOutlined";
+import ArrowDropUp from "@material-ui/icons/ArrowDropUpOutlined";
 import moment from "moment";
 
 import {
@@ -33,13 +33,23 @@ export default function SideBar() {
   const [openCollapse, setCollapse] = React.useState(false);
   const [key, setKey] = React.useState(null);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [size, setSize] = useState();
+  const [open, setOpen] = useState(true);
 
+  useEffect(() => {
+    setSize(window.innerWidth);
+    window.innerWidth < 769 && setOpen(false);
+  }, []);
   const handleToggle = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleSidebarClick = () => {
+    setOpen(!open);
   };
 
   const selectedStore = useSelector((state) => state.landing.selectedStore);
@@ -60,22 +70,26 @@ export default function SideBar() {
     history.push("/landing");
     //return <Redirect to="/landing" />;
   };
-
-  return (
+  debugger;
+  return open ? (
     <List
       component="nav"
       aria-labelledby="nested-list-subheader"
       subheader={
-        <ListSubheader component="div" id="nested-list-subheader"  style={{
-          display: "flex" , 
-          fontWeight: "bold",
-          fontSize: '1.33rem',
-          padding: '15px 5px 18px 8px',
-          borderBottom: '2px solid #8f9394',
-          color: '#282929'
-        }}>
-          QPOS
-        </ListSubheader>
+        <div>
+          <ListSubheader component="div" id="nested-list-subheader">
+            <div className="d-flex">
+              <div> QPOS</div>
+              <div className="pl">
+                <i
+                  class="fas fa-bars"
+                  id="btn"
+                  onClick={handleSidebarClick}
+                ></i>
+              </div>
+            </div>
+          </ListSubheader>
+        </div>
       }
       className={"nested_list_sidebar"}
     >
@@ -160,7 +174,11 @@ export default function SideBar() {
         return (
           <div>
             <ListItem button onClick={(e) => handleClick(e, sidebarItems, idx)}>
-            {openCollapse && key === idx ? <ArrowDropUp /> : <ArrowDropDown  />}
+              {openCollapse && key === idx ? (
+                <ArrowDropUp />
+              ) : (
+                <ArrowDropDown />
+              )}
               <ListItemIcon>{sidebarIcon}</ListItemIcon>
               <ListItemText primary={sidebarItems.text} key={idx} />
               {sidebarItems.type === "MESSAGES" && (
@@ -169,9 +187,8 @@ export default function SideBar() {
               {sidebarItems.type === "PROMOS" && (
                 <div>
                   <div>
-                    <MoreVertIcon onClick={handleToggle} /><span>{sidebar[1]["sublist"].length}</span>
-                    
-                    
+                    <MoreVertIcon onClick={handleToggle} />
+                    <span>{sidebar[1]["sublist"].length}</span>
                   </div>
                   <div>
                     <Menu
@@ -316,6 +333,54 @@ export default function SideBar() {
           </ListItem>
         </List>
       </Collapse> */}
+    </List>
+  ) : (
+    <List
+      component="nav"
+      className="collapsed_sidebar"
+      aria-labelledby="nested-list-subheader"
+      subheader={
+        <div>
+          <ListSubheader component="div" id="nested-list-subheader">
+            <div className="m10 p10">
+              <i class="fas fa-times" id="btn" onClick={handleSidebarClick}></i>
+            </div>
+          </ListSubheader>
+        </div>
+      }
+    >
+      {sidebar.map(function (sidebarItems, idx) {
+        let sidebarIcon;
+        switch (sidebarItems.icon) {
+          case "ExitToAppIcon":
+            sidebarIcon = <ExitToAppIcon />;
+            break;
+          case "CardGiftcardIcon":
+            sidebarIcon = <CardGiftcardIcon />;
+            break;
+          case "MessageIcon":
+            sidebarIcon = <MessageOutlinedIcon />;
+            break;
+          case "SettingsIcon":
+            sidebarIcon = <SettingsApplicationsIcon />;
+            break;
+          case "LocationOnIcon":
+            sidebarIcon = <LocationOnIcon />;
+            break;
+          default:
+            sidebarIcon = null;
+            break;
+        }
+
+        return (
+          <div>
+            <ListItem button onClick={(e) => handleClick(e, sidebarItems, idx)}>
+              <ListItemIcon>{sidebarIcon}</ListItemIcon>
+            </ListItem>
+          </div>
+        );
+      })}
+      )
     </List>
   );
 }
