@@ -18,9 +18,9 @@ import ExpandMore from "@material-ui/icons/ExpandMore";
 import Popper from "@material-ui/core/Popper";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplicationsOutlined";
-import ArrowDropDown from "@material-ui/icons/ArrowDropDownOutlined";
-import ArrowDropUp from "@material-ui/icons/ArrowDropUpOutlined";
+import SettingsApplicationsIcon from '@material-ui/icons/SettingsApplicationsOutlined';
+import ArrowDropDown from '@material-ui/icons/ArrowDropDownOutlined';
+import ArrowDropUp from '@material-ui/icons/ArrowDropUpOutlined'
 import moment from "moment";
 
 import {
@@ -40,6 +40,7 @@ export default function SideBar() {
     setSize(window.innerWidth);
     window.innerWidth < 769 && setOpen(false);
   }, []);
+
   const handleToggle = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -70,7 +71,7 @@ export default function SideBar() {
     history.push("/landing");
     //return <Redirect to="/landing" />;
   };
-  debugger;
+
   return open ? (
     <List
       component="nav"
@@ -174,7 +175,7 @@ export default function SideBar() {
         return (
           <div>
             <ListItem button onClick={(e) => handleClick(e, sidebarItems, idx)}>
-              {openCollapse && key === idx ? (
+            {openCollapse && key === idx ? (
                 <ArrowDropUp />
               ) : (
                 <ArrowDropDown />
@@ -187,8 +188,9 @@ export default function SideBar() {
               {sidebarItems.type === "PROMOS" && (
                 <div>
                   <div>
-                    <MoreVertIcon onClick={handleToggle} />
-                    <span>{sidebar[1]["sublist"].length}</span>
+                    <MoreVertIcon onClick={handleToggle} /><span>{sidebar[1]["sublist"].length}</span>
+                    
+                    
                   </div>
                   <div>
                     <Menu
@@ -382,5 +384,5 @@ export default function SideBar() {
       })}
       )
     </List>
-  );
-}
+      );
+    }

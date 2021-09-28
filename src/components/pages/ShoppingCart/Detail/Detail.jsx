@@ -1,21 +1,34 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { makeStyles } from "@material-ui/core/styles";
-import DescriptionIcon from "@material-ui/icons/Description";
-import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Popover from "@material-ui/core/Popover";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 import PaymentOption from "../../../../retailit/reusableTerminal/PaymentOption";
-import CaptureCode from "../CaptureCode/CaptureCode";
 
 const Detail = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
-
   const [terminalbox, setTerminalbox] = useState(false);
   const [barcodeData, setBarcodeData] = useState(null);
-  const [albums, setAlbums] = useState([]);
+
+
+  useEffect(() => {
+    // axios
+    //   .get("./data.js")
+    //   .then((res) => setAlbums(res.data))
+    //   .catch((err) => console.log(err));
+
+    axios("./data.js")
+      .then((response) => {
+        console.log(response);
+        // return response.json();
+      })
+      .then((data) => {
+        // Work with JSON data here
+        console.log(data);
+      })
+      .catch((err) => {
+        // Do something for an error here
+        console.log("Error Reading data " + err);
+      });
+  }, []);
 
   const terminalboxHandler = () => {
     setTerminalbox({ terminalbox: true });
@@ -49,22 +62,24 @@ const Detail = (props) => {
           <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
         </div>
       </div>
-      <div className={"list"}>TRANS #</div>
+      <div className={"list"}>TRANS #
+      <div className={"transaction-number"}>970099000001716 </div> 
+      </div>
       <div className="detail__list">
         <div className="d-flex item_content">
           <div className={"list"}>SUBTOTAL</div>
-          <div>29.99</div>
+          <div className="all_price">29.99</div>
         </div>
         <div className="d-flex item_content">
           <div className={"list"}>DISC</div>
-          <div>9.99</div>
+          <div className="all_price">9.99</div>
         </div>
         <div className="d-flex item_content">
-          <div className={"list"}>GIFT CARD</div> <div>9.99</div>
+          <div className={"list"}>GIFT CARD</div> <div className="all_price">9.99</div>
         </div>
         <div className="d-flex item_content">
           <div className={"list"}>HST</div>
-          <div>3.90</div>
+          <div className="all_price">3.90</div>
         </div>
       </div>
       <div className="d-flex item_content">

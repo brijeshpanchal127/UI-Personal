@@ -1,52 +1,11 @@
-import React, { useState, useEffect, useMemo } from "react";
-import data from "../../../../data/data";
+import React, { useState, useMemo } from "react";
+
 import Detail from "../Detail/Detail.jsx";
-import CaptureCode from "../CaptureCode/CaptureCode";
-import { useTheme } from "@material-ui/styles";
+
 import axios from "axios";
 
 export default function MainPanel() {
-  let [captureData, setCaptureData] = useState([]);
-  let [capturedData, setCapturedData] = useState([]);
-  // const ref = React.useRef < HTMLDivElement > null;
-  // const cont = React.useRef(0);
-  // const [qrValueUID, setQrValueUID] = useState("jeftar");
-  // const [qrValueQTY, setQrValueQTY] = useState("jeftar");
-  // const [qrValuePRICE, setQrValuePRICE] = useState("jeftar");
 
-  useEffect(() => {
-    fetch("/landing/shopping")
-      .then((res) => res.json())
-      .then((json) => {
-        setCaptureData(json.captureCodeData);
-      });
-  }, []);
-
-  useEffect(() => {
-    fetch("/landing/shopping/code")
-      .then((res) => res.json())
-      .then((json) => {
-        setCapturedData(json.capturedCodeData);
-      });
-  }, []);
-
-  // React.useEffect(() => {
-  //   fetch("/landing/shopping")
-  //     .then((res) => res.json())
-  //     .then((json) => {
-  //       window.setTimeout(function () {
-  //         window.JsBarcode("#barcode", json.barcodeValues.SKU
-  // +" "+json.barcodeValues.UID  + " "
-  // +json.barcodeValues.QTY+" "
-  // +json.barcodeValues.PRICE
-  // );
-
-  // }, 0);
-  // setQrValueUID(json.barcodeValues.UID);
-  // setQrValueQTY(json.barcodeValues.QTY);
-  // setQrValuePRICE(json.barcodeValues.PRICE);
-  // });
-  // });
 
   // window.QsmShoppingCart.addCartItem({id:456, description:'phone cover', unitPrice:4.99, qty:1});
   // var cartItems = window.QsmShoppingCart.getCartItems();
@@ -74,6 +33,9 @@ export default function MainPanel() {
       description: "IPHONE 12 MAX",
       qty: 1,
       unitPrice: 1599.99,
+      regular_price:29.99,
+      discount:-19.99
+
     });
     window.QsmShoppingCart.addCartItem({
       id: 124,
@@ -82,6 +44,8 @@ export default function MainPanel() {
       description: "QI WIRELESS CHARGER",
       qty: 1,
       unitPrice: 29.99,
+      regular_price:29.99,
+      discount:-29.99
     });
     window.QsmShoppingCart.addCartItem({
       id: 125,
@@ -90,6 +54,8 @@ export default function MainPanel() {
       description: "NINTENDO SWITCH LITE",
       qty: 1,
       unitPrice: 329.99,
+      regular_price:29.99,
+      discount:-10.99
     });
   }, []);
 
@@ -139,12 +105,14 @@ export default function MainPanel() {
           <div className={"search"}>
             <div className={"searchIcon"}>
               {/* <i class="fa fa-search"></i> */}
-              <i class="fas fa-bars"></i>
+              <div className="bars">
+                <i className="fas fa-bars"></i>
+              </div>
             </div>
             <div className="MuiInputBase-root inputRoot">
               <input
                 id="qsm-shopping-cart-search-bar"
-                placeholder="SKU/Transaction#"
+                placeholder="SKU / serial# / Transaction # / Text"
                 type="text"
                 aria-label="search"
                 class="MuiInputBase-input inputInput"
@@ -189,37 +157,42 @@ export default function MainPanel() {
                           <div className="fw"> {item.qty}</div>
                         </div>
                         <div className="d-flex">
-                          <span className="inventory__card--label pr">
+                          {/* <span className="inventory__card--label pr">
                             PRICE:
-                          </span>
+                          </span> */}
                           <div className="fw">{item.unitPrice}</div>
                         </div>
                       </div>
+                      
                       <div className={"shopping_InventorySecondRow"}>
                         <div>{item.description}</div>
+                        <div className="d-flex">
+                          <span className="inventory__card--label qr">
+                            REG:
+                          </span>
+                          <div className="price">{item.regular_price}</div>
+                          <div className="d-flex">
+                          <span className="inventory__card--label qr">
+                            DISC:
+                          </span>
+                          <div className="price">{item.discount}</div>
+                        </div>
+                        </div>
+                        
                       </div>
+                     
+                        
                       <div className={"iconContainer"}>
                         <hr class="solid" />
                       </div>
                     </li>
-                    <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                    <div className="ellipse">
+                      <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                    </div>
                   </div>
                 </>
               ))}
             </ul>
-          </div>
-
-          <div className="card_scan_result">
-            {captureData.map((item) => {
-              return (
-                <div>
-                  <div>
-                    {/* <div> {item.Data} </div> */}
-                    <div id={item.id}></div>
-                  </div>
-                </div>
-              );
-            })}
           </div>
         </div>
       </div>
